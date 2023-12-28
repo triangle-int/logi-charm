@@ -1,0 +1,23 @@
+[gd_scene load_steps=3 format=3 uid="uid://gweyovt8jauq"]
+
+[ext_resource type="Texture2D" uid="uid://cv2dp00rysieg" path="res://sprites/one_line_branch.png" id="1_a5kif"]
+[ext_resource type="Script" path="res://scripts/ui/branch.gd" id="2_h1r0d"]
+
+[node name="Branch" type="TextureRect"]
+offset_right = 256.0
+offset_bottom = 128.0
+pivot_offset = Vector2(256, 128)
+texture = ExtResource("1_a5kif")
+script = ExtResource("2_h1r0d")
+hovered_scale = 1.025
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_left = 19.0
+offset_top = 30.0
+offset_right = 59.0
+offset_bottom = 53.0
+text = "LEVEL 1"
+
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]

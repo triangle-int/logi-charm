@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://cg1ly4nx2wjs6"]
+[gd_scene load_steps=4 format=3 uid="uid://cg1ly4nx2wjs6"]
 
 [ext_resource type="Texture2D" uid="uid://ooh7hxoo36ep" path="res://sprites/menu_circle.png" id="1_qu8cq"]
-[ext_resource type="Texture2D" uid="uid://cv2dp00rysieg" path="res://sprites/one_line_branch.png" id="2_2iim8"]
+[ext_resource type="Script" path="res://scripts/ui/menu.gd" id="2_h6vpf"]
+[ext_resource type="PackedScene" uid="uid://gweyovt8jauq" path="res://scenes/ui/branch.tscn" id="3_wbo31"]
 
 [node name="LevelSelector" type="CanvasLayer"]
 
@@ -26,8 +27,9 @@ offset_bottom = 128.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("1_qu8cq")
+script = ExtResource("2_h6vpf")
 
-[node name="BranchTopLeft" type="TextureRect" parent="Menu"]
+[node name="BranchTopLeft" parent="Menu" instance=ExtResource("3_wbo31")]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -35,15 +37,13 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -346.0
-offset_top = -205.0
+offset_top = -206.0
 offset_right = -90.0
-offset_bottom = -77.0
+offset_bottom = -78.0
 grow_horizontal = 2
 grow_vertical = 2
-pivot_offset = Vector2(256, 128)
-texture = ExtResource("2_2iim8")
 
-[node name="BranchTopRight" type="TextureRect" parent="Menu"]
+[node name="BranchTopRight" parent="Menu" instance=ExtResource("3_wbo31")]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -57,10 +57,9 @@ offset_bottom = -78.0
 grow_horizontal = 2
 grow_vertical = 2
 pivot_offset = Vector2(0, 128)
-texture = ExtResource("2_2iim8")
 flip_h = true
 
-[node name="BranchBottomLeft" type="TextureRect" parent="Menu"]
+[node name="BranchBottomLeft" parent="Menu" instance=ExtResource("3_wbo31")]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -68,16 +67,15 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -346.0
-offset_top = 77.0
+offset_top = 78.0
 offset_right = -90.0
-offset_bottom = 205.0
+offset_bottom = 206.0
 grow_horizontal = 2
 grow_vertical = 2
 pivot_offset = Vector2(256, 0)
-texture = ExtResource("2_2iim8")
 flip_v = true
 
-[node name="BranchBotomRight" type="TextureRect" parent="Menu"]
+[node name="BranchBottomRight" parent="Menu" instance=ExtResource("3_wbo31")]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -85,11 +83,11 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = 90.0
-offset_top = 77.0
+offset_top = 78.0
 offset_right = 346.0
-offset_bottom = 205.0
+offset_bottom = 206.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("2_2iim8")
+pivot_offset = Vector2(0, 0)
 flip_h = true
 flip_v = true
