@@ -5,7 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://b60ca387m477t" path="res://scenes/pointer.tscn" id="1_vpf3b"]
 [ext_resource type="Texture2D" uid="uid://c0248cft72o8a" path="res://sprites/rings/ring_2.png" id="2_68dsl"]
 [ext_resource type="Texture2D" uid="uid://dvr68x74iehxd" path="res://sprites/rings/ring_3.png" id="3_b6fgw"]
-[ext_resource type="PackedScene" uid="uid://c67v7icd6c5bf" path="res://scenes/levels/level_4.tscn" id="6_n82jx"]
+[ext_resource type="PackedScene" uid="uid://dg4tgewsq1sgl" path="res://scenes/levels/level_1.tscn" id="6_c5xlk"]
 
 [node name="Game" type="Node2D"]
 
@@ -22,6 +22,7 @@ scale = Vector2(0.5, 0.5)
 texture = ExtResource("3_b6fgw")
 
 [node name="Ring2" type="Sprite2D" parent="Center/Rings"]
+visible = false
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("2_68dsl")
 
@@ -32,4 +33,4 @@ texture = ExtResource("1_i4p3y")
 
 [node name="Pointer" parent="Center" instance=ExtResource("1_vpf3b")]
 
-[node name="Level" parent="Center" instance=ExtResource("6_n82jx")]
+[node name="Level" parent="Center" instance=ExtResource("6_c5xlk")]
