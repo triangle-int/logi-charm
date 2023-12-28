@@ -2,7 +2,8 @@ class_name SignalManager
 
 extends Node
 
-var sleep_duration: float = 0.5
+const SLEEP_DURATION = 0.5
+
 var components: Array[BaseComponent] = []
 
 func send_signal(index: int, high: bool, from: BaseComponent):
@@ -19,7 +20,7 @@ func send_signal(index: int, high: bool, from: BaseComponent):
 			if next == null or comp.angle < next.angle:
 				next = comp
 	
-	get_tree().create_timer(sleep_duration).timeout.connect(
+	get_tree().create_timer(SLEEP_DURATION).timeout.connect(
 		next.receive_signal.bind(index, high)
 	)
 
