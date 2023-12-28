@@ -6,16 +6,16 @@ extends Node
 signal components_attached
 signal game_over
 
-@export var rings_radius: Array[float]
-
 var end_count = 0
 var activated_count = 0
+
+@onready var rings = $"../Rings"
 
 func _ready():	
 	update_components_positions()
 	
 	if Engine.is_editor_hint():
-		return;
+		return
 	
 	for child in get_children():
 		assert(child is BaseComponent)
@@ -27,7 +27,7 @@ func _ready():
 
 	components_attached.emit()
 
-func _process(delta):
+func _process(_delta: float):
 	if Engine.is_editor_hint():
 		update_components_positions()
 
@@ -39,10 +39,10 @@ func on_end_activated():
 		game_over.emit()
 
 func update_components_positions():
+	if rings == null:
+		return
+	
 	for child in get_children():
-		assert(child is BaseComponent)
-		var distance = rings_radius[child.attached_to]
+		var distance = rings.radiuses[child.attached_to]
 		var angle = child.angle
-		var x = cos(angle) * distance
-		var y = -sin(angle) * distance
-		child.position = Vector2(x, y)
+		child.position = Vector2(cos(angle), -sin(angle)) * distance

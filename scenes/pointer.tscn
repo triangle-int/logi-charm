@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://b60ca387m477t"]
 
-[ext_resource type="Script" path="res://scripts/pointer.gd" id="1_6hmel"]
+[ext_resource type="Script" path="res://scripts/visualization/pointer.gd" id="1_6hmel"]
 [ext_resource type="Texture2D" uid="uid://d2lu0e5r105y" path="res://sprites/pointer/high_pointer.png" id="1_i05om"]
 [ext_resource type="Texture2D" uid="uid://rcr144bjklfm" path="res://sprites/pointer/low_pointer.png" id="3_i3j80"]
 
@@ -10,5 +10,6 @@ high_sprite = ExtResource("1_i05om")
 low_sprite = ExtResource("3_i3j80")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+z_index = 1
 scale = Vector2(0.4, 0.4)
 texture = ExtResource("1_i05om")

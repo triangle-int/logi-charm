@@ -9,7 +9,6 @@
 
 [node name="TestLevel" type="Node"]
 script = ExtResource("1_44y38")
-rings_radius = Array[float]([169.75, 209.75])
 
 [node name="InitComponent" parent="." instance=ExtResource("2_0ogxl")]
 position = Vector2(169.75, 0)

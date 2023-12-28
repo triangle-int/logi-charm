@@ -4,7 +4,7 @@ extends Node
 
 signal signal_out(index: int, high: bool, angle_start: float, angle_end: float)
 
-const SLEEP_DURATION = 1.0
+const SLEEP_DURATION = 0.75
 
 var components: Array[BaseComponent] = []
 
@@ -26,8 +26,7 @@ func send_signal(index: int, high: bool, from: BaseComponent):
 			if next == null or comp.angle < next.angle:
 				next = comp
 	
-	signal_out.emit(index, high, from.angle, next.angle)
-	
+	signal_out.emit(index, high, from.angle, next.angle)	
 	get_tree().create_timer(SLEEP_DURATION).timeout.connect(
 		next.receive_signal.bind(index, high)
 	)

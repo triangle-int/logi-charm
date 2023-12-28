@@ -1,8 +1,8 @@
 [gd_scene load_steps=7 format=3 uid="uid://bgiov8vdeao7u"]
 
 [ext_resource type="Texture2D" uid="uid://skuhewxd3ubq" path="res://sprites/rings/ring_1.png" id="1_i4p3y"]
-[ext_resource type="PackedScene" path="res://scenes/pointer.tscn" id="1_vpf3b"]
-[ext_resource type="Script" path="res://scripts/visualization/ring.gd" id="2_4nl2d"]
+[ext_resource type="Script" path="res://scripts/radiuses.gd" id="1_nei7h"]
+[ext_resource type="PackedScene" uid="uid://b60ca387m477t" path="res://scenes/pointer.tscn" id="1_vpf3b"]
 [ext_resource type="Texture2D" uid="uid://c0248cft72o8a" path="res://sprites/rings/ring_2.png" id="2_68dsl"]
 [ext_resource type="PackedScene" uid="uid://b66fmfjhg1x4p" path="res://scenes/levels/test_level.tscn" id="2_xyqm8"]
 [ext_resource type="Texture2D" uid="uid://dvr68x74iehxd" path="res://sprites/rings/ring_3.png" id="3_b6fgw"]
@@ -13,26 +13,22 @@
 
 [node name="Center" type="Node2D" parent="."]
 
-[node name="Ring1" type="Sprite2D" parent="Center" groups=["rings"]]
+[node name="Rings" type="Node" parent="Center"]
+script = ExtResource("1_nei7h")
+radiuses = Array[float]([169.75, 209.75, 249.75])
+
+[node name="Ring1" type="Sprite2D" parent="Center/Rings"]
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("3_b6fgw")
-script = ExtResource("2_4nl2d")
-radius = 169.75
 
-[node name="Ring2" type="Sprite2D" parent="Center" groups=["rings"]]
+[node name="Ring2" type="Sprite2D" parent="Center/Rings"]
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("2_68dsl")
-script = ExtResource("2_4nl2d")
-index = 1
-radius = 209.75
 
-[node name="Ring3" type="Sprite2D" parent="Center" groups=["rings"]]
+[node name="Ring3" type="Sprite2D" parent="Center/Rings"]
 visible = false
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("1_i4p3y")
-script = ExtResource("2_4nl2d")
-index = 2
-radius = 249.75
 
 [node name="Pointer" parent="Center" instance=ExtResource("1_vpf3b")]
 
