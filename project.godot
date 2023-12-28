@@ -20,6 +20,10 @@ config/icon="res://icon.svg"
 window/stretch/mode="canvas_items"
 window/stretch/aspect="expand"
 
+[autoload]
+
+ComponentsSignals="*res://scripts/signal_manager.gd"
+
 [rendering]
 
 renderer/rendering_method="gl_compatibility"
