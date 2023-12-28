@@ -10,10 +10,10 @@ var components: Array[BaseComponent] = []
 
 func send_signal(index: int, high: bool, from: BaseComponent):
 	var next_angle = TAU
-	var next: BaseComponent = components[0]
+	var next: BaseComponent = null
 
 	var components_at_rings = components.filter(
-		func(c): return index >= c.attached_to and index <= c.attached_to + c.width
+		func(c): return index >= c.attached_to and index <= c.attached_to + c.width - 1
 	)
 	
 	for comp in components_at_rings:

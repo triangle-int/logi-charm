@@ -1,0 +1,22 @@
+[gd_scene load_steps=5 format=3 uid="uid://dg4tgewsq1sgl"]
+
+[ext_resource type="Script" path="res://scripts/level.gd" id="1_rpdq7"]
+[ext_resource type="PackedScene" uid="uid://pumfprhltbaf" path="res://scenes/components/init_component.tscn" id="2_j3qwm"]
+[ext_resource type="PackedScene" uid="uid://xjea3vckpfat" path="res://scenes/components/not_component.tscn" id="4_mtiev"]
+[ext_resource type="PackedScene" uid="uid://dtmhm8xn55o03" path="res://scenes/components/end_component.tscn" id="6_rsbyf"]
+
+[node name="Level" type="Node"]
+script = ExtResource("1_rpdq7")
+
+[node name="InitComponent" parent="." instance=ExtResource("2_j3qwm")]
+position = Vector2(169.75, 0)
+
+[node name="NotComponent" parent="." instance=ExtResource("4_mtiev")]
+position = Vector2(-70.6409, -154.353)
+angle = 1.571
+width = 2
+
+[node name="EndComponent" parent="." instance=ExtResource("6_rsbyf")]
+position = Vector2(-110.956, 128.467)
+activation_seq = Array[bool]([true, false])
+angle = 3.142

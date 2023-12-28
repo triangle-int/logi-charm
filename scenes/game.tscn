@@ -4,8 +4,8 @@
 [ext_resource type="Script" path="res://scripts/radiuses.gd" id="1_nei7h"]
 [ext_resource type="PackedScene" uid="uid://b60ca387m477t" path="res://scenes/pointer.tscn" id="1_vpf3b"]
 [ext_resource type="Texture2D" uid="uid://c0248cft72o8a" path="res://sprites/rings/ring_2.png" id="2_68dsl"]
-[ext_resource type="PackedScene" uid="uid://b66fmfjhg1x4p" path="res://scenes/levels/test_level.tscn" id="2_xyqm8"]
 [ext_resource type="Texture2D" uid="uid://dvr68x74iehxd" path="res://sprites/rings/ring_3.png" id="3_b6fgw"]
+[ext_resource type="PackedScene" uid="uid://c67v7icd6c5bf" path="res://scenes/levels/level_4.tscn" id="6_n82jx"]
 
 [node name="Game" type="Node2D"]
 
@@ -32,4 +32,4 @@ texture = ExtResource("1_i4p3y")
 
 [node name="Pointer" parent="Center" instance=ExtResource("1_vpf3b")]
 
-[node name="TestLevel" parent="Center" instance=ExtResource("2_xyqm8")]
+[node name="Level" parent="Center" instance=ExtResource("6_n82jx")]
