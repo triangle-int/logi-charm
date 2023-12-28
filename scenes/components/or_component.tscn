@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://p6kikp3bppfh"]
+
+[ext_resource type="Script" path="res://scripts/components/or_component.gd" id="1_yfvdv"]
+
+[node name="OrComponent" type="Node2D"]
+script = ExtResource("1_yfvdv")
+width = 1
