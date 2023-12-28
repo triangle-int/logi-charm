@@ -1,6 +1,6 @@
-[gd_scene load_steps=5 format=3 uid="uid://cg1ly4nx2wjs6"]
+[gd_scene load_steps=5 format=3 uid="uid://b413entmk714a"]
 
-[ext_resource type="Texture2D" uid="uid://ooh7hxoo36ep" path="res://sprites/menu_circle.png" id="1_qu8cq"]
+[ext_resource type="Texture2D" path="res://sprites/menu_circle.png" id="1_qu8cq"]
 [ext_resource type="Script" path="res://scripts/ui/menu.gd" id="2_h6vpf"]
 [ext_resource type="PackedScene" uid="uid://gweyovt8jauq" path="res://scenes/ui/branch.tscn" id="3_wbo31"]
 
@@ -67,6 +67,7 @@ grow_horizontal = 2
 grow_vertical = 2
 pivot_offset = Vector2(0, 128)
 flip_h = true
+corner = 1
 
 [node name="BranchBottomLeft" parent="Menu" instance=ExtResource("3_wbo31")]
 layout_mode = 1
@@ -83,6 +84,7 @@ grow_horizontal = 2
 grow_vertical = 2
 pivot_offset = Vector2(256, 0)
 flip_v = true
+corner = 3
 
 [node name="BranchBottomRight" parent="Menu" instance=ExtResource("3_wbo31")]
 layout_mode = 1
@@ -100,3 +102,4 @@ grow_vertical = 2
 pivot_offset = Vector2(0, 0)
 flip_h = true
 flip_v = true
+corner = 2
