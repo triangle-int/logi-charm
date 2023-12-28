@@ -48,16 +48,16 @@ offset_right = 19.0
 offset_bottom = -61.0
 grow_vertical = 0
 
-[node name="TopRight2" type="Control" parent="."]
+[node name="BottomRight" type="Control" parent="."]
 layout_mode = 1
-anchors_preset = 1
-anchor_left = 1.0
-anchor_right = 1.0
-offset_left = -130.0
-offset_top = 19.0
-offset_right = -130.0
-offset_bottom = 19.0
-grow_horizontal = 0
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 126.0
+offset_top = -61.0
+offset_right = 126.0
+offset_bottom = -61.0
+grow_vertical = 0
 
 [node name="LevelBox" type="VBoxContainer" parent="."]
 layout_mode = 1
