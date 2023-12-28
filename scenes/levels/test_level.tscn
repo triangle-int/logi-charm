@@ -9,22 +9,28 @@
 
 [node name="TestLevel" type="Node"]
 script = ExtResource("1_44y38")
+rings_radius = Array[float]([169.75, 209.75])
 
 [node name="InitComponent" parent="." instance=ExtResource("2_0ogxl")]
+position = Vector2(169.75, 0)
 start_high = true
 
 [node name="AndComponent" parent="." instance=ExtResource("3_vo0ha")]
+position = Vector2(91.7163, -142.84)
 angle = 1.0
 width = 2
 
 [node name="NotComponent" parent="." instance=ExtResource("3_6vmux")]
+position = Vector2(-70.6409, -154.353)
 angle = 2.0
 width = 2
 
 [node name="SwapComponent" parent="." instance=ExtResource("5_ep30y")]
+position = Vector2(-168.051, -23.9551)
 angle = 3.0
 width = 2
 
 [node name="EndComponent" parent="." instance=ExtResource("4_vwkne")]
+position = Vector2(-110.956, 128.467)
 activation_seq = Array[bool]([true, true, false])
 angle = 4.0

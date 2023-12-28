@@ -1,7 +1,12 @@
-[gd_scene load_steps=2 format=3 uid="uid://pumfprhltbaf"]
+[gd_scene load_steps=3 format=3 uid="uid://pumfprhltbaf"]
 
 [ext_resource type="Script" path="res://scripts/components/init_component.gd" id="1_pji62"]
+[ext_resource type="Texture2D" uid="uid://it8m201ieb2f" path="res://sprites/gates/init_gate.png" id="2_8nh45"]
 
 [node name="InitComponent" type="Node2D"]
 script = ExtResource("1_pji62")
 width = 1
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("2_8nh45")

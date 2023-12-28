@@ -15,14 +15,14 @@ run/main_scene="res://scenes/game.tscn"
 config/features=PackedStringArray("4.2", "GL Compatibility")
 config/icon="res://icon.svg"
 
+[autoload]
+
+ComponentsSignals="*res://scripts/signal_manager.gd"
+
 [display]
 
 window/stretch/mode="canvas_items"
 window/stretch/aspect="expand"
-
-[autoload]
-
-ComponentsSignals="*res://scripts/signal_manager.gd"
 
 [rendering]
 
