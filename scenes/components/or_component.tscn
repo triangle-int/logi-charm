@@ -1,7 +1,12 @@
-[gd_scene load_steps=2 format=3 uid="uid://p6kikp3bppfh"]
+[gd_scene load_steps=3 format=3 uid="uid://p6kikp3bppfh"]
 
 [ext_resource type="Script" path="res://scripts/components/or_component.gd" id="1_yfvdv"]
+[ext_resource type="Texture2D" uid="uid://b5o1desqe0lp2" path="res://sprites/gates/or_gate.png" id="2_3smfy"]
 
 [node name="OrComponent" type="Node2D"]
 script = ExtResource("1_yfvdv")
 width = 1
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("2_3smfy")
