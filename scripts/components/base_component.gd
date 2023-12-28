@@ -10,7 +10,6 @@ var memory: Dictionary = {}
 
 func receive_signal(index: int, high: bool):
 	print("%s received %s from ring %d" %[name, '1' if high else '0', index])
-	print(Time.get_ticks_msec() / 1000)
 	var local_index = index - attached_to
 	memory[local_index] = high
 	_on_receive(local_index, high)

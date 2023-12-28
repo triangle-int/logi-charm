@@ -4,7 +4,7 @@ func _ready():
 	for ring in range(width):
 		memory[ring] = false
 
-func _on_receive(index: int, high: bool):
+func _on_receive(index: int, _high: bool):
 	var result = true
 	
 	for ring in range(width):
