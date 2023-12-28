@@ -7,7 +7,7 @@ extends Node
 var memory: Dictionary = {}
 
 func receive_signal(index: int, high: bool):
-	print("Received %s from %d" %['true' if high else 'false', index])
+	print("%s received %s from ring %d" %[name, '1' if high else '0', index])
 	memory[index] = high
 	_on_receive(index, high)
 
