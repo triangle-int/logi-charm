@@ -2,7 +2,7 @@ class_name BaseComponent
 
 extends Node
 
-@export var angle: float
+@export_range(0, TAU) var angle: float
 
 var memory: Dictionary = {}
 
