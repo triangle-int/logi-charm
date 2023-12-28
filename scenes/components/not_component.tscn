@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://xjea3vckpfat"]
+
+[ext_resource type="Script" path="res://scripts/components/not_component.gd" id="1_wf05b"]
+
+[node name="NotComponent" type="Node2D"]
+script = ExtResource("1_wf05b")
+width = 1

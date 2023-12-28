@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://bgiov8vdeao7u"]
+[gd_scene load_steps=3 format=3 uid="uid://bgiov8vdeao7u"]
 
 [ext_resource type="Texture2D" uid="uid://dtye7ncb5jear" path="res://sprites/ring.png" id="1_4rd13"]
+[ext_resource type="PackedScene" uid="uid://b66fmfjhg1x4p" path="res://scenes/levels/test_level.tscn" id="2_xyqm8"]
 
 [node name="Game" type="Node2D"]
 
@@ -11,3 +12,5 @@
 [node name="Ring" type="Sprite2D" parent="Center"]
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("1_4rd13")
+
+[node name="TestLevel" parent="Center" instance=ExtResource("2_xyqm8")]
