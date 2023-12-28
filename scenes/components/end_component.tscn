@@ -4,3 +4,4 @@
 
 [node name="EndComponent" type="Node2D"]
 script = ExtResource("1_b4f36")
+width = 1

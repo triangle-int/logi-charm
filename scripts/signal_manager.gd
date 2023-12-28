@@ -8,15 +8,19 @@ var components: Array[BaseComponent] = []
 
 func send_signal(index: int, high: bool, from: BaseComponent):
 	var next_angle = TAU
-	var next: BaseComponent = null
+	var next: BaseComponent = components[0]
+
+	var components_at_rings = components.filter(
+		func(c): return index >= c.attached_to and index <= c.attached_to + c.width
+	)
 	
-	for comp in components:
+	for comp in components_at_rings:
 		if comp.angle > from.angle and comp.angle < next_angle:
 			next_angle = comp.angle
 			next = comp
 	
 	if next == null:
-		for comp in components:
+		for comp in components_at_rings:
 			if next == null or comp.angle < next.angle:
 				next = comp
 	
