@@ -1,18 +1,27 @@
-[gd_scene load_steps=4 format=3 uid="uid://cg1ly4nx2wjs6"]
+[gd_scene load_steps=5 format=3 uid="uid://cg1ly4nx2wjs6"]
 
 [ext_resource type="Texture2D" uid="uid://ooh7hxoo36ep" path="res://sprites/menu_circle.png" id="1_qu8cq"]
 [ext_resource type="Script" path="res://scripts/ui/menu.gd" id="2_h6vpf"]
 [ext_resource type="PackedScene" uid="uid://gweyovt8jauq" path="res://scenes/ui/branch.tscn" id="3_wbo31"]
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vkegc"]
+bg_color = Color(0.0784314, 0.101961, 0.109804, 1)
+border_width_left = 80
+border_width_top = 80
+border_width_right = 80
+border_width_bottom = 80
+border_color = Color(0, 0, 0, 1)
+border_blend = true
+
 [node name="LevelSelector" type="CanvasLayer"]
 
-[node name="Background" type="ColorRect" parent="."]
+[node name="Background" type="Panel" parent="."]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0.0509804, 0.0627451, 0.0705882, 1)
+theme_override_styles/panel = SubResource("StyleBoxFlat_vkegc")
 
 [node name="Menu" type="TextureRect" parent="."]
 anchors_preset = 8

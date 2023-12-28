@@ -1,23 +1,85 @@
-[gd_scene load_steps=3 format=3 uid="uid://gweyovt8jauq"]
+[gd_scene load_steps=6 format=3 uid="uid://gweyovt8jauq"]
 
 [ext_resource type="Texture2D" uid="uid://cv2dp00rysieg" path="res://sprites/one_line_branch.png" id="1_a5kif"]
 [ext_resource type="Script" path="res://scripts/ui/branch.gd" id="2_h1r0d"]
+[ext_resource type="FontFile" uid="uid://bo0132s40egtx" path="res://fonts/Oswald-Medium.ttf" id="3_etn3a"]
+[ext_resource type="Texture2D" uid="uid://bicsi3j6h1x45" path="res://sprites/one_pixel.png" id="3_lb0y5"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_1xjqs"]
+font = ExtResource("3_etn3a")
+font_size = 18
 
 [node name="Branch" type="TextureRect"]
 offset_right = 256.0
 offset_bottom = 128.0
 pivot_offset = Vector2(256, 128)
 texture = ExtResource("1_a5kif")
+flip_v = true
 script = ExtResource("2_h1r0d")
 hovered_scale = 1.025
 
-[node name="Label" type="Label" parent="."]
-layout_mode = 0
+[node name="TopLeft" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 0
 offset_left = 19.0
 offset_top = 30.0
-offset_right = 59.0
-offset_bottom = 53.0
+offset_right = 19.0
+offset_bottom = 30.0
+
+[node name="TopRight" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -130.0
+offset_top = 19.0
+offset_right = -130.0
+offset_bottom = 19.0
+grow_horizontal = 0
+
+[node name="BottomLeft" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 19.0
+offset_top = -61.0
+offset_right = 19.0
+offset_bottom = -61.0
+grow_vertical = 0
+
+[node name="TopRight2" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -130.0
+offset_top = 19.0
+offset_right = -130.0
+offset_bottom = 19.0
+grow_horizontal = 0
+
+[node name="LevelBox" type="VBoxContainer" parent="."]
+layout_mode = 1
+offset_left = 19.0
+offset_top = 30.0
+offset_right = 71.0
+offset_bottom = 58.0
+theme_override_constants/separation = 0
+
+[node name="Level" type="Label" parent="LevelBox"]
+layout_mode = 2
+mouse_filter = 1
 text = "LEVEL 1"
+label_settings = SubResource("LabelSettings_1xjqs")
+
+[node name="Underline" type="TextureProgressBar" parent="LevelBox"]
+custom_minimum_size = Vector2(100, 3)
+layout_mode = 2
+max_value = 1.0
+step = 0.01
+nine_patch_stretch = true
+texture_progress = ExtResource("3_lb0y5")
 
 [connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]
