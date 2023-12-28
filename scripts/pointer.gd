@@ -17,6 +17,7 @@ func _on_signal_out(index: int, high: bool, from_angle: float, to_angle: float):
 	_radius = ring.radius
 	
 	var tween = create_tween()
+	to_angle = to_angle if to_angle > from_angle else to_angle + TAU
 	tween.tween_method(_move_pointer, from_angle, to_angle, ComponentsSignals.SLEEP_DURATION)
 
 func _move_pointer(angle: float):
