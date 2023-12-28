@@ -1,8 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://bgiov8vdeao7u"]
+[gd_scene load_steps=3 format=3 uid="uid://bgiov8vdeao7u"]
 
 [ext_resource type="Texture2D" uid="uid://dtye7ncb5jear" path="res://sprites/ring.png" id="1_4rd13"]
-[ext_resource type="Script" path="res://scripts/signal_manager.gd" id="2_d88hn"]
-[ext_resource type="PackedScene" uid="uid://pumfprhltbaf" path="res://scenes/init_component.tscn" id="3_ovtrb"]
+[ext_resource type="PackedScene" uid="uid://b66fmfjhg1x4p" path="res://scenes/levels/test_level.tscn" id="2_xyqm8"]
 
 [node name="Game" type="Node2D"]
 
@@ -14,9 +13,4 @@
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("1_4rd13")
 
-[node name="SignalManager" type="Node2D" parent="Center"]
-unique_name_in_owner = true
-script = ExtResource("2_d88hn")
-sleep_duration = 0.5
-
-[node name="InitComponent" parent="Center/SignalManager" instance=ExtResource("3_ovtrb")]
+[node name="TestLevel" parent="Center" instance=ExtResource("2_xyqm8")]
