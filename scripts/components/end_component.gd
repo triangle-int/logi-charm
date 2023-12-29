@@ -36,4 +36,4 @@ func _on_receive(index: int, high: bool):
 
 func _detach():
 	is_detached = true
-	pin_joint_2d.node_b = null
+	# TODO: Create detaching logic
