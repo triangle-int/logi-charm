@@ -1,9 +1,14 @@
 extends Node
 
-@export var levels: Array[PackedScene]
-
 var current_level: Level = null
 var current_index: int = -1
+
+var levels: Array[PackedScene]
+
+func _ready():
+	var level_names = DirAccess.get_files_at("res://scenes/levels/enabled/")
+	for level_name in level_names:
+		levels.append(load("res://scenes/levels/enabled/" + level_name))
 
 # For debugging
 func _input(event: InputEvent):
@@ -28,7 +33,7 @@ func load_level(index: int):
 	add_child(current_level)
 	current_level.start_level()
 	
-	$Rings/Ring1.visible = current_level.rings_config.radiuses.size() > 0
-	$Rings/Ring2.visible = current_level.rings_config.radiuses.size() > 1
-	$Rings/Ring3.visible = current_level.rings_config.radiuses.size() > 2
-	$Pointer.rings_config = current_level.rings_config
+	$Center/Rings/Ring1.visible = current_level.rings_config.radiuses.size() > 0
+	$Center/Rings/Ring2.visible = current_level.rings_config.radiuses.size() > 1
+	$Center/Rings/Ring3.visible = current_level.rings_config.radiuses.size() > 2
+	$Center/Pointer.rings_config = current_level.rings_config
