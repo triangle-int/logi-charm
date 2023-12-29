@@ -9,6 +9,7 @@ size = Vector2(39.9108, 48.3377)
 [node name="InitComponent" type="Node2D"]
 script = ExtResource("1_pji62")
 width = 1
+signal_angular_vel = 25.0
 
 [node name="PinJoint2D" type="PinJoint2D" parent="."]
 node_a = NodePath("../StaticBody2D")

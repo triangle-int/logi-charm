@@ -12,6 +12,7 @@ size = Vector2(54, 50)
 script = ExtResource("1_yfvdv")
 width = 1
 memory_view = NodePath("RigidBody2D/Sprite2D/MemoryView")
+signal_angular_vel = 25.0
 
 [node name="PinJoint2D" type="PinJoint2D" parent="."]
 node_a = NodePath("../StaticBody2D")

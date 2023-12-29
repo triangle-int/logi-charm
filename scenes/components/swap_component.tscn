@@ -9,6 +9,7 @@ size = Vector2(56, 56)
 [node name="SwapComponent" type="Node2D"]
 script = ExtResource("1_8va6n")
 width = 1
+signal_angular_vel = 10.0
 
 [node name="PinJoint2D" type="PinJoint2D" parent="."]
 node_a = NodePath("../StaticBody2D")

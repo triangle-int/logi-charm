@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://b60ca387m477t"]
 
-[ext_resource type="Script" path="res://scripts/visualization/pointer.gd" id="1_6hmel"]
+[ext_resource type="Script" path="res://scripts/pointer.gd" id="1_6hmel"]
 
 [sub_resource type="Curve" id="Curve_tmhvk"]
 _data = [Vector2(0, 0), 0.0, 2.14434, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
