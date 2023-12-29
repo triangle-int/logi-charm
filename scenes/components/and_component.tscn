@@ -17,6 +17,7 @@ node_b = NodePath("../RigidBody2D")
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 
 [node name="RigidBody2D" type="RigidBody2D" parent="."]
+rotation = 0.785398
 collision_mask = 0
 angular_damp = 5.0
 
