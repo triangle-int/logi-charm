@@ -5,8 +5,6 @@ extends Node
 var current_level: Level = null
 var current_index: int = -1
 
-@onready var radiuses = $Rings
-
 # For debugging
 func _input(event: InputEvent):
 	if event.is_action_pressed("ui_accept"):
@@ -28,4 +26,8 @@ func load_level(index: int):
 	current_index = index
 	current_level = levels[index].instantiate() as Level
 	add_child(current_level)
-	current_level.start_level(radiuses)
+	current_level.start_level()
+	
+	$Rings/Ring1.visible = current_level.rings_config.radiuses.size() > 0
+	$Rings/Ring2.visible = current_level.rings_config.radiuses.size() > 1
+	$Rings/Ring3.visible = current_level.rings_config.radiuses.size() > 2

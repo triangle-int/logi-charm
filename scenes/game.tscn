@@ -1,9 +1,8 @@
-[gd_scene load_steps=12 format=3 uid="uid://bgiov8vdeao7u"]
+[gd_scene load_steps=11 format=3 uid="uid://bgiov8vdeao7u"]
 
 [ext_resource type="Texture2D" uid="uid://skuhewxd3ubq" path="res://sprites/rings/ring_1.png" id="1_i4p3y"]
-[ext_resource type="Script" path="res://scripts/radiuses.gd" id="1_nei7h"]
 [ext_resource type="PackedScene" uid="uid://b60ca387m477t" path="res://scenes/pointer.tscn" id="1_vpf3b"]
-[ext_resource type="Script" path="res://scripts/game.gd" id="1_wymu5"]
+[ext_resource type="Script" path="res://scripts/game_loader.gd" id="1_wymu5"]
 [ext_resource type="Texture2D" uid="uid://c0248cft72o8a" path="res://sprites/rings/ring_2.png" id="2_68dsl"]
 [ext_resource type="PackedScene" uid="uid://cunwq4ykl2eh7" path="res://scenes/levels/level_2.tscn" id="3_3wdw4"]
 [ext_resource type="Texture2D" uid="uid://dvr68x74iehxd" path="res://sprites/rings/ring_3.png" id="3_b6fgw"]
@@ -18,25 +17,23 @@
 
 [node name="Center" type="Node2D" parent="."]
 
-[node name="Game" type="Node" parent="Center"]
+[node name="GameLoader" type="Node" parent="Center"]
 script = ExtResource("1_wymu5")
 levels = Array[PackedScene]([ExtResource("6_c5xlk"), ExtResource("3_3wdw4"), ExtResource("4_v01tm"), ExtResource("5_tvtas"), ExtResource("6_qo8vu")])
 
-[node name="Rings" type="Node" parent="Center/Game"]
-script = ExtResource("1_nei7h")
-radiuses = Array[float]([169.75, 209.75, 249.75])
+[node name="Rings" type="Node" parent="Center/GameLoader"]
 
-[node name="Ring1" type="Sprite2D" parent="Center/Game/Rings"]
+[node name="Ring1" type="Sprite2D" parent="Center/GameLoader/Rings"]
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("3_b6fgw")
 
-[node name="Ring2" type="Sprite2D" parent="Center/Game/Rings"]
+[node name="Ring2" type="Sprite2D" parent="Center/GameLoader/Rings"]
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("2_68dsl")
 
-[node name="Ring3" type="Sprite2D" parent="Center/Game/Rings"]
+[node name="Ring3" type="Sprite2D" parent="Center/GameLoader/Rings"]
 visible = false
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("1_i4p3y")
 
-[node name="Pointer" parent="Center/Game" instance=ExtResource("1_vpf3b")]
+[node name="Pointer" parent="Center/GameLoader" instance=ExtResource("1_vpf3b")]

@@ -4,12 +4,12 @@ extends Node
 
 signal game_over
 
+@export var rings_config: RingsConfig;
+
 var end_count = 0
 var activated_count = 0
-var radiuses: Radiuses
 
-func start_level(rings_radiuses: Radiuses):
-	radiuses = rings_radiuses
+func start_level():
 	update_components_positions()
 	
 	for child in get_children():
@@ -31,7 +31,7 @@ func update_components_positions():
 	for child in get_children():
 		var distances =\
 			range(child.attached_to, child.attached_to + child.width)\
-			.map(func(i): return radiuses.radiuses[i])
+			.map(func(i): return rings_config.radiuses[i])
 		
 		var distance = distances.reduce(func(a, b): return a + b, 0) / len(distances)
 		var angle = child.angle
