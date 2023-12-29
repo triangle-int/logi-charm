@@ -28,7 +28,7 @@ func on_end_activated():
 		game_over.emit()
 
 func update_components_positions():
-	for child in get_children():
+	for child: Node2D in get_children():
 		var distances =\
 			range(child.attached_to, child.attached_to + child.width)\
 			.map(func(i): return rings_config.radiuses[i])
@@ -36,3 +36,4 @@ func update_components_positions():
 		var distance = distances.reduce(func(a, b): return a + b, 0) / len(distances)
 		var angle = child.angle
 		child.position = Vector2(cos(angle), -sin(angle)) * distance
+		child.rotation = angle
