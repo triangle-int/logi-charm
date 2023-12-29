@@ -12,8 +12,6 @@ var queue: Array[QueuePoint] = []
 var is_high: bool
 var radius: float
 
-@onready var pointer = $Pointer
-
 func _ready():
 	ComponentsSignals.simulation_started.connect(_on_started)
 	ComponentsSignals.signal_out.connect(_on_signal_out)
