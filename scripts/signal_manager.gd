@@ -3,12 +3,29 @@ class_name SignalManager
 extends Node
 
 signal signal_out(index: int, high: bool, angle_start: float, angle_end: float)
+signal simulation_started
 
 const SLEEP_DURATION = 0.75
 
 var components: Array[BaseComponent] = []
+var timers: Array[Timer] = []
+var is_simulating = false
+
+func start_simulation():
+	is_simulating = true
+	simulation_started.emit()
+	
+func stop_simulation():
+	for timer in timers:
+		timer.stop()
+	
+	timers = []
+	is_simulating = false
 
 func send_signal(index: int, high: bool, from: BaseComponent):
+	if not is_simulating:
+		return
+	
 	var next_angle = TAU
 	var next: BaseComponent = null
 
@@ -26,10 +43,23 @@ func send_signal(index: int, high: bool, from: BaseComponent):
 			if next == null or comp.angle < next.angle:
 				next = comp
 	
-	signal_out.emit(index, high, from.angle, next.angle)	
-	get_tree().create_timer(SLEEP_DURATION).timeout.connect(
-		next.receive_signal.bind(index, high)
+	signal_out.emit(index, high, from.angle, next.angle)
+	
+	var timer = Timer.new()
+	timer.wait_time = SLEEP_DURATION
+	timer.one_shot = true
+	timer.timeout.connect(
+		func ():
+			timers.remove_at(timers.find(timer))
+			next.receive_signal(index, high)
 	)
+	
+	add_child(timer)
+	timers.append(timer)
+	timer.start()
 
 func attach_component(component: BaseComponent):
 	components.append(component)
+
+func detach_all_components():
+	components = []

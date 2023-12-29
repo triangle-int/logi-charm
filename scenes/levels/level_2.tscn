@@ -9,19 +9,14 @@
 script = ExtResource("1_8w3dc")
 
 [node name="InitComponent" parent="." instance=ExtResource("2_h8s2h")]
-position = Vector2(169.75, 0)
 
 [node name="EndComponent1" parent="." instance=ExtResource("4_fuhvq")]
-position = Vector2(-110.956, 128.467)
 activation_seq = Array[bool]([false, true])
 angle = 1.571
 
 [node name="NotComponent" parent="." instance=ExtResource("3_icyh5")]
-position = Vector2(-70.6409, -154.353)
 angle = 3.142
-width = 2
 
 [node name="EndComponent2" parent="." instance=ExtResource("4_fuhvq")]
-position = Vector2(-110.956, 128.467)
 activation_seq = Array[bool]([true, false])
 angle = 4.712
