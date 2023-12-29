@@ -1,0 +1,7 @@
+[gd_resource type="Resource" script_class="RingsConfig" load_steps=2 format=3 uid="uid://sg3uasvec28l"]
+
+[ext_resource type="Script" path="res://scripts/resources/rings_config.gd" id="1_yke7i"]
+
+[resource]
+script = ExtResource("1_yke7i")
+radiuses = Array[float]([169.75, 209.75])

@@ -1,12 +1,14 @@
-[gd_scene load_steps=5 format=3 uid="uid://cunwq4ykl2eh7"]
+[gd_scene load_steps=6 format=3 uid="uid://cunwq4ykl2eh7"]
 
 [ext_resource type="Script" path="res://scripts/level.gd" id="1_8w3dc"]
+[ext_resource type="Resource" uid="uid://doecm0xpoypst" path="res://resources/rings/ring_1.tres" id="2_26xhy"]
 [ext_resource type="PackedScene" uid="uid://pumfprhltbaf" path="res://scenes/components/init_component.tscn" id="2_h8s2h"]
 [ext_resource type="PackedScene" uid="uid://xjea3vckpfat" path="res://scenes/components/not_component.tscn" id="3_icyh5"]
 [ext_resource type="PackedScene" uid="uid://dtmhm8xn55o03" path="res://scenes/components/end_component.tscn" id="4_fuhvq"]
 
 [node name="Level" type="Node"]
 script = ExtResource("1_8w3dc")
+rings_config = ExtResource("2_26xhy")
 
 [node name="InitComponent" parent="." instance=ExtResource("2_h8s2h")]
 
