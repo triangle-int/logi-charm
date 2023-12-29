@@ -1,4 +1,4 @@
-extends BaseComponent
+extends RotatableComponent
 
 func _on_receive(index: int, _high: bool):
 	var result = false

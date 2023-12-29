@@ -1,4 +1,4 @@
-extends BaseComponent
+extends RotatableComponent
 
 func _on_receive(index: int, high: bool):
 	index = (index + 1) % width

@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://c25ufp6ujfbvv"]
+
+[ext_resource type="Texture2D" uid="uid://cnnwyq04rvlqd" path="res://sprites/rings/ring_parts.png" id="1_b3tls"]
+
+[node name="ChainNode" type="Sprite2D"]
+texture_filter = 1
+scale = Vector2(2, 2)
+texture = ExtResource("1_b3tls")
+hframes = 2

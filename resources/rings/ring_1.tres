@@ -4,4 +4,4 @@
 
 [resource]
 script = ExtResource("1_4anmq")
-radiuses = Array[float]([169.75])
+radiuses = Array[float]([170.0])

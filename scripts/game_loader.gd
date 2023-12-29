@@ -33,7 +33,7 @@ func load_level(index: int):
 	add_child(current_level)
 	current_level.start_level()
 	
-	$Center/Rings/Ring1.visible = current_level.rings_config.radiuses.size() > 0
-	$Center/Rings/Ring2.visible = current_level.rings_config.radiuses.size() > 1
-	$Center/Rings/Ring3.visible = current_level.rings_config.radiuses.size() > 2
+	$Center/Rings/Chain1.visible = current_level.rings_config.radiuses.size() > 0
+	$Center/Rings/Chain2.visible = current_level.rings_config.radiuses.size() > 1
+	$Center/Rings/Chain3.visible = current_level.rings_config.radiuses.size() > 2
 	$Center/Pointer.rings_config = current_level.rings_config

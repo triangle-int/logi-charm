@@ -1,12 +1,33 @@
-[gd_scene load_steps=3 format=3 uid="uid://e33vqmafam83"]
+[gd_scene load_steps=4 format=3 uid="uid://e33vqmafam83"]
 
 [ext_resource type="Script" path="res://scripts/components/swap_component.gd" id="1_8va6n"]
 [ext_resource type="Texture2D" uid="uid://bsb61658ojqw2" path="res://sprites/gates/swap_gate.png" id="2_mw6ts"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qs243"]
+size = Vector2(56, 56)
 
 [node name="SwapComponent" type="Node2D"]
 script = ExtResource("1_8va6n")
 width = 1
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-scale = Vector2(0.4, 0.4)
+[node name="PinJoint2D" type="PinJoint2D" parent="."]
+node_a = NodePath("../StaticBody2D")
+node_b = NodePath("../RigidBody2D")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="RigidBody2D" type="RigidBody2D" parent="."]
+rotation = 0.785398
+collision_mask = 0
+angular_damp = 3.0
+
+[node name="Sprite2D" type="Sprite2D" parent="RigidBody2D"]
+texture_filter = 1
+position = Vector2(-1, 18)
+scale = Vector2(2, 2)
 texture = ExtResource("2_mw6ts")
+hframes = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D"]
+position = Vector2(-1, 16)
+shape = SubResource("RectangleShape2D_qs243")

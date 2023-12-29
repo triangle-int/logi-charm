@@ -1,12 +1,100 @@
-[gd_scene load_steps=3 format=3 uid="uid://p6kikp3bppfh"]
+[gd_scene load_steps=6 format=3 uid="uid://p6kikp3bppfh"]
 
 [ext_resource type="Script" path="res://scripts/components/or_component.gd" id="1_yfvdv"]
 [ext_resource type="Texture2D" uid="uid://b5o1desqe0lp2" path="res://sprites/gates/or_gate.png" id="2_3smfy"]
+[ext_resource type="Script" path="res://scripts/memory_view.gd" id="3_cixry"]
+[ext_resource type="Texture2D" uid="uid://bicsi3j6h1x45" path="res://sprites/one_pixel.png" id="4_gloru"]
 
-[node name="OrComponent" type="Node2D"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_a84af"]
+size = Vector2(54, 50)
+
+[node name="OrComponent" type="Node2D" node_paths=PackedStringArray("memory_view")]
 script = ExtResource("1_yfvdv")
 width = 1
+memory_view = NodePath("RigidBody2D/Sprite2D/MemoryView")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-scale = Vector2(0.4, 0.4)
+[node name="PinJoint2D" type="PinJoint2D" parent="."]
+node_a = NodePath("../StaticBody2D")
+node_b = NodePath("../RigidBody2D")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="RigidBody2D" type="RigidBody2D" parent="."]
+rotation = 0.785398
+collision_mask = 0
+angular_damp = 5.0
+
+[node name="Sprite2D" type="Sprite2D" parent="RigidBody2D"]
+texture_filter = 1
+position = Vector2(-1, 32)
+scale = Vector2(2, 2)
 texture = ExtResource("2_3smfy")
+hframes = 4
+
+[node name="MemoryView" type="Node2D" parent="RigidBody2D/Sprite2D" node_paths=PackedStringArray("led_groups")]
+script = ExtResource("3_cixry")
+high_color = Color(1, 0, 1, 1)
+low_color = Color(0, 1, 1, 1)
+led_groups = [NodePath("MemoryViewUp"), NodePath("MemoryViewLeft"), NodePath("MemoryViewDown"), NodePath("MemoryViewRight")]
+
+[node name="MemoryViewUp" type="Node2D" parent="RigidBody2D/Sprite2D/MemoryView"]
+visible = false
+position = Vector2(9.53674e-07, 9)
+
+[node name="InnerSprite" type="Sprite2D" parent="RigidBody2D/Sprite2D/MemoryView/MemoryViewUp"]
+position = Vector2(-5, 0)
+scale = Vector2(2, 2)
+texture = ExtResource("4_gloru")
+
+[node name="OuterSprite" type="Sprite2D" parent="RigidBody2D/Sprite2D/MemoryView/MemoryViewUp"]
+position = Vector2(5, 0)
+scale = Vector2(2, 2)
+texture = ExtResource("4_gloru")
+
+[node name="MemoryViewLeft" type="Node2D" parent="RigidBody2D/Sprite2D/MemoryView"]
+visible = false
+position = Vector2(7, 1)
+rotation = 1.5708
+
+[node name="InnerSprite" type="Sprite2D" parent="RigidBody2D/Sprite2D/MemoryView/MemoryViewLeft"]
+position = Vector2(4, 0.999985)
+scale = Vector2(2, 2)
+texture = ExtResource("4_gloru")
+
+[node name="OuterSprite" type="Sprite2D" parent="RigidBody2D/Sprite2D/MemoryView/MemoryViewLeft"]
+position = Vector2(-6, 1.00002)
+scale = Vector2(2, 2)
+texture = ExtResource("4_gloru")
+
+[node name="MemoryViewDown" type="Node2D" parent="RigidBody2D/Sprite2D/MemoryView"]
+visible = false
+position = Vector2(4.76837e-07, -8)
+
+[node name="InnerSprite" type="Sprite2D" parent="RigidBody2D/Sprite2D/MemoryView/MemoryViewDown"]
+position = Vector2(5, 2)
+scale = Vector2(2, 2)
+texture = ExtResource("4_gloru")
+
+[node name="OuterSprite" type="Sprite2D" parent="RigidBody2D/Sprite2D/MemoryView/MemoryViewDown"]
+position = Vector2(-5, 2)
+scale = Vector2(2, 2)
+texture = ExtResource("4_gloru")
+
+[node name="MemoryViewRight" type="Node2D" parent="RigidBody2D/Sprite2D/MemoryView"]
+visible = false
+position = Vector2(-7, 1)
+rotation = 1.5708
+
+[node name="InnerSprite" type="Sprite2D" parent="RigidBody2D/Sprite2D/MemoryView/MemoryViewRight"]
+position = Vector2(-6, -0.999978)
+scale = Vector2(2, 2)
+texture = ExtResource("4_gloru")
+
+[node name="OuterSprite" type="Sprite2D" parent="RigidBody2D/Sprite2D/MemoryView/MemoryViewRight"]
+position = Vector2(4, -1.00001)
+scale = Vector2(2, 2)
+texture = ExtResource("4_gloru")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D"]
+position = Vector2(0, 35)
+shape = SubResource("RectangleShape2D_a84af")

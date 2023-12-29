@@ -1,11 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://bgiov8vdeao7u"]
+[gd_scene load_steps=6 format=3 uid="uid://bgiov8vdeao7u"]
 
-[ext_resource type="Texture2D" uid="uid://skuhewxd3ubq" path="res://sprites/rings/ring_1.png" id="1_i4p3y"]
 [ext_resource type="PackedScene" uid="uid://b60ca387m477t" path="res://scenes/pointer.tscn" id="1_vpf3b"]
 [ext_resource type="Script" path="res://scripts/game_loader.gd" id="1_wymu5"]
-[ext_resource type="Texture2D" uid="uid://c0248cft72o8a" path="res://sprites/rings/ring_2.png" id="2_68dsl"]
-[ext_resource type="Texture2D" uid="uid://dvr68x74iehxd" path="res://sprites/rings/ring_3.png" id="3_b6fgw"]
+[ext_resource type="PackedScene" uid="uid://27ly8i0tovum" path="res://scenes/chain.tscn" id="6_mbphy"]
 [ext_resource type="Texture2D" uid="uid://bicsi3j6h1x45" path="res://sprites/one_pixel.png" id="6_yk2oo"]
+[ext_resource type="PackedScene" uid="uid://c25ufp6ujfbvv" path="res://scenes/chain_node.tscn" id="7_pxj6s"]
 
 [node name="Game" type="Node2D"]
 script = ExtResource("1_wymu5")
@@ -16,25 +15,29 @@ script = ExtResource("1_wymu5")
 
 [node name="Rings" type="Node" parent="Center"]
 
-[node name="Ring1" type="Sprite2D" parent="Center/Rings"]
+[node name="Chain1" parent="Center/Rings" instance=ExtResource("6_mbphy")]
 z_index = -1
-scale = Vector2(0.5, 0.5)
-texture = ExtResource("3_b6fgw")
+position = Vector2(-1, 0)
+chain_node = ExtResource("7_pxj6s")
+node_length = 12.0
+radius = 170.0
 
-[node name="Ring2" type="Sprite2D" parent="Center/Rings"]
+[node name="Chain2" parent="Center/Rings" instance=ExtResource("6_mbphy")]
 z_index = -1
-scale = Vector2(0.5, 0.5)
-texture = ExtResource("2_68dsl")
+chain_node = ExtResource("7_pxj6s")
+node_length = 12.0
+radius = 210.0
 
-[node name="Ring3" type="Sprite2D" parent="Center/Rings"]
+[node name="Chain3" parent="Center/Rings" instance=ExtResource("6_mbphy")]
 z_index = -1
-scale = Vector2(0.5, 0.5)
-texture = ExtResource("1_i4p3y")
+chain_node = ExtResource("7_pxj6s")
+node_length = 12.0
+radius = 250.0
 
 [node name="Pointer" parent="Center" instance=ExtResource("1_vpf3b")]
 
 [node name="Background" type="Sprite2D" parent="."]
-self_modulate = Color(0.960784, 0.623529, 0.717647, 1)
+self_modulate = Color(0.427451, 0.388235, 0.745098, 1)
 z_index = -10
 scale = Vector2(2000, 2000)
 texture = ExtResource("6_yk2oo")
