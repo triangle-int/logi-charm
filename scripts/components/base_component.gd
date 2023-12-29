@@ -9,8 +9,11 @@ extends Node
 var memory: Dictionary = {}
 
 func _ready():
-	for ring in range(width):
-		memory[ring] = false
+	ComponentsSignals.simulation_started.connect(
+		func():
+			for ring in range(width):
+				memory[ring] = false
+	)
 
 func receive_signal(index: int, high: bool):
 	print("%s received %s from ring %d" %[name, '1' if high else '0', index])
