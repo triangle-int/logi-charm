@@ -18,4 +18,5 @@ func _ready():
 		node.position = Vector2(cos(angle), -sin(angle)) * radius
 		node.rotation = -angle
 		node.frame = index % 2
+		node.z_index = index % 2
 		add_child(node)
