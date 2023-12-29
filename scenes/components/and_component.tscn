@@ -39,6 +39,7 @@ low_color = Color(0, 1, 1, 1)
 led_groups = [NodePath("MemoryViewUp"), NodePath("MemoryViewLeft"), NodePath("MemoryViewDown"), NodePath("MemoryViewRight")]
 
 [node name="MemoryViewUp" type="Node2D" parent="RigidBody2D/Sprite2D/MemoryView"]
+visible = false
 position = Vector2(9.53674e-07, 9)
 
 [node name="InnerSprite" type="Sprite2D" parent="RigidBody2D/Sprite2D/MemoryView/MemoryViewUp"]
@@ -52,6 +53,7 @@ scale = Vector2(2, 2)
 texture = ExtResource("3_rj5ls")
 
 [node name="MemoryViewLeft" type="Node2D" parent="RigidBody2D/Sprite2D/MemoryView"]
+visible = false
 position = Vector2(7, 1)
 rotation = 1.5708
 
@@ -66,19 +68,21 @@ scale = Vector2(2, 2)
 texture = ExtResource("3_rj5ls")
 
 [node name="MemoryViewDown" type="Node2D" parent="RigidBody2D/Sprite2D/MemoryView"]
+visible = false
 position = Vector2(4.76837e-07, -8)
 
-[node name="OuterSprite" type="Sprite2D" parent="RigidBody2D/Sprite2D/MemoryView/MemoryViewDown"]
+[node name="InnerSprite" type="Sprite2D" parent="RigidBody2D/Sprite2D/MemoryView/MemoryViewDown"]
 position = Vector2(-8, 0)
 scale = Vector2(2, 2)
 texture = ExtResource("3_rj5ls")
 
-[node name="InnerSprite" type="Sprite2D" parent="RigidBody2D/Sprite2D/MemoryView/MemoryViewDown"]
+[node name="OuterSprite" type="Sprite2D" parent="RigidBody2D/Sprite2D/MemoryView/MemoryViewDown"]
 position = Vector2(8, 0)
 scale = Vector2(2, 2)
 texture = ExtResource("3_rj5ls")
 
 [node name="MemoryViewRight" type="Node2D" parent="RigidBody2D/Sprite2D/MemoryView"]
+visible = false
 position = Vector2(-7, 1)
 rotation = 1.5708
 

@@ -9,17 +9,15 @@ extends Node
 var view_index: int
 
 func set_angle(angle: float):
-	view_index = floor(((angle + PI / 4) / TAU) * 4)
+	view_index = floori(((angle + PI / 4) / TAU) * 4) % 4
 	
 	for group in led_groups:
-		for led in group.get_children():
-			led.visible = false
+		group.visible = false
 	
 	if view_index > len(led_groups):
 		return
 	
-	for led in led_groups[view_index].get_children():
-		led.visible = true
+	led_groups[view_index].visible = true
 
 func on_memory_set(index: int, high: bool):
 	if view_index > len(led_groups):

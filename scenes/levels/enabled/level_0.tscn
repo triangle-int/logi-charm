@@ -1,31 +1,57 @@
-[gd_scene load_steps=4 format=3 uid="uid://ci2gb164bp2m7"]
+[gd_scene load_steps=8 format=3 uid="uid://ci2gb164bp2m7"]
 
 [ext_resource type="Script" path="res://scripts/level.gd" id="1_d8uip"]
-[ext_resource type="Resource" uid="uid://sg3uasvec28l" path="res://resources/rings/ring_2.tres" id="2_gf2mh"]
+[ext_resource type="Resource" uid="uid://cp8n0oock38lp" path="res://resources/rings/ring_3.tres" id="2_0jjf1"]
+[ext_resource type="PackedScene" uid="uid://pumfprhltbaf" path="res://scenes/components/init_component.tscn" id="3_llrta"]
 [ext_resource type="PackedScene" uid="uid://blp38uqok1hw2" path="res://scenes/components/and_component.tscn" id="3_owioq"]
+[ext_resource type="PackedScene" uid="uid://p6kikp3bppfh" path="res://scenes/components/or_component.tscn" id="4_chcwb"]
+[ext_resource type="PackedScene" uid="uid://xjea3vckpfat" path="res://scenes/components/not_component.tscn" id="5_0rc8m"]
+[ext_resource type="PackedScene" uid="uid://e33vqmafam83" path="res://scenes/components/swap_component.tscn" id="6_1sx3g"]
 
 [node name="Level" type="Node"]
 script = ExtResource("1_d8uip")
-rings_config = ExtResource("2_gf2mh")
+rings_config = ExtResource("2_0jjf1")
 
-[node name="AndComponent1" parent="." instance=ExtResource("3_owioq")]
-position = Vector2(189.75, 0)
+[node name="InitComponent" parent="." instance=ExtResource("3_llrta")]
+position = Vector2(114.209, -175.93)
+rotation = 0.995
+angle = 0.995
+attached_to = 1
+
+[node name="NotComponent" parent="." instance=ExtResource("5_0rc8m")]
+position = Vector2(-147.394, -149.232)
+rotation = 2.35
+angle = 2.35
+attached_to = 1
+
+[node name="SwapComponent2" parent="." instance=ExtResource("6_1sx3g")]
+position = Vector2(-223.835, 51.7977)
+rotation = 3.369
+angle = 3.369
+attached_to = 1
 width = 2
 
-[node name="AndComponent2" parent="." instance=ExtResource("3_owioq")]
-position = Vector2(-0.038647, -189.75)
-rotation = 1.571
-angle = 1.571
+[node name="OrComponent" parent="." instance=ExtResource("4_chcwb")]
+position = Vector2(-117.294, 149.155)
+rotation = 4.046
+angle = 4.046
 width = 2
 
-[node name="AndComponent3" parent="." instance=ExtResource("3_owioq")]
-position = Vector2(-189.75, 0.077294)
-rotation = 3.142
-angle = 3.142
+[node name="SwapComponent" parent="." instance=ExtResource("6_1sx3g")]
+position = Vector2(112.496, 152.806)
+rotation = 5.347
+angle = 5.347
+width = 2
+
+[node name="NotComponent2" parent="." instance=ExtResource("5_0rc8m")]
+position = Vector2(188.944, 17.4674)
+rotation = 6.191
+angle = 6.191
 width = 2
 
 [node name="AndComponent" parent="." instance=ExtResource("3_owioq")]
-position = Vector2(-0.073809, 189.75)
-rotation = 4.712
-angle = 4.712
+position = Vector2(-1.46786, 229.745)
+rotation = 4.706
+angle = 4.706
+attached_to = 1
 width = 2
