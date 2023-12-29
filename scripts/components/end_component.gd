@@ -5,6 +5,7 @@ extends BaseComponent
 signal activated
 
 @export var activation_seq: Array[bool]
+@export var correct_angular_vel: float
 
 var is_activated = false
 var is_detached = false
@@ -13,6 +14,7 @@ var last_index = 0
 @onready var level: Level = $".."
 @onready var sprite_2d = $RigidBody2D/Sprite2D
 @onready var pin_joint_2d = $PinJoint2D
+@onready var rigid_body_2d = $RigidBody2D
 
 func _ready():
 	sprite_2d.frame = 1
@@ -31,6 +33,7 @@ func _on_receive(index: int, high: bool):
 	
 	if activation_seq[last_index] == high:
 		last_index += 1
+		rigid_body_2d.angular_velocity = correct_angular_vel
 	else:
 		last_index = 0
 		_detach()
