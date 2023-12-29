@@ -37,7 +37,7 @@ radius = 250.0
 [node name="Pointer" parent="Center" instance=ExtResource("1_vpf3b")]
 
 [node name="Background" type="Sprite2D" parent="."]
-self_modulate = Color(0.529412, 0.2, 0.298039, 1)
+self_modulate = Color(0.427451, 0.388235, 0.745098, 1)
 z_index = -10
 scale = Vector2(2000, 2000)
 texture = ExtResource("6_yk2oo")

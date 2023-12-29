@@ -16,7 +16,7 @@ func _ready():
 	ComponentsSignals.simulation_started.connect(
 		func():
 			for ring in range(width):
-				memory[ring] = false
+				set_memory(ring, false)
 	)
 
 func receive_signal(index: int, high: bool):
