@@ -5,8 +5,8 @@ signal loading_screen_has_full_coverage
 @export var transition_duration = 0.3;
 
 @onready var animation_player: AnimationPlayer = $CanvasLayer/AnimationPlayer
-@onready var ring: Control = $CanvasLayer/Background/Ring
-@onready var pointer: Control = $CanvasLayer/Background/Ring/Pointer
+@onready var ring: Control = $CanvasLayer/VisibleArea/Ring
+@onready var pointer: Control = $CanvasLayer/VisibleArea/Ring/Pointer
 
 var _tween: Tween;
 var _angle: float;

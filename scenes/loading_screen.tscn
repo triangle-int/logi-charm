@@ -3,6 +3,7 @@
 [ext_resource type="Script" path="res://scripts/ui/loading_screen.gd" id="1_5ku8y"]
 [ext_resource type="Texture2D" uid="uid://dvr68x74iehxd" path="res://sprites/rings/ring_3.png" id="1_re01p"]
 [ext_resource type="Texture2D" uid="uid://dd0yfmfksxq2l" path="res://sprites/gates/end_gate.png" id="2_333nt"]
+[ext_resource type="Texture2D" uid="uid://duo36i2a5efu4" path="res://sprites/loading_background.png" id="2_aiwgs"]
 [ext_resource type="Texture2D" uid="uid://d2lu0e5r105y" path="res://sprites/pointer/high_pointer.png" id="3_dutbt"]
 
 [sub_resource type="Animation" id="Animation_rt8ln"]
@@ -10,7 +11,7 @@ length = 0.001
 tracks/0/type = "bezier"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("CanvasLayer/Background:position:x")
+tracks/0/path = NodePath("VisibleArea:offset_right")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -21,7 +22,7 @@ tracks/0/keys = {
 tracks/1/type = "bezier"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("CanvasLayer/Background:position:y")
+tracks/1/path = NodePath("VisibleArea:offset_left")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -35,23 +36,23 @@ resource_name = "end_load"
 tracks/0/type = "bezier"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("CanvasLayer/Background:position:x")
+tracks/0/path = NodePath("VisibleArea:offset_left")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "handle_modes": PackedInt32Array(0, 0),
-"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 1205, -0.25, 0, 0.25, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 1300, 0, -500, 0.25, 0),
 "times": PackedFloat32Array(0, 0.7)
 }
 tracks/1/type = "bezier"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("CanvasLayer/Background:position:y")
+tracks/1/path = NodePath("VisibleArea:offset_right")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
 "handle_modes": PackedInt32Array(0, 0),
-"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 1300, 0, -500, 0.25, 0),
 "times": PackedFloat32Array(0, 0.7)
 }
 
@@ -60,7 +61,7 @@ resource_name = "start_load"
 tracks/0/type = "method"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath(".")
+tracks/0/path = NodePath("..")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -74,23 +75,23 @@ tracks/0/keys = {
 tracks/1/type = "bezier"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("CanvasLayer/Background:position:x")
+tracks/1/path = NodePath("VisibleArea:offset_left")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
 "handle_modes": PackedInt32Array(0, 0),
-"points": PackedFloat32Array(-1185, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0),
+"points": PackedFloat32Array(-1300, -0.25, 0, 0, 600, 0, -0.25, 0, 0.25, 0),
 "times": PackedFloat32Array(0, 0.7)
 }
 tracks/2/type = "bezier"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("CanvasLayer/Background:position:y")
+tracks/2/path = NodePath("VisibleArea:offset_right")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
 "handle_modes": PackedInt32Array(0, 0),
-"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0),
+"points": PackedFloat32Array(-1300, -0.25, 0, 0, 600, 0, -0.25, 0, 0.25, 0),
 "times": PackedFloat32Array(0, 0.7)
 }
 
@@ -101,9 +102,6 @@ _data = {
 "start_load": SubResource("Animation_sgjnx")
 }
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dyeyb"]
-bg_color = Color(0, 0, 0, 1)
-
 [node name="LoadingScreen" type="Node2D"]
 script = ExtResource("1_5ku8y")
 transition_duration = 2.0
@@ -112,21 +110,35 @@ transition_duration = 2.0
 layer = 10
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="CanvasLayer"]
-root_node = NodePath("../..")
 libraries = {
 "": SubResource("AnimationLibrary_rjpek")
 }
 autoplay = "start_load"
 
-[node name="Background" type="Panel" parent="CanvasLayer"]
+[node name="VisibleArea" type="Control" parent="CanvasLayer"]
+layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_dyeyb")
 
-[node name="Ring" type="TextureRect" parent="CanvasLayer/Background"]
+[node name="Background" type="TextureRect" parent="CanvasLayer/VisibleArea"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -700.0
+offset_top = -324.0
+offset_right = 700.0
+offset_bottom = 324.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_aiwgs")
+
+[node name="Ring" type="TextureRect" parent="CanvasLayer/VisibleArea"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -142,7 +154,7 @@ grow_vertical = 2
 texture = ExtResource("1_re01p")
 expand_mode = 1
 
-[node name="EndComponent" type="TextureRect" parent="CanvasLayer/Background/Ring"]
+[node name="EndComponent" type="TextureRect" parent="CanvasLayer/VisibleArea/Ring"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -158,7 +170,7 @@ grow_vertical = 2
 texture = ExtResource("2_333nt")
 expand_mode = 1
 
-[node name="Pointer" type="TextureRect" parent="CanvasLayer/Background/Ring"]
+[node name="Pointer" type="TextureRect" parent="CanvasLayer/VisibleArea/Ring"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
