@@ -16,6 +16,7 @@ func _on_signal_out(index: int, _high: bool, from_angle: float, to_angle: float)
 	var tween = create_tween()	
 	var time = (to_angle - from_angle) / ComponentsSignals.SIGNAL_SPEED
 	tween.tween_method(_move_pointer, from_angle, to_angle, time)
+	_move_pointer(from_angle)
 
 func _move_pointer(angle: float):
 	pointer.position = Vector2(cos(angle), -sin(angle)) * radius

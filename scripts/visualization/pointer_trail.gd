@@ -11,8 +11,12 @@ var is_high: bool
 
 func _ready():
 	ComponentsSignals.signal_out.connect(_on_signal_out)
+	ComponentsSignals.simulation_started.connect(_on_started)
 
 func _process(_delta):
+	if not ComponentsSignals.is_simulating:
+		return
+	
 	var pos = pointer.position
 	var new_point = QueuePoint.new()
 	new_point.point = pos
@@ -37,6 +41,9 @@ func _process(_delta):
 
 func _on_signal_out(_index: int, high: bool, _from_angle: float, _to_angle: float):
 	is_high = high
+
+func _on_started():
+	queue = []
 
 class QueuePoint:
 	var point: Vector2
