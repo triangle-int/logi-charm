@@ -1,5 +1,5 @@
 @tool
-extends TextureRect
+extends TextureButton
 
 @export_enum("CORNER_TOP_LEFT", "CORNER_TOP_RIGHT", "CORNER_BOTTOM_RIGHT", "CORNER_BOTTOM_LEFT") var corner: int;
 @export var normal_scale = 1.0;
@@ -42,3 +42,7 @@ func _on_mouse_exited():
 	_tween = create_tween().set_parallel(true);
 	_tween.tween_property(self, "scale", Vector2.ONE * normal_scale, trans_duration).set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_QUAD);
 	_tween.tween_property(_underline, "value", 0.0, trans_duration).set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_QUAD);
+
+
+func _on_pressed():
+	LoadManager.load_scene("res://scenes/game.tscn")

@@ -1,21 +1,25 @@
 [gd_scene load_steps=6 format=3 uid="uid://gweyovt8jauq"]
 
-[ext_resource type="Texture2D" path="res://sprites/one_line_branch.png" id="1_a5kif"]
+[ext_resource type="Texture2D" uid="uid://cv2dp00rysieg" path="res://sprites/one_line_branch.png" id="1_xswa0"]
 [ext_resource type="Script" path="res://scripts/ui/branch.gd" id="2_h1r0d"]
 [ext_resource type="FontFile" uid="uid://bo0132s40egtx" path="res://fonts/Oswald-Medium.ttf" id="3_etn3a"]
-[ext_resource type="Texture2D" path="res://sprites/one_pixel.png" id="3_lb0y5"]
+[ext_resource type="Texture2D" uid="uid://bicsi3j6h1x45" path="res://sprites/one_pixel.png" id="3_lb0y5"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_1xjqs"]
 font = ExtResource("3_etn3a")
 font_size = 18
 
-[node name="Branch" type="TextureRect"]
+[node name="Branch" type="TextureButton"]
 offset_right = 256.0
 offset_bottom = 128.0
 pivot_offset = Vector2(256, 128)
-texture = ExtResource("1_a5kif")
+texture_normal = ExtResource("1_xswa0")
+texture_pressed = ExtResource("1_xswa0")
+texture_hover = ExtResource("1_xswa0")
+texture_focused = ExtResource("1_xswa0")
+ignore_texture_size = true
+stretch_mode = 0
 script = ExtResource("2_h1r0d")
-hovered_scale = 1.025
 
 [node name="TopLeft" type="Control" parent="."]
 layout_mode = 1
@@ -62,8 +66,8 @@ grow_vertical = 0
 layout_mode = 1
 offset_left = 19.0
 offset_top = 30.0
-offset_right = 71.0
-offset_bottom = 58.0
+offset_right = 119.0
+offset_bottom = 61.0
 theme_override_constants/separation = 0
 
 [node name="Level" type="Label" parent="LevelBox"]
@@ -82,3 +86,4 @@ texture_progress = ExtResource("3_lb0y5")
 
 [connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]
+[connection signal="pressed" from="." to="." method="_on_pressed"]
