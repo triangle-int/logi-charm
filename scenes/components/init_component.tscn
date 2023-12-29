@@ -1,12 +1,32 @@
-[gd_scene load_steps=3 format=3 uid="uid://pumfprhltbaf"]
+[gd_scene load_steps=4 format=3 uid="uid://pumfprhltbaf"]
 
 [ext_resource type="Script" path="res://scripts/components/init_component.gd" id="1_pji62"]
 [ext_resource type="Texture2D" uid="uid://it8m201ieb2f" path="res://sprites/gates/init_gate.png" id="2_8nh45"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hvkp5"]
+size = Vector2(39.9108, 48.3377)
 
 [node name="InitComponent" type="Node2D"]
 script = ExtResource("1_pji62")
 width = 1
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-scale = Vector2(0.4, 0.4)
+[node name="PinJoint2D" type="PinJoint2D" parent="."]
+node_a = NodePath("../StaticBody2D")
+node_b = NodePath("../RigidBody2D")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="RigidBody2D" type="RigidBody2D" parent="."]
+rotation = 0.785398
+collision_mask = 0
+angular_damp = 5.0
+
+[node name="Sprite2D" type="Sprite2D" parent="RigidBody2D"]
+texture_filter = 1
+position = Vector2(-7, 30)
+scale = Vector2(2, 2)
 texture = ExtResource("2_8nh45")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D"]
+position = Vector2(-6.78513, 33.867)
+shape = SubResource("RectangleShape2D_hvkp5")
