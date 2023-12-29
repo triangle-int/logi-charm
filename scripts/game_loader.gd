@@ -31,3 +31,4 @@ func load_level(index: int):
 	$Rings/Ring1.visible = current_level.rings_config.radiuses.size() > 0
 	$Rings/Ring2.visible = current_level.rings_config.radiuses.size() > 1
 	$Rings/Ring3.visible = current_level.rings_config.radiuses.size() > 2
+	$Pointer.rings_config = current_level.rings_config
