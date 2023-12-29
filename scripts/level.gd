@@ -1,3 +1,4 @@
+@tool
 class_name Level
 
 extends Node
@@ -8,6 +9,10 @@ signal game_over
 
 var end_count = 0
 var activated_count = 0
+
+func _process(_delta):
+	if Engine.is_editor_hint():
+		update_components_positions()
 
 func start_level():
 	update_components_positions()
