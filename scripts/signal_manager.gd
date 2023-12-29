@@ -5,7 +5,7 @@ extends Node
 signal signal_out(index: int, high: bool, angle_start: float, angle_end: float)
 signal simulation_started
 
-const SIGNAL_SPEED = PI
+const SIGNAL_SPEED = PI / 2
 
 var components: Array[BaseComponent] = []
 var timers: Array[Timer] = []
