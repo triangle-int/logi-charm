@@ -1,17 +1,11 @@
 [gd_scene load_steps=5 format=3 uid="uid://b413entmk714a"]
 
-[ext_resource type="Texture2D" uid="uid://ooh7hxoo36ep" path="res://sprites/menu_circle.png" id="1_qu8cq"]
-[ext_resource type="Script" path="res://scripts/ui/menu.gd" id="2_h6vpf"]
-[ext_resource type="PackedScene" uid="uid://gweyovt8jauq" path="res://scenes/ui/branch.tscn" id="3_wbo31"]
+[ext_resource type="Texture2D" uid="uid://c4deogpl6niyy" path="res://sprites/hand.png" id="1_n6hk4"]
+[ext_resource type="Texture2D" uid="uid://d4d33uwqfawen" path="res://sprites/ring_behind.png" id="2_vwwjh"]
+[ext_resource type="Texture2D" uid="uid://djab4s64krc6k" path="res://sprites/ring_front.png" id="3_36doi"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vkegc"]
-bg_color = Color(0.0784314, 0.101961, 0.109804, 1)
-border_width_left = 80
-border_width_top = 80
-border_width_right = 80
-border_width_bottom = 80
-border_color = Color(0, 0, 0, 1)
-border_blend = true
+bg_color = Color(0.8, 0.592157, 0.643137, 1)
 
 [node name="LevelSelector" type="Node2D"]
 
@@ -25,85 +19,152 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_vkegc")
 
-[node name="Menu" type="TextureRect" parent="Menu"]
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -128.0
-offset_top = -128.0
-offset_right = 128.0
-offset_bottom = 128.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = ExtResource("1_qu8cq")
-script = ExtResource("2_h6vpf")
-
-[node name="BranchTopLeft" parent="Menu/Menu" instance=ExtResource("3_wbo31")]
+[node name="Hand" type="TextureRect" parent="Menu/Background"]
+z_index = 5
 layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
+anchors_preset = 4
 anchor_top = 0.5
-anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -346.0
-offset_top = -206.0
-offset_right = -90.0
-offset_bottom = -78.0
-grow_horizontal = 2
+offset_top = -256.0
+offset_right = 1024.0
+offset_bottom = 256.0
 grow_vertical = 2
+texture = ExtResource("1_n6hk4")
 
-[node name="BranchTopRight" parent="Menu/Menu" instance=ExtResource("3_wbo31")]
+[node name="HBoxContainer" type="HBoxContainer" parent="Menu/Background/Hand"]
 layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
+anchors_preset = 6
+anchor_left = 1.0
 anchor_top = 0.5
-anchor_right = 0.5
+anchor_right = 1.0
 anchor_bottom = 0.5
-offset_left = 90.0
-offset_top = -206.0
-offset_right = 346.0
-offset_bottom = -78.0
-grow_horizontal = 2
+offset_left = -938.0
+offset_top = -135.0
+offset_right = -282.0
+offset_bottom = 135.0
+grow_horizontal = 0
 grow_vertical = 2
-pivot_offset = Vector2(0, 128)
-flip_h = true
-corner = 1
+theme_override_constants/separation = -120
+alignment = 2
 
-[node name="BranchBottomLeft" parent="Menu/Menu" instance=ExtResource("3_wbo31")]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -346.0
-offset_top = 78.0
-offset_right = -90.0
-offset_bottom = 206.0
-grow_horizontal = 2
-grow_vertical = 2
-pivot_offset = Vector2(256, 0)
-flip_v = true
-corner = 3
+[node name="Ring1" type="TextureRect" parent="Menu/Background/Hand/HBoxContainer"]
+z_index = -1
+custom_minimum_size = Vector2(125.565, 0)
+layout_mode = 2
+texture = ExtResource("2_vwwjh")
+expand_mode = 1
+stretch_mode = 6
 
-[node name="BranchBottomRight" parent="Menu/Menu" instance=ExtResource("3_wbo31")]
+[node name="RingFront" type="TextureRect" parent="Menu/Background/Hand/HBoxContainer/Ring1"]
+z_index = 1
 layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = 90.0
-offset_top = 78.0
-offset_right = 346.0
-offset_bottom = 206.0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-pivot_offset = Vector2(0, 0)
-flip_h = true
-flip_v = true
-corner = 2
+texture = ExtResource("3_36doi")
+expand_mode = 1
+stretch_mode = 6
+
+[node name="Ring2" type="TextureRect" parent="Menu/Background/Hand/HBoxContainer"]
+z_index = -1
+custom_minimum_size = Vector2(125.565, 0)
+layout_mode = 2
+texture = ExtResource("2_vwwjh")
+expand_mode = 1
+stretch_mode = 6
+
+[node name="RingFront" type="TextureRect" parent="Menu/Background/Hand/HBoxContainer/Ring2"]
+z_index = 1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_36doi")
+expand_mode = 1
+stretch_mode = 6
+
+[node name="Ring3" type="TextureRect" parent="Menu/Background/Hand/HBoxContainer"]
+z_index = -1
+custom_minimum_size = Vector2(125.565, 0)
+layout_mode = 2
+texture = ExtResource("2_vwwjh")
+expand_mode = 1
+stretch_mode = 6
+
+[node name="RingFront" type="TextureRect" parent="Menu/Background/Hand/HBoxContainer/Ring3"]
+z_index = 1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_36doi")
+expand_mode = 1
+stretch_mode = 6
+
+[node name="Ring4" type="TextureRect" parent="Menu/Background/Hand/HBoxContainer"]
+z_index = -1
+custom_minimum_size = Vector2(125.565, 0)
+layout_mode = 2
+texture = ExtResource("2_vwwjh")
+expand_mode = 1
+stretch_mode = 6
+
+[node name="RingFront" type="TextureRect" parent="Menu/Background/Hand/HBoxContainer/Ring4"]
+z_index = 1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_36doi")
+expand_mode = 1
+stretch_mode = 6
+
+[node name="Ring5" type="TextureRect" parent="Menu/Background/Hand/HBoxContainer"]
+z_index = -1
+custom_minimum_size = Vector2(125.565, 0)
+layout_mode = 2
+texture = ExtResource("2_vwwjh")
+expand_mode = 1
+stretch_mode = 6
+
+[node name="RingFront" type="TextureRect" parent="Menu/Background/Hand/HBoxContainer/Ring5"]
+z_index = 1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_36doi")
+expand_mode = 1
+stretch_mode = 6
+
+[node name="Ring6" type="TextureRect" parent="Menu/Background/Hand/HBoxContainer"]
+z_index = -1
+custom_minimum_size = Vector2(125.565, 0)
+layout_mode = 2
+texture = ExtResource("2_vwwjh")
+expand_mode = 1
+stretch_mode = 6
+
+[node name="RingFront" type="TextureRect" parent="Menu/Background/Hand/HBoxContainer/Ring6"]
+z_index = 1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_36doi")
+expand_mode = 1
+stretch_mode = 6
 
 [node name="Camera2D" type="Camera2D" parent="."]
