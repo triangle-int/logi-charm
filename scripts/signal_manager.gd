@@ -5,7 +5,7 @@ extends Node
 signal signal_out(index: int, high: bool, angle_start: float, angle_end: float)
 signal simulation_started
 
-const SIGNAL_SPEED = PI / 2
+const SIGNAL_SPEED = PI
 
 var components: Array[BaseComponent] = []
 var timers: Array[Timer] = []
@@ -44,7 +44,7 @@ func send_signal(index: int, high: bool, from: BaseComponent):
 				next = comp
 	
 	var start_angle = from.angle
-	var end_angle = next.angle + (TAU if next.angle < from.angle else 0)
+	var end_angle = next.angle + (TAU if next.angle < from.angle else 0.0)
 	signal_out.emit(index, high, start_angle, end_angle)
 	
 	var timer = Timer.new()
