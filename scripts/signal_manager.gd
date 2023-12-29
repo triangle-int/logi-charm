@@ -5,7 +5,7 @@ extends Node
 signal signal_out(index: int, high: bool, angle_start: float, angle_end: float)
 signal simulation_started
 
-const SLEEP_DURATION = 0.75
+const SIGNAL_SPEED = PI / 2
 
 var components: Array[BaseComponent] = []
 var timers: Array[Timer] = []
@@ -43,10 +43,12 @@ func send_signal(index: int, high: bool, from: BaseComponent):
 			if next == null or comp.angle < next.angle:
 				next = comp
 	
-	signal_out.emit(index, high, from.angle, next.angle)
+	var start_angle = from.angle
+	var end_angle = next.angle + (TAU if next.angle < from.angle else 0)
+	signal_out.emit(index, high, start_angle, end_angle)
 	
 	var timer = Timer.new()
-	timer.wait_time = SLEEP_DURATION
+	timer.wait_time = (end_angle - start_angle) / SIGNAL_SPEED
 	timer.one_shot = true
 	timer.timeout.connect(
 		func ():

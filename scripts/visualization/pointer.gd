@@ -18,7 +18,8 @@ func _on_signal_out(index: int, high: bool, from_angle: float, to_angle: float):
 	radius = rings_config.radiuses[index]
 
 	var tween = create_tween()	
-	tween.tween_method(_move_pointer, from_angle, to_angle, ComponentsSignals.SLEEP_DURATION)
+	var time = (to_angle - from_angle) / ComponentsSignals.SIGNAL_SPEED
+	tween.tween_method(_move_pointer, from_angle, to_angle, time)
 
 func _move_pointer(angle: float):
 	position = Vector2(cos(angle), -sin(angle)) * radius
