@@ -1,27 +1,31 @@
 [gd_scene load_steps=4 format=3 uid="uid://ci2gb164bp2m7"]
 
 [ext_resource type="Script" path="res://scripts/level.gd" id="1_d8uip"]
-[ext_resource type="Resource" uid="uid://doecm0xpoypst" path="res://resources/rings/ring_1.tres" id="2_j10b8"]
+[ext_resource type="Resource" uid="uid://sg3uasvec28l" path="res://resources/rings/ring_2.tres" id="2_gf2mh"]
 [ext_resource type="PackedScene" uid="uid://blp38uqok1hw2" path="res://scenes/components/and_component.tscn" id="3_owioq"]
 
 [node name="Level" type="Node"]
 script = ExtResource("1_d8uip")
-rings_config = ExtResource("2_j10b8")
+rings_config = ExtResource("2_gf2mh")
 
 [node name="AndComponent1" parent="." instance=ExtResource("3_owioq")]
-position = Vector2(169.75, 0)
+position = Vector2(189.75, 0)
+width = 2
 
 [node name="AndComponent2" parent="." instance=ExtResource("3_owioq")]
-position = Vector2(-0.0345735, -169.75)
+position = Vector2(-0.038647, -189.75)
 rotation = 1.571
 angle = 1.571
+width = 2
 
 [node name="AndComponent3" parent="." instance=ExtResource("3_owioq")]
-position = Vector2(-169.75, 0.0691471)
+position = Vector2(-189.75, 0.077294)
 rotation = 3.142
 angle = 3.142
+width = 2
 
 [node name="AndComponent" parent="." instance=ExtResource("3_owioq")]
-position = Vector2(-0.0660294, 169.75)
+position = Vector2(-0.073809, 189.75)
 rotation = 4.712
 angle = 4.712
+width = 2

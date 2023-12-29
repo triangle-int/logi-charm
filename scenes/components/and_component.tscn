@@ -1,14 +1,17 @@
-[gd_scene load_steps=4 format=3 uid="uid://blp38uqok1hw2"]
+[gd_scene load_steps=6 format=3 uid="uid://blp38uqok1hw2"]
 
 [ext_resource type="Script" path="res://scripts/components/and_component.gd" id="1_bxudu"]
 [ext_resource type="Texture2D" uid="uid://e4udc2n6ulhw" path="res://sprites/gates/and_gate.png" id="2_1v5j2"]
+[ext_resource type="Script" path="res://scripts/memory_view.gd" id="3_bljb8"]
+[ext_resource type="Texture2D" uid="uid://bicsi3j6h1x45" path="res://sprites/one_pixel.png" id="3_rj5ls"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_55004"]
 size = Vector2(54, 50)
 
-[node name="AndComponent" type="Node2D"]
+[node name="AndComponent" type="Node2D" node_paths=PackedStringArray("memory_view")]
 script = ExtResource("1_bxudu")
 width = 1
+memory_view = NodePath("RigidBody2D/Sprite2D/MemoryView")
 
 [node name="PinJoint2D" type="PinJoint2D" parent="."]
 node_a = NodePath("../StaticBody2D")
@@ -27,6 +30,67 @@ position = Vector2(-1, 32)
 scale = Vector2(2, 2)
 texture = ExtResource("2_1v5j2")
 hframes = 4
+frame = 1
+
+[node name="MemoryView" type="Node2D" parent="RigidBody2D/Sprite2D" node_paths=PackedStringArray("led_groups")]
+script = ExtResource("3_bljb8")
+high_color = Color(1, 0, 1, 1)
+low_color = Color(0, 1, 1, 1)
+led_groups = [NodePath("MemoryViewUp"), NodePath("MemoryViewLeft"), NodePath("MemoryViewDown"), NodePath("MemoryViewRight")]
+
+[node name="MemoryViewUp" type="Node2D" parent="RigidBody2D/Sprite2D/MemoryView"]
+position = Vector2(9.53674e-07, 9)
+
+[node name="InnerSprite" type="Sprite2D" parent="RigidBody2D/Sprite2D/MemoryView/MemoryViewUp"]
+position = Vector2(-8, 0)
+scale = Vector2(2, 2)
+texture = ExtResource("3_rj5ls")
+
+[node name="OuterSprite" type="Sprite2D" parent="RigidBody2D/Sprite2D/MemoryView/MemoryViewUp"]
+position = Vector2(8, 0)
+scale = Vector2(2, 2)
+texture = ExtResource("3_rj5ls")
+
+[node name="MemoryViewLeft" type="Node2D" parent="RigidBody2D/Sprite2D/MemoryView"]
+position = Vector2(7, 1)
+rotation = 1.5708
+
+[node name="InnerSprite" type="Sprite2D" parent="RigidBody2D/Sprite2D/MemoryView/MemoryViewLeft"]
+position = Vector2(8, 0)
+scale = Vector2(2, 2)
+texture = ExtResource("3_rj5ls")
+
+[node name="OuterSprite" type="Sprite2D" parent="RigidBody2D/Sprite2D/MemoryView/MemoryViewLeft"]
+position = Vector2(-8, 0)
+scale = Vector2(2, 2)
+texture = ExtResource("3_rj5ls")
+
+[node name="MemoryViewDown" type="Node2D" parent="RigidBody2D/Sprite2D/MemoryView"]
+position = Vector2(4.76837e-07, -8)
+
+[node name="OuterSprite" type="Sprite2D" parent="RigidBody2D/Sprite2D/MemoryView/MemoryViewDown"]
+position = Vector2(-8, 0)
+scale = Vector2(2, 2)
+texture = ExtResource("3_rj5ls")
+
+[node name="InnerSprite" type="Sprite2D" parent="RigidBody2D/Sprite2D/MemoryView/MemoryViewDown"]
+position = Vector2(8, 0)
+scale = Vector2(2, 2)
+texture = ExtResource("3_rj5ls")
+
+[node name="MemoryViewRight" type="Node2D" parent="RigidBody2D/Sprite2D/MemoryView"]
+position = Vector2(-7, 1)
+rotation = 1.5708
+
+[node name="InnerSprite" type="Sprite2D" parent="RigidBody2D/Sprite2D/MemoryView/MemoryViewRight"]
+position = Vector2(-8, 0)
+scale = Vector2(2, 2)
+texture = ExtResource("3_rj5ls")
+
+[node name="OuterSprite" type="Sprite2D" parent="RigidBody2D/Sprite2D/MemoryView/MemoryViewRight"]
+position = Vector2(8, 0)
+scale = Vector2(2, 2)
+texture = ExtResource("3_rj5ls")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D"]
 position = Vector2(0, 35)

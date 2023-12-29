@@ -11,10 +11,15 @@ script = ExtResource("1_rpdq7")
 rings_config = ExtResource("2_8xkvi")
 
 [node name="InitComponent" parent="." instance=ExtResource("2_j3qwm")]
+position = Vector2(169.75, 0)
 
 [node name="NotComponent" parent="." instance=ExtResource("4_mtiev")]
+position = Vector2(-0.0345735, -169.75)
+rotation = 1.571
 angle = 1.571
 
 [node name="EndComponent" parent="." instance=ExtResource("6_rsbyf")]
+position = Vector2(-169.75, 0.0691471)
+rotation = 3.142
 activation_seq = Array[bool]([true, false])
 angle = 3.142
