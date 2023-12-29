@@ -18,6 +18,7 @@ config/icon="res://icon.svg"
 [autoload]
 
 ComponentsSignals="*res://scripts/signal_manager.gd"
+LoadManager="*res://scripts/autoloads/load_manager.gd"
 
 [display]
 
