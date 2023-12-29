@@ -1,9 +1,7 @@
 @tool
 
-extends Node2D
+extends BaseChainGenerator
 
-@export var chain_node: PackedScene
-@export var node_length: float
 @export var radius: float
 
 func _ready():
@@ -14,9 +12,7 @@ func _ready():
 
 	for index in range(node_count):
 		var angle = (index as float) / node_count * TAU
-		var node = chain_node.instantiate() as Sprite2D
-		node.position = Vector2(cos(angle), -sin(angle)) * radius
-		node.rotation = -angle
-		node.frame = index % 2
-		node.z_index = index % 2 - 1
-		add_child(node)
+		spawn_chain(
+			Vector2(cos(angle), -sin(angle)) * radius,
+			-angle
+		)
