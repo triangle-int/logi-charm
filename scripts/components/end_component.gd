@@ -16,6 +16,12 @@ var last_index = 0
 
 func _ready():
 	sprite_2d.frame = 1
+	
+	ComponentsSignals.simulation_started.connect(
+		func():
+			is_activated = false
+			last_index = 0
+	)
 
 func _on_receive(index: int, high: bool):
 	super(index, high)
