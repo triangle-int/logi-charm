@@ -1,0 +1,29 @@
+[gd_scene load_steps=6 format=3 uid="uid://c67v7icd6c5bf"]
+
+[ext_resource type="Script" path="res://scripts/level.gd" id="1_4devw"]
+[ext_resource type="PackedScene" uid="uid://pumfprhltbaf" path="res://scenes/components/init_component.tscn" id="2_iqlfy"]
+[ext_resource type="PackedScene" uid="uid://e33vqmafam83" path="res://scenes/components/swap_component.tscn" id="3_8am1i"]
+[ext_resource type="PackedScene" uid="uid://dtmhm8xn55o03" path="res://scenes/components/end_component.tscn" id="4_ar3e4"]
+[ext_resource type="PackedScene" uid="uid://xjea3vckpfat" path="res://scenes/components/not_component.tscn" id="5_7qqsc"]
+
+[node name="Level" type="Node"]
+script = ExtResource("1_4devw")
+
+[node name="InitComponent" parent="." instance=ExtResource("2_iqlfy")]
+
+[node name="SwapComponent" parent="." instance=ExtResource("3_8am1i")]
+angle = 1.571
+width = 2
+
+[node name="EndComponent1" parent="." instance=ExtResource("4_ar3e4")]
+activation_seq = Array[bool]([false, true])
+angle = 3.142
+width = 2
+
+[node name="EndComponent2" parent="." instance=ExtResource("4_ar3e4")]
+activation_seq = Array[bool]([false])
+angle = 4.712
+attached_to = 1
+
+[node name="NotComponent" parent="." instance=ExtResource("5_7qqsc")]
+attached_to = 1

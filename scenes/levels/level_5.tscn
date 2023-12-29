@@ -1,0 +1,30 @@
+[gd_scene load_steps=7 format=3 uid="uid://bh4b8f62lmwkd"]
+
+[ext_resource type="Script" path="res://scripts/level.gd" id="1_nqsay"]
+[ext_resource type="PackedScene" uid="uid://pumfprhltbaf" path="res://scenes/components/init_component.tscn" id="2_q8jex"]
+[ext_resource type="PackedScene" uid="uid://e33vqmafam83" path="res://scenes/components/swap_component.tscn" id="3_bsf21"]
+[ext_resource type="PackedScene" uid="uid://blp38uqok1hw2" path="res://scenes/components/and_component.tscn" id="3_yjn1v"]
+[ext_resource type="PackedScene" uid="uid://dtmhm8xn55o03" path="res://scenes/components/end_component.tscn" id="4_pw25l"]
+[ext_resource type="PackedScene" uid="uid://xjea3vckpfat" path="res://scenes/components/not_component.tscn" id="5_a1tyy"]
+
+[node name="Level" type="Node"]
+script = ExtResource("1_nqsay")
+
+[node name="InitComponent" parent="." instance=ExtResource("2_q8jex")]
+start_high = true
+
+[node name="NotComponent" parent="." instance=ExtResource("5_a1tyy")]
+attached_to = 1
+
+[node name="AndComponent" parent="." instance=ExtResource("3_yjn1v")]
+angle = 1.571
+width = 2
+
+[node name="SwapComponent" parent="." instance=ExtResource("3_bsf21")]
+angle = 3.142
+width = 2
+
+[node name="EndComponent" parent="." instance=ExtResource("4_pw25l")]
+activation_seq = Array[bool]([false, true, true])
+angle = 4.712
+width = 2

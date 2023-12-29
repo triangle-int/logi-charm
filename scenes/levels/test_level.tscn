@@ -7,12 +7,11 @@
 [ext_resource type="PackedScene" uid="uid://dtmhm8xn55o03" path="res://scenes/components/end_component.tscn" id="4_vwkne"]
 [ext_resource type="PackedScene" uid="uid://e33vqmafam83" path="res://scenes/components/swap_component.tscn" id="5_ep30y"]
 
-[node name="TestLevel" type="Node"]
+[node name="Level" type="Node"]
 script = ExtResource("1_44y38")
 
 [node name="InitComponent" parent="." instance=ExtResource("2_0ogxl")]
 position = Vector2(169.75, 0)
-start_high = true
 
 [node name="AndComponent" parent="." instance=ExtResource("3_vo0ha")]
 position = Vector2(91.7163, -142.84)

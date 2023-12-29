@@ -1,21 +1,16 @@
-@tool
 class_name Level
 
 extends Node
 
-signal components_attached
 signal game_over
 
 var end_count = 0
 var activated_count = 0
+var radiuses: Radiuses
 
-@onready var rings = $"../Rings"
-
-func _ready():	
+func start_level(rings_radiuses: Radiuses):
+	radiuses = rings_radiuses
 	update_components_positions()
-	
-	if Engine.is_editor_hint():
-		return
 	
 	for child in get_children():
 		assert(child is BaseComponent)
@@ -25,12 +20,6 @@ func _ready():
 			end_count += 1
 			child.activated.connect(on_end_activated)
 
-	components_attached.emit()
-
-func _process(_delta: float):
-	if Engine.is_editor_hint():
-		update_components_positions()
-
 func on_end_activated():
 	activated_count += 1
 	
@@ -39,10 +28,11 @@ func on_end_activated():
 		game_over.emit()
 
 func update_components_positions():
-	if rings == null:
-		return
-	
 	for child in get_children():
-		var distance = rings.radiuses[child.attached_to]
+		var distances =\
+			range(child.attached_to, child.attached_to + child.width)\
+			.map(func(i): return radiuses.radiuses[i])
+		
+		var distance = distances.reduce(func(a, b): return a + b, 0) / len(distances)
 		var angle = child.angle
 		child.position = Vector2(cos(angle), -sin(angle)) * distance
