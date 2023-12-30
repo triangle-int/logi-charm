@@ -1,15 +1,22 @@
-[gd_scene load_steps=8 format=3 uid="uid://bgiov8vdeao7u"]
+[gd_scene load_steps=14 format=3 uid="uid://bgiov8vdeao7u"]
 
 [ext_resource type="PackedScene" uid="uid://b60ca387m477t" path="res://scenes/pointer.tscn" id="1_vpf3b"]
 [ext_resource type="Script" path="res://scripts/game_loader.gd" id="1_wymu5"]
+[ext_resource type="PackedScene" uid="uid://ci2gb164bp2m7" path="res://scenes/levels/enabled/level_0.tscn" id="2_afher"]
+[ext_resource type="PackedScene" uid="uid://dg4tgewsq1sgl" path="res://scenes/levels/enabled/level_1.tscn" id="3_11sif"]
+[ext_resource type="PackedScene" uid="uid://cunwq4ykl2eh7" path="res://scenes/levels/enabled/level_2.tscn" id="4_2g3dj"]
 [ext_resource type="Texture2D" uid="uid://cls3lb181j2bm" path="res://sprites/background/rings_shadow.png" id="4_im5cd"]
+[ext_resource type="PackedScene" uid="uid://cclit4kwl4q0v" path="res://scenes/levels/enabled/level_3.tscn" id="5_q7rmr"]
 [ext_resource type="Script" path="res://scripts/chain/straight_chain.gd" id="5_rxk4b"]
 [ext_resource type="Texture2D" uid="uid://c8nvqsmkdwk86" path="res://sprites/background/table_background.png" id="5_s121d"]
 [ext_resource type="PackedScene" uid="uid://27ly8i0tovum" path="res://scenes/chain.tscn" id="6_mbphy"]
+[ext_resource type="PackedScene" uid="uid://c67v7icd6c5bf" path="res://scenes/levels/enabled/level_4.tscn" id="6_tcou2"]
+[ext_resource type="PackedScene" uid="uid://bh4b8f62lmwkd" path="res://scenes/levels/enabled/level_5.tscn" id="7_15ye1"]
 [ext_resource type="PackedScene" uid="uid://c25ufp6ujfbvv" path="res://scenes/chain_node.tscn" id="7_pxj6s"]
 
 [node name="Game" type="Node2D"]
 script = ExtResource("1_wymu5")
+levels = Array[PackedScene]([ExtResource("2_afher"), ExtResource("3_11sif"), ExtResource("4_2g3dj"), ExtResource("5_q7rmr"), ExtResource("6_tcou2"), ExtResource("7_15ye1")])
 
 [node name="Center" type="Node2D" parent="."]
 position = Vector2(576, 324)
