@@ -1,6 +1,11 @@
-[gd_scene load_steps=2 format=3 uid="uid://bp2pl7ojv65o8"]
+[gd_scene load_steps=4 format=3 uid="uid://bp2pl7ojv65o8"]
 
 [ext_resource type="Script" path="res://scripts/start_button.gd" id="1_d1l0p"]
+[ext_resource type="FontFile" uid="uid://dbqojy1yc5n6y" path="res://fonts/PixelifySans-Medium.ttf" id="2_40mcb"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_m3aed"]
+font = ExtResource("2_40mcb")
+font_size = 40
 
 [node name="MainMenu" type="Node2D"]
 
@@ -12,13 +17,24 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -256.0
-offset_top = -77.0
-offset_right = 256.0
-offset_bottom = 77.0
+offset_left = -200.0
+offset_top = -50.0
+offset_right = 200.0
+offset_bottom = 50.0
 grow_horizontal = 2
 grow_vertical = 2
-text = "Play"
 script = ExtResource("1_d1l0p")
+
+[node name="Label" type="Label" parent="Menu/Button"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Select Level"
+label_settings = SubResource("LabelSettings_m3aed")
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [connection signal="pressed" from="Menu/Button" to="Menu/Button" method="_on_pressed"]
