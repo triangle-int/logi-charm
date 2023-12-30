@@ -4,11 +4,14 @@ extends Node
 @export var levels: Array[PackedScene]
 
 var current_level: Level = null
-var current_index
 
 @onready var completed = $UI/Completed
 @onready var failed = $UI/Failed
 @onready var tooltip_message = $UI/Tooltip/Message
+
+func _ready():
+	if LevelManager.current_level != -1:
+		load_level(LevelManager.current_level)
 
 func _input(event: InputEvent):
 	if event.is_action_pressed("toggle_simulation"):
@@ -28,7 +31,7 @@ func load_level(index: int):
 		current_level.level_completed.disconnect(_on_level_completed)
 		current_level.level_failed.disconnect(_on_level_failed)
 	
-	current_index = index
+	LevelManager.current_level = index
 	current_level = levels[index].instantiate() as Level
 	current_level.level_completed.connect(_on_level_completed)
 	current_level.level_failed.connect(_on_level_failed)
@@ -43,7 +46,7 @@ func load_level(index: int):
 
 func _on_level_completed():
 	completed.visible = true
-	LevelProgressManager.save_level_beaten(current_index)
+	LevelProgressManager.save_level_beaten(LevelManager.current_level)
 
 func _on_level_failed():
 	failed.visible = true
@@ -54,7 +57,7 @@ func _on_back_to_menu_button_pressed():
 	LoadManager.load_scene("res://scenes/level_selector.tscn")
 
 func _on_next_level_button_pressed():
-	load_level((current_index + 1) % len(levels))
+	load_level((LevelManager.current_level + 1) % len(levels))
 
 func _on_continue_pressed():
 	ComponentsSignals.stop_simulation()

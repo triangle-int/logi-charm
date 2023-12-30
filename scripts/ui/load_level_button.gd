@@ -9,9 +9,5 @@ func _ready():
 	label.text = str(level_index).lpad(2, '0')
 
 func _pressed():
-	LoadManager.load_done.connect(_on_game_loaded)
+	LevelManager.current_level = level_index
 	LoadManager.load_scene("res://scenes/game.tscn")
-
-func _on_game_loaded(node: LevelLoader):
-	LoadManager.load_done.disconnect(_on_game_loaded)
-	node.ready.connect(node.load_level.bind(level_index))

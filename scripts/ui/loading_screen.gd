@@ -23,7 +23,7 @@ func _process(_delta):
 func update_progress_bar(_value: float):
 	pass
 
-func start_outro_animation(_node: Node):
+func start_outro_animation():
 	light_bulb.texture = on_light_bulb
 	animation_player.play("end_load")
 	await animation_player.animation_finished
