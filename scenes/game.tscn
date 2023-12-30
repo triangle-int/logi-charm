@@ -1,20 +1,25 @@
-[gd_scene load_steps=7 format=3 uid="uid://bgiov8vdeao7u"]
+[gd_scene load_steps=8 format=3 uid="uid://bgiov8vdeao7u"]
 
 [ext_resource type="PackedScene" uid="uid://b60ca387m477t" path="res://scenes/pointer.tscn" id="1_vpf3b"]
 [ext_resource type="Script" path="res://scripts/game_loader.gd" id="1_wymu5"]
+[ext_resource type="Texture2D" uid="uid://cls3lb181j2bm" path="res://sprites/background/rings_shadow.png" id="4_im5cd"]
 [ext_resource type="Script" path="res://scripts/chain/straight_chain.gd" id="5_rxk4b"]
+[ext_resource type="Texture2D" uid="uid://c8nvqsmkdwk86" path="res://sprites/background/table_background.png" id="5_s121d"]
 [ext_resource type="PackedScene" uid="uid://27ly8i0tovum" path="res://scenes/chain.tscn" id="6_mbphy"]
-[ext_resource type="Texture2D" uid="uid://bicsi3j6h1x45" path="res://sprites/one_pixel.png" id="6_yk2oo"]
 [ext_resource type="PackedScene" uid="uid://c25ufp6ujfbvv" path="res://scenes/chain_node.tscn" id="7_pxj6s"]
 
 [node name="Game" type="Node2D"]
 script = ExtResource("1_wymu5")
 
-[node name="Camera2D" type="Camera2D" parent="."]
-
 [node name="Center" type="Node2D" parent="."]
+position = Vector2(576, 324)
 
-[node name="Rings" type="Node" parent="Center"]
+[node name="Chains" type="Node2D" parent="Center"]
+script = ExtResource("5_rxk4b")
+chain_node = ExtResource("7_pxj6s")
+node_length = 12.0
+
+[node name="Rings" type="Node2D" parent="Center"]
 
 [node name="Chain1" parent="Center/Rings" instance=ExtResource("6_mbphy")]
 z_index = -2
@@ -35,15 +40,24 @@ radius = 250.0
 chain_node = ExtResource("7_pxj6s")
 node_length = 12.0
 
+[node name="Shadow" type="Sprite2D" parent="Center/Rings"]
+visible = false
+z_index = -5
+scale = Vector2(4.98437, 4.98437)
+texture = ExtResource("4_im5cd")
+
 [node name="Pointer" parent="Center" instance=ExtResource("1_vpf3b")]
 
-[node name="Background" type="Sprite2D" parent="."]
-self_modulate = Color(0.239216, 0.286275, 0.188235, 1)
-z_index = -10
-scale = Vector2(2000, 2000)
-texture = ExtResource("6_yk2oo")
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = -20
 
-[node name="Chains" type="Node2D" parent="."]
-script = ExtResource("5_rxk4b")
-chain_node = ExtResource("7_pxj6s")
-node_length = 12.0
+[node name="Background" type="TextureRect" parent="CanvasLayer"]
+texture_filter = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("5_s121d")
+expand_mode = 1
+stretch_mode = 6

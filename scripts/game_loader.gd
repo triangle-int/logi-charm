@@ -30,7 +30,7 @@ func load_level(index: int):
 	
 	current_index = index
 	current_level = levels[index].instantiate() as Level
-	add_child(current_level)
+	$Center.add_child(current_level)
 	current_level.start_level()
 	
 	$Center/Rings/Chain1.visible = current_level.rings_config.radiuses.size() > 0
