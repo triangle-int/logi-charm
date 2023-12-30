@@ -11,6 +11,7 @@ size = Vector2(12, 16)
 script = ExtResource("1_53oa5")
 component = ExtResource("2_fj7eo")
 lerp_speed = 10.0
+snap_threshold = 75.0
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture_filter = 1

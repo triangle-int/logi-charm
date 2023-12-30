@@ -1,10 +1,10 @@
 [gd_scene load_steps=10 format=3 uid="uid://dtmhm8xn55o03"]
 
 [ext_resource type="Script" path="res://scripts/components/end_component.gd" id="1_b4f36"]
-[ext_resource type="Texture2D" uid="uid://hwinajmva66f" path="res://sprites/pointer/high_signal.tres" id="2_0y5e2"]
 [ext_resource type="Script" path="res://scripts/ui/end_component_goal_bar.gd" id="2_1dem8"]
 [ext_resource type="Texture2D" uid="uid://dd0yfmfksxq2l" path="res://sprites/gates/end_gate.png" id="2_8kqvv"]
-[ext_resource type="Texture2D" uid="uid://dtqy3fr3sah3g" path="res://sprites/pointer/low_signal.tres" id="4_r1k23"]
+[ext_resource type="Texture2D" uid="uid://d4nnxstsihve0" path="res://sprites/pointer/high_signal.png" id="3_j5wak"]
+[ext_resource type="Texture2D" uid="uid://c5cdlkumr23fj" path="res://sprites/pointer/low_signal.png" id="4_i4cbi"]
 [ext_resource type="PackedScene" uid="uid://dd5i2v65rty7y" path="res://scenes/ui/signal.tscn" id="5_juxyi"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_48dvn"]
@@ -54,8 +54,8 @@ layout_mode = 2
 theme_override_constants/separation = 3
 alignment = 1
 script = ExtResource("2_1dem8")
-high_signal = ExtResource("2_0y5e2")
-low_signal = ExtResource("4_r1k23")
+high_signal = ExtResource("3_j5wak")
+low_signal = ExtResource("4_i4cbi")
 signal_scene = ExtResource("5_juxyi")
 metadata/_edit_group_ = true
 

@@ -2,6 +2,7 @@ extends Node2D
 
 @export var component: PackedScene
 @export var lerp_speed: float
+@export var snap_threshold: float
 
 @onready var sprite_2d = $Sprite2D
 @onready var game: LevelLoader = $"/root/Game"
@@ -30,7 +31,7 @@ func _handle_pickup(event):
 	_is_dragged = true
 	_component_instance = component.instantiate() as BaseComponent
 	game.current_level.add_child(_component_instance)
-	var component_position = game.current_level.to_local(event.global_position)
+	var component_position = game.current_level.to_local(get_global_mouse_position())
 	_component_instance.set_anchor_position(component_position)
 	_component_instance.set_body_position(component_position)
 	_target_position = component_position
@@ -54,7 +55,7 @@ func _handle_drag(event):
 	if not _is_dragged:
 		return
 	
-	_target_position = game.current_level.to_local(event.global_position)
+	_target_position = game.current_level.to_local(get_global_mouse_position())
 
 func _move_to_target(delta: float):
 	if not _is_dragged or _component_instance == null:
@@ -65,8 +66,6 @@ func _move_to_target(delta: float):
 	_component_instance.set_anchor_position(lerped_position)
 
 func _snap_to_rings():
-	ComponentsSignals.stop_simulation()
-	
 	var level: Level = game.current_level
 	var component_position = _component_instance.get_anchor_position()
 	var distance = component_position.length()
@@ -77,13 +76,19 @@ func _snap_to_rings():
 			var selected_distance = 1e9
 			for index in range(len(radiuses)):
 				var new_distance = absf(radiuses[index] - distance)
-				if seleted_ring == -1 or new_distance < selected_distance:
+				if new_distance < snap_threshold and \
+					(seleted_ring == -1 or new_distance < selected_distance):
 					seleted_ring = index
 					selected_distance = new_distance
 		2:
 			# TODO: Implement component snapping with width=2
 			pass
 	
+	if seleted_ring == -1:
+		_component_instance.queue_free()
+		return
+	
+	ComponentsSignals.stop_simulation()
 	_component_instance.attached_to = seleted_ring
 	_component_instance.angle = atan2(-component_position.y, component_position.x)
 	ComponentsSignals.attach_component(_component_instance)
