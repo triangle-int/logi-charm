@@ -12,9 +12,11 @@ tooltip = "Energy charm emits a signal that is opposite to the one the lamp need
 
 [node name="InitComponent" parent="." instance=ExtResource("2_j3qwm")]
 position = Vector2(170, 0)
+locked = true
 
 [node name="EndComponent" parent="." instance=ExtResource("6_rsbyf")]
 position = Vector2(-170, 0.0692489)
 rotation = 3.142
 activation_seq = Array[bool]([true, false])
+locked = true
 angle = 3.142

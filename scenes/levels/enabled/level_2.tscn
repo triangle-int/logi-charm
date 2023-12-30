@@ -12,15 +12,18 @@ tooltip = "All lamps should activate in order to complete the level"
 
 [node name="InitComponent" parent="." instance=ExtResource("2_h8s2h")]
 position = Vector2(170, 0)
+locked = true
 
 [node name="EndComponent1" parent="." instance=ExtResource("4_fuhvq")]
 position = Vector2(-0.0346244, -170)
 rotation = 1.571
 activation_seq = Array[bool]([false, true])
+locked = true
 angle = 1.571
 
 [node name="EndComponent2" parent="." instance=ExtResource("4_fuhvq")]
 position = Vector2(-0.0661267, 170)
 rotation = 4.712
 activation_seq = Array[bool]([true, false])
+locked = true
 angle = 4.712

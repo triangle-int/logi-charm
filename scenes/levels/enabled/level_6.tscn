@@ -12,9 +12,11 @@ tooltip = "Somehow the lamp needs two signals that are equal"
 
 [node name="InitComponent" parent="." instance=ExtResource("2_i0v0g")]
 position = Vector2(170, 0)
+locked = true
 
 [node name="EndComponent" parent="." instance=ExtResource("3_msmal")]
 position = Vector2(-169.931, 4.8286)
 rotation = 3.17
 activation_seq = Array[bool]([true, true])
+locked = true
 angle = 3.17

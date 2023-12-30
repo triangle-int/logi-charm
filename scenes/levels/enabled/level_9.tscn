@@ -12,17 +12,20 @@ tooltip = "That's a long loop!"
 
 [node name="InitComponent" parent="." instance=ExtResource("3_bw4gm")]
 position = Vector2(170, 0)
+locked = true
 
 [node name="EndComponent" parent="." instance=ExtResource("4_xgfrd")]
 position = Vector2(-2.41454, -169.983)
 rotation = 1.585
 activation_seq = Array[bool]([false, false])
+locked = true
 angle = 1.585
 
 [node name="EndComponent2" parent="." instance=ExtResource("4_xgfrd")]
 position = Vector2(-148.491, 148.494)
 rotation = 3.927
 activation_seq = Array[bool]([true, true])
+locked = true
 angle = 3.927
 attached_to = 1
 
@@ -30,5 +33,6 @@ attached_to = 1
 position = Vector2(250, 0.0463268)
 rotation = 6.283
 activation_seq = Array[bool]([false, false])
+locked = true
 angle = 6.283
 attached_to = 2
