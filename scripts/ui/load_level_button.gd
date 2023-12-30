@@ -11,3 +11,6 @@ func _ready():
 func _pressed():
 	LevelManager.current_level = level_index
 	LoadManager.load_scene("res://scenes/game.tscn")
+
+func _on_button_down():
+	AudioManager.button_press()

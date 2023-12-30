@@ -61,9 +61,11 @@ func _on_receive(index: int, high: bool):
 	if last_index >= len(activation_seq):
 		is_activated = true
 		activated.emit()
+		AudioManager.lamp_activated()
 		sprite_2d.frame_coords.x = 0
 
 func _detach():
 	is_detached = true
+	AudioManager.lose()
 	sprite_2d.frame_coords.x = 2
 	detached.emit()
