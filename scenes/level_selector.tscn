@@ -1,6 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://b413entmk714a"]
+[gd_scene load_steps=7 format=3 uid="uid://b413entmk714a"]
 
 [ext_resource type="PackedScene" uid="uid://103m37is5r48" path="res://scenes/ui/level_select_button.tscn" id="1_8mxoc"]
+[ext_resource type="Texture2D" uid="uid://c8nvqsmkdwk86" path="res://sprites/background/table_background.png" id="1_g0dee"]
+[ext_resource type="Texture2D" uid="uid://d3xuk5p8mdhpn" path="res://sprites/background/table_toolbox.png" id="2_txug8"]
 [ext_resource type="FontFile" uid="uid://dbqojy1yc5n6y" path="res://fonts/PixelifySans-Medium.ttf" id="2_u0lvk"]
 [ext_resource type="Script" path="res://scripts/ui/back_to_menu.gd" id="3_xtfr3"]
 
@@ -11,6 +13,31 @@ font_size = 40
 [node name="LevelSelector" type="Node2D"]
 
 [node name="Menu" type="CanvasLayer" parent="."]
+
+[node name="Background" type="TextureRect" parent="Menu"]
+modulate = Color(0.286275, 0.286275, 0.286275, 1)
+z_index = -2
+texture_filter = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 0
+texture = ExtResource("1_g0dee")
+metadata/_edit_lock_ = true
+
+[node name="Background_1" type="TextureRect" parent="Menu/Background"]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 0
+texture = ExtResource("2_txug8")
+metadata/_edit_lock_ = true
 
 [node name="GridContainer" type="GridContainer" parent="Menu"]
 anchors_preset = 8
