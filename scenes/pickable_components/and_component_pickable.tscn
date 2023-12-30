@@ -15,9 +15,9 @@ lerp_speed = 10.0
 snap_threshold = 75.0
 
 [node name="ComponentTooltip" parent="." instance=ExtResource("3_dajv6")]
-header = "And"
+header = "And Charm"
 width = 2
-description = "Remembers crap blah blah blah"
+description = "Remembers last signals for each chainlet. Returns red if both were red, blue otherwise."
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture_filter = 1

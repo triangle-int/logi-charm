@@ -17,7 +17,7 @@ snap_threshold = 75.0
 [node name="ComponentTooltip" parent="." instance=ExtResource("3_k6jsq")]
 header = "Inverter"
 width = 1
-description = "Inverts crap blah blah"
+description = "Changes signal type to the opposite"
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture_filter = 1

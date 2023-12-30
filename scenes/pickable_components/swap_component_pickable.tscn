@@ -17,7 +17,7 @@ snap_threshold = 75.0
 [node name="ComponentTooltip" parent="." instance=ExtResource("3_o46o8")]
 header = "Swapper"
 width = 2
-description = "Swaps crap blah blah"
+description = "Reroutes signal to the opposite connected chainlet"
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture_filter = 1
