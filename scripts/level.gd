@@ -44,7 +44,7 @@ func update_components_positions():
 		
 		var distances =\
 			range(child.attached_to, child.attached_to + child.width)\
-			.map(func(i): return rings_config.radiuses[i])
+			.map(func(i): return rings_config.radiuses[i])	
 	
 		if chains != null:
 			chains.generate(
