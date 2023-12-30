@@ -1,14 +1,9 @@
 extends Node
 
+@export var levels: Array[PackedScene]
+
 var current_level: Level = null
 var current_index: int = -1
-
-var levels: Array[PackedScene]
-
-func _ready():
-	var level_names = DirAccess.get_files_at("res://scenes/levels/enabled/")
-	for level_name in level_names:
-		levels.append(load("res://scenes/levels/enabled/" + level_name))
 
 # For debugging
 func _input(event: InputEvent):
