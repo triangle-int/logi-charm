@@ -13,7 +13,7 @@ size = Vector2(54, 50)
 
 [node name="AndComponent" type="Node2D" node_paths=PackedStringArray("memory_view")]
 script = ExtResource("1_bxudu")
-width = 1
+width = 2
 memory_view = NodePath("RigidBody2D/Sprite2D/MemoryView")
 signal_angular_vel = 25.0
 

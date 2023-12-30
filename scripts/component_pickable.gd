@@ -67,22 +67,28 @@ func _move_to_target(delta: float):
 
 func _snap_to_rings():
 	var level: Level = game.current_level
+	var radiuses = level.rings_config.radiuses
+	match _component_instance.width:
+		2:
+			if len(radiuses) < 2:
+				radiuses = []
+			
+			var new_radiuses = []
+			for index in range(1, len(radiuses)):
+				var diff = radiuses[index] - radiuses[index - 1]
+				new_radiuses.append(radiuses[index - 1] + diff / 2)
+			radiuses = new_radiuses
+	
 	var component_position = _component_instance.get_anchor_position()
 	var distance = component_position.length()
 	var seleted_ring = -1
-	match _component_instance.width:
-		1:
-			var radiuses = level.rings_config.radiuses
-			var selected_distance = 1e9
-			for index in range(len(radiuses)):
-				var new_distance = absf(radiuses[index] - distance)
-				if new_distance < snap_threshold and \
-					(seleted_ring == -1 or new_distance < selected_distance):
-					seleted_ring = index
-					selected_distance = new_distance
-		2:
-			# TODO: Implement component snapping with width=2
-			pass
+	var selected_distance = 1e9
+	for index in range(len(radiuses)):
+		var new_distance = absf(radiuses[index] - distance)
+		if new_distance < snap_threshold and \
+			(seleted_ring == -1 or new_distance < selected_distance):
+			seleted_ring = index
+			selected_distance = new_distance
 	
 	if seleted_ring == -1:
 		_component_instance.queue_free()
@@ -91,5 +97,7 @@ func _snap_to_rings():
 	ComponentsSignals.stop_simulation()
 	_component_instance.attached_to = seleted_ring
 	_component_instance.angle = atan2(-component_position.y, component_position.x)
+	if _component_instance.angle < 0:
+		_component_instance.angle += 2 * PI
 	ComponentsSignals.attach_component(_component_instance)
 	level.update_component_position(_component_instance)
