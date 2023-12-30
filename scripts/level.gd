@@ -6,6 +6,7 @@ extends Node
 signal game_over
 
 @export var rings_config: RingsConfig
+@export_multiline var tooltip: String
 
 var end_count = 0
 var activated_count = 0

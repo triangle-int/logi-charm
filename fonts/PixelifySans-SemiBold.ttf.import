@@ -2,13 +2,13 @@
 
 importer="font_data_dynamic"
 type="FontFile"
-uid="uid://cpdnancy873l5"
-path="res://.godot/imported/Oswald-ExtraLight.ttf-4f0e485d503fb45a94627e7e92af2fe8.fontdata"
+uid="uid://cjn4fwbh76llr"
+path="res://.godot/imported/PixelifySans-SemiBold.ttf-3e0fb882e86eb6204f40557f72717ede.fontdata"
 
 [deps]
 
-source_file="res://fonts/Oswald-ExtraLight.ttf"
-dest_files=["res://.godot/imported/Oswald-ExtraLight.ttf-4f0e485d503fb45a94627e7e92af2fe8.fontdata"]
+source_file="res://fonts/PixelifySans-SemiBold.ttf"
+dest_files=["res://.godot/imported/PixelifySans-SemiBold.ttf-3e0fb882e86eb6204f40557f72717ede.fontdata"]
 
 [params]
 

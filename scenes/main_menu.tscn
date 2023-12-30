@@ -1,8 +1,8 @@
-[gd_scene load_steps=2 format=3 uid="uid://b413entmk714a"]
+[gd_scene load_steps=2 format=3 uid="uid://bp2pl7ojv65o8"]
 
-[ext_resource type="Script" path="res://scripts/start_button.gd" id="1_ihs7u"]
+[ext_resource type="Script" path="res://scripts/start_button.gd" id="1_d1l0p"]
 
-[node name="LevelSelector" type="Node2D"]
+[node name="MainMenu" type="Node2D"]
 
 [node name="Menu" type="CanvasLayer" parent="."]
 
@@ -19,6 +19,6 @@ offset_bottom = 77.0
 grow_horizontal = 2
 grow_vertical = 2
 text = "Play"
-script = ExtResource("1_ihs7u")
+script = ExtResource("1_d1l0p")
 
 [connection signal="pressed" from="Menu/Button" to="Menu/Button" method="_on_pressed"]
