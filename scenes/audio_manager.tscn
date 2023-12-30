@@ -1,6 +1,5 @@
-[gd_scene load_steps=11 format=3 uid="uid://4auroetdiedi"]
+[gd_scene load_steps=10 format=3 uid="uid://4auroetdiedi"]
 
-[ext_resource type="AudioStream" uid="uid://b4ur6bhai2le0" path="res://audio/music.ogg" id="1_f71yk"]
 [ext_resource type="Script" path="res://scripts/audio_manager.gd" id="1_ub4cn"]
 [ext_resource type="AudioStream" uid="uid://b6fpwgph0xe5n" path="res://audio/button_click.mp3" id="2_ggjbp"]
 [ext_resource type="AudioStream" uid="uid://uy43lffmyce6" path="res://audio/signal_1.mp3" id="4_lsogs"]
@@ -23,10 +22,6 @@ stream_3/weight = 1.0
 
 [node name="AudioManager" type="Node2D"]
 script = ExtResource("1_ub4cn")
-
-[node name="MusicPlayer" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("1_f71yk")
-autoplay = true
 
 [node name="ButtonPressPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("2_ggjbp")
