@@ -1,6 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://103m37is5r48"]
+[gd_scene load_steps=5 format=3 uid="uid://103m37is5r48"]
 
 [ext_resource type="Script" path="res://scripts/ui/load_level_button.gd" id="1_r566q"]
+[ext_resource type="Theme" uid="uid://cng1746ui1cr5" path="res://resources/theme/main_theme.tres" id="1_wds86"]
 [ext_resource type="FontFile" uid="uid://dbqojy1yc5n6y" path="res://fonts/PixelifySans-Medium.ttf" id="2_m2txe"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_ywhhc"]
@@ -8,7 +9,9 @@ font = ExtResource("2_m2txe")
 font_size = 60
 
 [node name="LevelSelectButton" type="Button"]
+texture_filter = 1
 custom_minimum_size = Vector2(100, 100)
+theme = ExtResource("1_wds86")
 script = ExtResource("1_r566q")
 
 [node name="Label" type="Label" parent="."]

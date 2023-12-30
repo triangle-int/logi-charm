@@ -16,6 +16,7 @@ lerp_speed = 10.0
 snap_threshold = 75.0
 
 [node name="ComponentTooltip" parent="." instance=ExtResource("3_o46o8")]
+visible = false
 header = "Swapper"
 width = 2
 description = "Reroutes signal to the opposite connected chainlet"

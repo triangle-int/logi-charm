@@ -16,8 +16,10 @@ lerp_speed = 10.0
 snap_threshold = 75.0
 
 [node name="ComponentTooltip" parent="." instance=ExtResource("3_f302e")]
-header = "Light Blob"
+visible = false
+header = "Light Bulb"
 width = 1
+description = "Logs received signals. Limit 15"
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture_filter = 1

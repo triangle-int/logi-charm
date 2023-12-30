@@ -1,4 +1,4 @@
-[gd_scene load_steps=48 format=3 uid="uid://bgiov8vdeao7u"]
+[gd_scene load_steps=49 format=3 uid="uid://bgiov8vdeao7u"]
 
 [ext_resource type="PackedScene" uid="uid://b60ca387m477t" path="res://scenes/pointer.tscn" id="1_vpf3b"]
 [ext_resource type="Script" path="res://scripts/game_loader.gd" id="1_wymu5"]
@@ -43,10 +43,10 @@
 [ext_resource type="FontFile" uid="uid://bykwdchltiw6v" path="res://fonts/PixelifySans-Regular.ttf" id="31_rgsqy"]
 [ext_resource type="Texture2D" uid="uid://qgxjs0g1aqt5" path="res://sprites/ui/exit_button_pressed.tres" id="32_ch0x6"]
 [ext_resource type="Texture2D" uid="uid://dbu8yhm3xa8l5" path="res://sprites/ui/exit_button_hover.tres" id="33_kn3vw"]
+[ext_resource type="Theme" uid="uid://cng1746ui1cr5" path="res://resources/theme/main_theme.tres" id="43_v1fon"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_ulxts"]
 font = ExtResource("30_6gxwk")
-font_color = Color(0, 0, 0, 1)
 
 [sub_resource type="LabelSettings" id="LabelSettings_wu5w0"]
 font = ExtResource("31_rgsqy")
@@ -166,6 +166,7 @@ offset = Vector2(576, 324)
 [node name="UI" type="CanvasLayer" parent="."]
 
 [node name="ToggleButton" type="TextureButton" parent="UI"]
+modulate = Color(0.894118, 0.439216, 0.439216, 1)
 texture_filter = 1
 anchors_preset = 7
 anchor_left = 0.5
@@ -178,6 +179,7 @@ offset_right = 25.0
 offset_bottom = -9.0
 grow_horizontal = 2
 grow_vertical = 0
+texture_normal = ExtResource("26_5wa0x")
 stretch_mode = 0
 script = ExtResource("25_qyscn")
 disabled_texture_normal = ExtResource("26_5wa0x")
@@ -188,6 +190,7 @@ enabled_texture_hover = ExtResource("29_3onu8")
 enabled_texture_pressed = ExtResource("30_oj1ie")
 
 [node name="ExitButton" type="TextureButton" parent="UI"]
+modulate = Color(0.894118, 0.439216, 0.439216, 1)
 texture_filter = 1
 anchors_preset = 2
 anchor_top = 1.0
@@ -205,6 +208,7 @@ script = ExtResource("28_edp51")
 
 [node name="Tooltip" type="NinePatchRect" parent="UI"]
 visible = false
+self_modulate = Color(0.894118, 0.439216, 0.439216, 1)
 texture_filter = 1
 anchors_preset = 3
 anchor_left = 1.0
@@ -229,7 +233,7 @@ anchor_right = 1.0
 offset_left = 16.0
 offset_top = 6.0
 offset_right = -16.0
-offset_bottom = 29.0
+offset_bottom = 26.0
 grow_horizontal = 2
 text = "Tooltip"
 label_settings = SubResource("LabelSettings_ulxts")
@@ -252,7 +256,8 @@ text = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse eu 
 label_settings = SubResource("LabelSettings_ulxts")
 autowrap_mode = 2
 
-[node name="Completed" type="ColorRect" parent="UI"]
+[node name="Completed" type="Panel" parent="UI"]
+texture_filter = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -266,7 +271,7 @@ grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
-color = Color(0.12549, 0.12549, 0.12549, 0.831373)
+theme = ExtResource("43_v1fon")
 
 [node name="Label" type="Label" parent="UI/Completed"]
 texture_filter = 1
@@ -341,8 +346,9 @@ label_settings = SubResource("LabelSettings_2e177")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Failed" type="ColorRect" parent="UI"]
+[node name="Failed" type="Panel" parent="UI"]
 visible = false
+texture_filter = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -355,7 +361,7 @@ offset_bottom = 100.0
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_vertical = 4
-color = Color(0.12549, 0.12549, 0.12549, 0.831373)
+theme = ExtResource("43_v1fon")
 
 [node name="Label" type="Label" parent="UI/Failed"]
 texture_filter = 1
@@ -391,7 +397,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-text = "Continue"
+text = "Huh?"
 label_settings = SubResource("LabelSettings_hhg4g")
 horizontal_alignment = 1
 vertical_alignment = 1

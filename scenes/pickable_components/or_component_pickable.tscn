@@ -16,6 +16,7 @@ lerp_speed = 10.0
 snap_threshold = 75.0
 
 [node name="ComponentTooltip" parent="." instance=ExtResource("3_n38se")]
+visible = false
 header = "Or Charm"
 width = 2
 description = "Remembers last signals for each chainlet. Returns red if either one was red, blue otherwise."

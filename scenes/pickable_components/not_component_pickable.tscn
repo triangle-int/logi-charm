@@ -16,6 +16,7 @@ lerp_speed = 10.0
 snap_threshold = 75.0
 
 [node name="ComponentTooltip" parent="." instance=ExtResource("3_k6jsq")]
+visible = false
 header = "Inverter"
 width = 1
 description = "Changes signal type to the opposite"

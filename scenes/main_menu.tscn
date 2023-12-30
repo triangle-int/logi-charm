@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://bp2pl7ojv65o8"]
+[gd_scene load_steps=19 format=3 uid="uid://bp2pl7ojv65o8"]
 
 [ext_resource type="Script" path="res://scripts/start_button.gd" id="1_d1l0p"]
 [ext_resource type="Texture2D" uid="uid://c8nvqsmkdwk86" path="res://sprites/background/table_background.png" id="1_x3bpa"]
@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://3is8nshnmprv" path="res://sprites/ui/title_logo.png" id="5_xdlmx"]
 [ext_resource type="Script" path="res://scripts/ui/load_level_button.gd" id="6_bncuq"]
 [ext_resource type="Texture2D" uid="uid://it8m201ieb2f" path="res://sprites/gates/init_gate.png" id="6_oodhb"]
+[ext_resource type="Theme" uid="uid://cng1746ui1cr5" path="res://resources/theme/main_theme.tres" id="6_tpm72"]
 [ext_resource type="Texture2D" uid="uid://e4udc2n6ulhw" path="res://sprites/gates/and_gate.png" id="7_cnipx"]
 [ext_resource type="Texture2D" uid="uid://b5o1desqe0lp2" path="res://sprites/gates/or_gate.png" id="8_5fm34"]
 [ext_resource type="Texture2D" uid="uid://dd0yfmfksxq2l" path="res://sprites/gates/end_gate.png" id="9_a7n57"]
@@ -131,6 +132,7 @@ offset_right = 200.0
 offset_bottom = 50.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("6_tpm72")
 script = ExtResource("1_d1l0p")
 
 [node name="Label" type="Label" parent="Menu/SelectLevels"]
@@ -157,6 +159,7 @@ offset_right = 200.0
 offset_bottom = 206.001
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("6_tpm72")
 script = ExtResource("6_bncuq")
 
 [node name="Label" type="Label" parent="Menu/Sandbox"]
@@ -173,6 +176,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="RealLabel" type="Label" parent="Menu/Sandbox"]
+texture_filter = 1
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
