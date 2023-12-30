@@ -8,6 +8,7 @@
 [node name="Level" type="Node2D"]
 script = ExtResource("1_d3y8t")
 rings_config = ExtResource("2_i3enj")
+avaliable_component = Array[int]([2, 3])
 tooltip = "The bottom lamp is on the outer chainlet. You need to somehow move the signal from inner to outer chainlet"
 
 [node name="InitComponent" parent="." instance=ExtResource("3_gikh0")]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=48 format=3 uid="uid://bgiov8vdeao7u"]
+[gd_scene load_steps=49 format=3 uid="uid://bgiov8vdeao7u"]
 
 [ext_resource type="PackedScene" uid="uid://b60ca387m477t" path="res://scenes/pointer.tscn" id="1_vpf3b"]
 [ext_resource type="Script" path="res://scripts/game_loader.gd" id="1_wymu5"]
@@ -22,6 +22,7 @@
 [ext_resource type="PackedScene" uid="uid://4w23cd40u6ay" path="res://scenes/levels/enabled/level_10.tscn" id="12_ajn08"]
 [ext_resource type="PackedScene" uid="uid://c5psmlls6bj87" path="res://scenes/pickable_components/swap_component_pickable.tscn" id="12_i804a"]
 [ext_resource type="PackedScene" uid="uid://bdoqbc22revfl" path="res://scenes/pickable_components/not_component_pickable.tscn" id="14_1ffrp"]
+[ext_resource type="PackedScene" uid="uid://bdv21v6ccwp1e" path="res://scenes/levels/enabled/level_12.tscn" id="14_nucsj"]
 [ext_resource type="PackedScene" uid="uid://c174mm6nxtje0" path="res://scenes/pickable_components/and_component_pickable.tscn" id="14_qci3a"]
 [ext_resource type="PackedScene" uid="uid://bwml0adtupjp0" path="res://scenes/pickable_components/or_component_pickable.tscn" id="15_2w61e"]
 [ext_resource type="PackedScene" uid="uid://crq8ap1ntx78x" path="res://scenes/pickable_components/init_component_pickable_low.tscn" id="20_5b5cr"]
@@ -62,7 +63,7 @@ font_size = 24
 
 [node name="Game" type="Node2D"]
 script = ExtResource("1_wymu5")
-levels = Array[PackedScene]([ExtResource("2_kbsyt"), ExtResource("3_11sif"), ExtResource("3_7d0rd"), ExtResource("4_r2aiu"), ExtResource("5_7cl05"), ExtResource("6_t0neb"), ExtResource("7_drx53"), ExtResource("8_bu865"), ExtResource("9_bb8qm"), ExtResource("10_xv4uo"), ExtResource("11_64d3u"), ExtResource("12_ajn08")])
+levels = Array[PackedScene]([ExtResource("2_kbsyt"), ExtResource("3_11sif"), ExtResource("3_7d0rd"), ExtResource("4_r2aiu"), ExtResource("5_7cl05"), ExtResource("6_t0neb"), ExtResource("7_drx53"), ExtResource("8_bu865"), ExtResource("9_bb8qm"), ExtResource("10_xv4uo"), ExtResource("11_64d3u"), ExtResource("12_ajn08"), ExtResource("14_nucsj")])
 
 [node name="Center" type="Node2D" parent="."]
 position = Vector2(576, 324)

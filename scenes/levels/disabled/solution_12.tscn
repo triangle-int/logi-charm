@@ -1,0 +1,33 @@
+[gd_scene load_steps=5 format=3 uid="uid://d1d3njtigm53"]
+
+[ext_resource type="Script" path="res://scripts/level.gd" id="1_mtxpt"]
+[ext_resource type="Resource" uid="uid://cp8n0oock38lp" path="res://resources/rings/ring_3.tres" id="2_gx3m8"]
+[ext_resource type="PackedScene" uid="uid://pumfprhltbaf" path="res://scenes/components/init_component.tscn" id="3_xbh52"]
+[ext_resource type="PackedScene" uid="uid://dtmhm8xn55o03" path="res://scenes/components/end_component.tscn" id="4_i72gb"]
+
+[node name="Level" type="Node2D"]
+script = ExtResource("1_mtxpt")
+rings_config = ExtResource("2_gx3m8")
+
+[node name="InitComponent" parent="." instance=ExtResource("3_xbh52")]
+position = Vector2(170, 0)
+
+[node name="EndComponent" parent="." instance=ExtResource("4_i72gb")]
+position = Vector2(140.594, -95.5679)
+rotation = 0.597
+is_recording = true
+angle = 0.597
+
+[node name="EndComponent2" parent="." instance=ExtResource("4_i72gb")]
+position = Vector2(170.548, -122.53)
+rotation = 0.623
+is_recording = true
+angle = 0.623
+attached_to = 1
+
+[node name="EndComponent3" parent="." instance=ExtResource("4_i72gb")]
+position = Vector2(203.033, -145.869)
+rotation = 0.623
+is_recording = true
+angle = 0.623
+attached_to = 2

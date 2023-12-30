@@ -8,6 +8,7 @@
 [node name="Level" type="Node2D"]
 script = ExtResource("1_rpdq7")
 rings_config = ExtResource("2_8xkvi")
+avaliable_component = Array[int]([3])
 tooltip = "Energy charm emits a signal that is opposite to the one the lamp needs. Place a charm to manipulate the signal"
 
 [node name="InitComponent" parent="." instance=ExtResource("2_j3qwm")]
