@@ -1,7 +1,10 @@
-[gd_scene load_steps=4 format=3 uid="uid://pumfprhltbaf"]
+[gd_scene load_steps=5 format=3 uid="uid://pumfprhltbaf"]
 
 [ext_resource type="Script" path="res://scripts/components/init_component.gd" id="1_pji62"]
 [ext_resource type="Texture2D" uid="uid://it8m201ieb2f" path="res://sprites/gates/init_gate.png" id="2_8nh45"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_mvrcb"]
+radius = 2.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hvkp5"]
 size = Vector2(39.9108, 48.3377)
@@ -12,13 +15,21 @@ width = 1
 signal_angular_vel = 25.0
 
 [node name="PinJoint2D" type="PinJoint2D" parent="."]
-node_a = NodePath("../StaticBody2D")
+node_a = NodePath("../Anchor")
 node_b = NodePath("../RigidBody2D")
 
-[node name="StaticBody2D" type="StaticBody2D" parent="."]
+[node name="AnchorRemote" type="RemoteTransform2D" parent="."]
+remote_path = NodePath("../Anchor")
+use_global_coordinates = false
+update_rotation = false
+update_scale = false
+
+[node name="Anchor" type="AnimatableBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Anchor"]
+shape = SubResource("CircleShape2D_mvrcb")
 
 [node name="RigidBody2D" type="RigidBody2D" parent="."]
-rotation = 0.785398
 collision_mask = 0
 angular_damp = 5.0
 

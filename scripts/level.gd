@@ -17,7 +17,7 @@ func _process(_delta):
 		update_components_positions()
 
 func start_level():
-	update_components_positions()
+	update_components_positions(false)
 	
 	for child in get_children():
 		assert(child is BaseComponent)
@@ -34,24 +34,36 @@ func on_end_activated():
 		print("Game over!")
 		game_over.emit()
 
-func update_components_positions():
+func update_components_positions(smooth: bool = true):
 	if chains != null:
 		chains.clear()
 	
 	for child: Node2D in get_children():
-		var angle = child.angle
-		var unit_positon = Vector2(cos(angle), -sin(angle))
-		
-		var distances =\
-			range(child.attached_to, child.attached_to + child.width)\
-			.map(func(i): return rings_config.radiuses[i])
+		update_component_position(child, smooth)
+
+func update_component_position(component: BaseComponent, smooth: bool = true):
+	var angle = component.angle
+	var unit_positon = Vector2(cos(angle), -sin(angle))
 	
-		if chains != null:
-			chains.generate(
-				unit_positon * distances.front(),
-				unit_positon * distances.back()
-			)
-		
-		var distance = distances.reduce(func(a, b): return a + b, 0) / len(distances)
-		child.position = unit_positon * distance
-		child.rotation = angle
+	var distances =\
+		range(component.attached_to, component.attached_to + component.width)\
+		.map(func(i): return rings_config.radiuses[i])
+
+	if chains != null:
+		chains.generate(
+			unit_positon * distances.front(),
+			unit_positon * distances.back()
+		)
+	
+	var distance = distances.reduce(func(a, b): return a + b, 0) / len(distances)
+	var new_position = unit_positon * distance
+	if Engine.is_editor_hint():
+		component.position = new_position
+		component.rotation = angle
+	else:
+		component.position = Vector2(0.0, 0.0)
+		component.rotation = 0.0
+		component.set_anchor_position(new_position)
+		component.set_body_rotation(angle + PI / 4.0)
+		if not smooth:
+			component.set_body_position(new_position)

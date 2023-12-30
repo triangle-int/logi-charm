@@ -1,9 +1,12 @@
-[gd_scene load_steps=6 format=3 uid="uid://p6kikp3bppfh"]
+[gd_scene load_steps=7 format=3 uid="uid://p6kikp3bppfh"]
 
 [ext_resource type="Script" path="res://scripts/components/or_component.gd" id="1_yfvdv"]
 [ext_resource type="Texture2D" uid="uid://b5o1desqe0lp2" path="res://sprites/gates/or_gate.png" id="2_3smfy"]
 [ext_resource type="Script" path="res://scripts/memory_view.gd" id="3_cixry"]
 [ext_resource type="Texture2D" uid="uid://bicsi3j6h1x45" path="res://sprites/one_pixel.png" id="4_gloru"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_hrv33"]
+radius = 2.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_a84af"]
 size = Vector2(54, 50)
@@ -15,13 +18,21 @@ memory_view = NodePath("RigidBody2D/Sprite2D/MemoryView")
 signal_angular_vel = 25.0
 
 [node name="PinJoint2D" type="PinJoint2D" parent="."]
-node_a = NodePath("../StaticBody2D")
+node_a = NodePath("../Anchor")
 node_b = NodePath("../RigidBody2D")
 
-[node name="StaticBody2D" type="StaticBody2D" parent="."]
+[node name="AnchorRemote" type="RemoteTransform2D" parent="."]
+remote_path = NodePath("../Anchor")
+use_global_coordinates = false
+update_rotation = false
+update_scale = false
+
+[node name="Anchor" type="AnimatableBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Anchor"]
+shape = SubResource("CircleShape2D_hrv33")
 
 [node name="RigidBody2D" type="RigidBody2D" parent="."]
-rotation = 0.785398
 collision_mask = 0
 angular_damp = 5.0
 

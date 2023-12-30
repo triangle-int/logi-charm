@@ -8,7 +8,8 @@ extends Node2D
 @export var memory_view: MemoryView
 @export var signal_angular_vel: float
 
-@onready var rigid_body_2d = $RigidBody2D
+@onready var rigid_body_2d: RigidBody2D = $RigidBody2D
+@onready var anchor_remote: RemoteTransform2D = $AnchorRemote
 
 var memory: Dictionary = {}
 
@@ -43,3 +44,22 @@ func set_memory(index: int, high: bool):
 		return
 	
 	memory_view.on_memory_set(index, high)
+
+func set_anchor_position(new_position: Vector2):
+	anchor_remote.position = new_position
+
+func get_anchor_position() -> Vector2:
+	return anchor_remote.position
+
+func set_body_position(new_position: Vector2):
+	rigid_body_2d.position = new_position
+
+func set_body_rotation(new_angle: float):
+	rigid_body_2d.rotation = new_angle
+
+func _on_input_event(viewport, event, shape_idx):
+	if event is InputEventMouseButton and event.pressed and event.button_index == MOUSE_BUTTON_RIGHT:
+		print("Removing component ", name)
+		ComponentsSignals.stop_simulation()
+		ComponentsSignals.detach_component(self)
+		queue_free()

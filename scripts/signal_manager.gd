@@ -65,3 +65,6 @@ func attach_component(component: BaseComponent):
 
 func detach_all_components():
 	components = []
+
+func detach_component(component: BaseComponent):
+	components.erase(component)
