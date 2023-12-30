@@ -146,13 +146,10 @@ offset_right = 25.0
 offset_bottom = -9.0
 grow_horizontal = 2
 grow_vertical = 0
-toggle_mode = true
-texture_normal = ExtResource("24_p3hli")
-texture_pressed = ExtResource("25_8q741")
-texture_hover = ExtResource("24_p3hli")
-texture_disabled = ExtResource("24_p3hli")
 stretch_mode = 0
 script = ExtResource("25_qyscn")
+disabled_texture = ExtResource("24_p3hli")
+enabled_texture = ExtResource("25_8q741")
 
 [node name="ExitButton" type="TextureButton" parent="UI"]
 texture_filter = 1
