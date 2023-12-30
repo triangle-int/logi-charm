@@ -14,11 +14,16 @@ var radius: float
 
 func _ready():
 	ComponentsSignals.simulation_started.connect(_on_started)
+	ComponentsSignals.simulation_stopped.connect(_on_stopped)
 	ComponentsSignals.signal_out.connect(_on_signal_out)
 
 func _on_started():
 	clear_points()
 	queue = []
+
+func _on_stopped():
+	if tween:
+		tween.kill()
 
 func _on_signal_out(index: int, high: bool, from_angle: float, to_angle: float):
 	to_angle = to_angle if to_angle > from_angle else to_angle + TAU

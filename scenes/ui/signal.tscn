@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://dd5i2v65rty7y"]
+
+[ext_resource type="Texture2D" uid="uid://d4nnxstsihve0" path="res://sprites/pointer/high_signal.png" id="1_mr8eq"]
+
+[node name="Signal" type="TextureRect"]
+texture_filter = 1
+texture = ExtResource("1_mr8eq")
+expand_mode = 3
+stretch_mode = 5

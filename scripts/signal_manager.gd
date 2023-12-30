@@ -4,6 +4,7 @@ extends Node
 
 signal signal_out(index: int, high: bool, angle_start: float, angle_end: float)
 signal simulation_started
+signal simulation_stopped
 
 const SIGNAL_SPEED = PI / 2
 
@@ -21,6 +22,7 @@ func stop_simulation():
 	
 	timers = []
 	is_simulating = false
+	simulation_stopped.emit()
 
 func send_signal(index: int, high: bool, from: BaseComponent):
 	if not is_simulating:
@@ -48,7 +50,10 @@ func send_signal(index: int, high: bool, from: BaseComponent):
 	signal_out.emit(index, high, start_angle, end_angle)
 	
 	var timer = Timer.new()
-	timer.wait_time = (end_angle - start_angle) / SIGNAL_SPEED
+	var move_angle = (end_angle - start_angle)
+	if move_angle <= 0:
+		move_angle += TAU
+	timer.wait_time = move_angle / SIGNAL_SPEED
 	timer.one_shot = true
 	timer.timeout.connect(
 		func ():
@@ -62,6 +67,10 @@ func send_signal(index: int, high: bool, from: BaseComponent):
 
 func attach_component(component: BaseComponent):
 	components.append(component)
+	component._prepare_for_simulation()
 
 func detach_all_components():
 	components = []
+
+func detach_component(component: BaseComponent):
+	components.erase(component)

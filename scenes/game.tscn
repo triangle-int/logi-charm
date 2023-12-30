@@ -2,6 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://b60ca387m477t" path="res://scenes/pointer.tscn" id="1_vpf3b"]
 [ext_resource type="Script" path="res://scripts/game_loader.gd" id="1_wymu5"]
+
 [ext_resource type="PackedScene" uid="uid://cunwq4ykl2eh7" path="res://scenes/levels/enabled/level_2.tscn" id="3_7d0rd"]
 [ext_resource type="PackedScene" uid="uid://dg4tgewsq1sgl" path="res://scenes/levels/enabled/level_1.tscn" id="3_11sif"]
 [ext_resource type="Texture2D" uid="uid://cls3lb181j2bm" path="res://sprites/background/rings_shadow.png" id="4_im5cd"]
@@ -18,6 +19,11 @@
 [ext_resource type="PackedScene" uid="uid://13piujy2gn1x" path="res://scenes/levels/enabled/level_7.tscn" id="10_xv4uo"]
 [ext_resource type="PackedScene" uid="uid://njehh45k6cqp" path="res://scenes/levels/enabled/level_8.tscn" id="11_64d3u"]
 [ext_resource type="PackedScene" uid="uid://4w23cd40u6ay" path="res://scenes/levels/enabled/level_10.tscn" id="12_ajn08"]
+[ext_resource type="Texture2D" uid="uid://d3xuk5p8mdhpn" path="res://sprites/background/table_toolbox.png" id="7_jwhax"]
+[ext_resource type="PackedScene" uid="uid://c5psmlls6bj87" path="res://scenes/pickable_components/swap_component_pickable.tscn" id="12_i804a"]
+[ext_resource type="PackedScene" uid="uid://bdoqbc22revfl" path="res://scenes/pickable_components/not_component_pickable.tscn" id="14_1ffrp"]
+[ext_resource type="PackedScene" uid="uid://c174mm6nxtje0" path="res://scenes/pickable_components/and_component_pickable.tscn" id="14_qci3a"]
+[ext_resource type="PackedScene" uid="uid://bwml0adtupjp0" path="res://scenes/pickable_components/or_component_pickable.tscn" id="15_2w61e"]
 
 [node name="Game" type="Node2D"]
 script = ExtResource("1_wymu5")
@@ -60,6 +66,30 @@ texture = ExtResource("4_im5cd")
 
 [node name="Pointer" parent="Center" instance=ExtResource("1_vpf3b")]
 
+[node name="Toolbox" type="Sprite2D" parent="."]
+z_index = -3
+texture_filter = 1
+scale = Vector2(4, 4)
+texture = ExtResource("7_jwhax")
+centered = false
+metadata/_edit_lock_ = true
+
+[node name="NotComponentPickable" parent="Toolbox" instance=ExtResource("14_1ffrp")]
+position = Vector2(52.25, 88.75)
+rotation = -0.689405
+
+[node name="AndComponentPickable" parent="Toolbox" instance=ExtResource("14_qci3a")]
+position = Vector2(32, 102.5)
+rotation = 0.628319
+
+[node name="OrComponentPickable" parent="Toolbox" instance=ExtResource("15_2w61e")]
+position = Vector2(47.5, 132.25)
+rotation = -0.497419
+
+[node name="SwapComponentPickable" parent="Toolbox" instance=ExtResource("12_i804a")]
+position = Vector2(60.75, 112.5)
+rotation = -0.0541052
+
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 layer = -20
 
@@ -73,3 +103,7 @@ grow_vertical = 2
 texture = ExtResource("5_s121d")
 expand_mode = 1
 stretch_mode = 6
+metadata/_edit_lock_ = true
+
+[node name="Camera2D" type="Camera2D" parent="."]
+offset = Vector2(576, 324)
