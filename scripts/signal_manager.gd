@@ -50,7 +50,10 @@ func send_signal(index: int, high: bool, from: BaseComponent):
 	signal_out.emit(index, high, start_angle, end_angle)
 	
 	var timer = Timer.new()
-	timer.wait_time = (end_angle - start_angle) / SIGNAL_SPEED
+	var move_angle = (end_angle - start_angle)
+	if move_angle <= 0:
+		move_angle += TAU
+	timer.wait_time = move_angle / SIGNAL_SPEED
 	timer.one_shot = true
 	timer.timeout.connect(
 		func ():
