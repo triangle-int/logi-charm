@@ -17,6 +17,8 @@ enum COMPONENT_TYPE {
 
 @onready var sprite_2d = $Sprite2D
 @onready var game: LevelLoader = $"/root/Game"
+@onready var component_tooltip = $ComponentTooltip
+@onready var area_2d = $Area2D
 
 var _is_handling_events: bool
 var _is_dragged: bool
@@ -32,6 +34,13 @@ func _ready():
 			else:
 				_disable()
 	)
+
+	component_tooltip.rotation = -rotation
+	component_tooltip.visible = false
+	
+	area_2d.mouse_entered.connect(_on_area_2d_mouse_entered)
+	area_2d.mouse_exited.connect(_on_area_2d_mouse_exited)
+
 
 func _input(event):
 	if not _is_handling_events:
@@ -146,3 +155,10 @@ func _enable():
 func _disable():
 	visible = false
 	_is_handling_events = false
+
+func _on_area_2d_mouse_entered():
+	component_tooltip.visible = true
+
+func _on_area_2d_mouse_exited():
+	component_tooltip.visible = false
+
