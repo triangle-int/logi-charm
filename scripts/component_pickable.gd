@@ -6,10 +6,19 @@ extends Node2D
 
 @onready var sprite_2d = $Sprite2D
 @onready var game: LevelLoader = $"/root/Game"
+@onready var component_tooltip = $ComponentTooltip
+@onready var area_2d = $Area2D
 
 var _is_dragged: bool
 var _component_instance: BaseComponent
 var _target_position: Vector2
+
+func _ready():
+	component_tooltip.rotation = -rotation
+	component_tooltip.visible = false
+	
+	area_2d.mouse_entered.connect(_on_area_2d_mouse_entered)
+	area_2d.mouse_exited.connect(_on_area_2d_mouse_exited)
 
 func _input(event):
 	_handle_drag(event)
@@ -101,3 +110,9 @@ func _snap_to_rings():
 		_component_instance.angle += 2 * PI
 	ComponentsSignals.attach_component(_component_instance)
 	level.update_component_position(_component_instance)
+
+func _on_area_2d_mouse_entered():
+	component_tooltip.visible = true
+
+func _on_area_2d_mouse_exited():
+	component_tooltip.visible = false
