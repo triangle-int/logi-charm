@@ -1,6 +1,6 @@
 class_name BaseComponent
 
-extends Node
+extends Node2D
 
 @export_range(0, TAU) var angle: float
 @export var attached_to: int

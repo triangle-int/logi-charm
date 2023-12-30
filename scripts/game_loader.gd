@@ -1,3 +1,4 @@
+class_name LevelLoader
 extends Node
 
 @export var levels: Array[PackedScene]
