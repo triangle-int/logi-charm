@@ -13,7 +13,6 @@ var is_detached = false
 var last_index = 0
 var history: Array[bool]
 
-@onready var level: Level = $".."
 @onready var sprite_2d = $RigidBody2D/Sprite2D
 @onready var pin_joint_2d = $PinJoint2D
 @onready var goal_bar: GoalBar = $AnchorRemote/PanelContainer/GoalBar

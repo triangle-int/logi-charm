@@ -10,16 +10,12 @@ var current_index
 @onready var failed = $UI/Failed
 @onready var tooltip_message = $UI/Tooltip/Message
 
-# For debugging
 func _input(event: InputEvent):
-	if event.is_action_pressed("ui_accept"):
+	if event.is_action_pressed("toggle_simulation"):
 		if ComponentsSignals.is_simulating:
 			ComponentsSignals.stop_simulation()
 		else:
 			ComponentsSignals.start_simulation()
-
-	if event.is_action_released("ui_focus_next"):
-		load_level((current_index + 1) % len(levels))
 
 func load_level(index: int):
 	failed.visible = false

@@ -1,17 +1,121 @@
-[gd_scene load_steps=4 format=3 uid="uid://bp2pl7ojv65o8"]
+[gd_scene load_steps=16 format=3 uid="uid://bp2pl7ojv65o8"]
 
 [ext_resource type="Script" path="res://scripts/start_button.gd" id="1_d1l0p"]
+[ext_resource type="Texture2D" uid="uid://c8nvqsmkdwk86" path="res://sprites/background/table_background.png" id="1_x3bpa"]
 [ext_resource type="FontFile" uid="uid://dbqojy1yc5n6y" path="res://fonts/PixelifySans-Medium.ttf" id="2_40mcb"]
+[ext_resource type="Texture2D" uid="uid://d3xuk5p8mdhpn" path="res://sprites/background/table_toolbox.png" id="2_grxqb"]
+[ext_resource type="Texture2D" uid="uid://3is8nshnmprv" path="res://sprites/ui/title_logo.png" id="5_xdlmx"]
+[ext_resource type="Texture2D" uid="uid://it8m201ieb2f" path="res://sprites/gates/init_gate.png" id="6_oodhb"]
+[ext_resource type="Texture2D" uid="uid://e4udc2n6ulhw" path="res://sprites/gates/and_gate.png" id="7_cnipx"]
+[ext_resource type="Texture2D" uid="uid://b5o1desqe0lp2" path="res://sprites/gates/or_gate.png" id="8_5fm34"]
+[ext_resource type="Texture2D" uid="uid://dd0yfmfksxq2l" path="res://sprites/gates/end_gate.png" id="9_a7n57"]
+
+[sub_resource type="Animation" id="Animation_leaq7"]
+resource_name = "loop"
+length = 6.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnchorRemote:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 3),
+"transitions": PackedFloat32Array(0.203063, 0.25),
+"update": 0,
+"values": [Vector2(556, 100), Vector2(596, 100)]
+}
+
+[sub_resource type="Animation" id="Animation_s8jb4"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnchorRemote:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(576, 100)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_05ey7"]
+_data = {
+"RESET": SubResource("Animation_s8jb4"),
+"loop": SubResource("Animation_leaq7")
+}
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wiift"]
+size = Vector2(578, 90)
 
 [sub_resource type="LabelSettings" id="LabelSettings_m3aed"]
 font = ExtResource("2_40mcb")
 font_size = 40
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hl4qm"]
+size = Vector2(39.9108, 48.3377)
+
 [node name="MainMenu" type="Node2D"]
 
-[node name="Menu" type="CanvasLayer" parent="."]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_05ey7")
+}
+autoplay = "loop"
 
-[node name="Button" type="Button" parent="Menu"]
+[node name="AnchorRemote" type="RemoteTransform2D" parent="."]
+position = Vector2(576, 100)
+remote_path = NodePath("../Anchor")
+update_rotation = false
+update_scale = false
+
+[node name="Anchor" type="AnimatableBody2D" parent="."]
+position = Vector2(576, 100)
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Anchor"]
+scale = Vector2(1, 1)
+shape = SubResource("RectangleShape2D_wiift")
+
+[node name="Title" type="Sprite2D" parent="Anchor"]
+z_index = 5
+texture_filter = 1
+position = Vector2(0, 8)
+scale = Vector2(5, 5)
+texture = ExtResource("5_xdlmx")
+
+[node name="Menu" type="CanvasLayer" parent="."]
+layer = -1
+
+[node name="Background" type="TextureRect" parent="Menu"]
+modulate = Color(0.286275, 0.286275, 0.286275, 1)
+z_index = -2
+texture_filter = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 0
+texture = ExtResource("1_x3bpa")
+metadata/_edit_lock_ = true
+
+[node name="Background_1" type="TextureRect" parent="Menu/Background"]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 0
+texture = ExtResource("2_grxqb")
+metadata/_edit_lock_ = true
+
+[node name="SelectLevels" type="Button" parent="Menu"]
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -25,7 +129,7 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_d1l0p")
 
-[node name="Label" type="Label" parent="Menu/Button"]
+[node name="Label" type="Label" parent="Menu/SelectLevels"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -37,4 +141,133 @@ label_settings = SubResource("LabelSettings_m3aed")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[connection signal="pressed" from="Menu/Button" to="Menu/Button" method="_on_pressed"]
+[node name="Sandbox" type="Button" parent="Menu"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -200.0
+offset_top = 76.0
+offset_right = 200.0
+offset_bottom = 176.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="Menu/Sandbox"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Sandbox"
+label_settings = SubResource("LabelSettings_m3aed")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Camera2D" type="Camera2D" parent="."]
+offset = Vector2(576, 324)
+
+[node name="Component" type="Node2D" parent="."]
+position = Vector2(446, 148)
+metadata/_edit_group_ = true
+
+[node name="PinJoint2D" type="PinJoint2D" parent="Component"]
+node_a = NodePath("../../Anchor")
+node_b = NodePath("../RigidBody2D")
+
+[node name="RigidBody2D" type="RigidBody2D" parent="Component"]
+collision_mask = 0
+input_pickable = true
+angular_damp = 5.0
+
+[node name="Sprite2D" type="Sprite2D" parent="Component/RigidBody2D"]
+z_index = 2
+texture_filter = 1
+position = Vector2(-7, 30)
+scale = Vector2(2, 2)
+texture = ExtResource("6_oodhb")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Component/RigidBody2D"]
+position = Vector2(0, 33.867)
+shape = SubResource("RectangleShape2D_hl4qm")
+
+[node name="Component2" type="Node2D" parent="."]
+position = Vector2(566, 141)
+metadata/_edit_group_ = true
+
+[node name="PinJoint2D" type="PinJoint2D" parent="Component2"]
+node_a = NodePath("../../Anchor")
+node_b = NodePath("../RigidBody2D")
+
+[node name="RigidBody2D" type="RigidBody2D" parent="Component2"]
+collision_mask = 0
+input_pickable = true
+angular_damp = 5.0
+
+[node name="Sprite2D" type="Sprite2D" parent="Component2/RigidBody2D"]
+z_index = 2
+texture_filter = 1
+position = Vector2(-1, 32)
+scale = Vector2(2, 2)
+texture = ExtResource("7_cnipx")
+hframes = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Component2/RigidBody2D"]
+position = Vector2(0, 33.867)
+shape = SubResource("RectangleShape2D_hl4qm")
+
+[node name="Component3" type="Node2D" parent="."]
+position = Vector2(739, 136)
+metadata/_edit_group_ = true
+
+[node name="PinJoint2D" type="PinJoint2D" parent="Component3"]
+node_a = NodePath("../../Anchor")
+node_b = NodePath("../RigidBody2D")
+
+[node name="RigidBody2D" type="RigidBody2D" parent="Component3"]
+collision_mask = 0
+input_pickable = true
+angular_damp = 5.0
+
+[node name="Sprite2D" type="Sprite2D" parent="Component3/RigidBody2D"]
+z_index = 2
+texture_filter = 1
+position = Vector2(-1, 32)
+scale = Vector2(2, 2)
+texture = ExtResource("8_5fm34")
+hframes = 4
+frame = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Component3/RigidBody2D"]
+position = Vector2(0, 33.867)
+shape = SubResource("RectangleShape2D_hl4qm")
+
+[node name="Component4" type="Node2D" parent="."]
+position = Vector2(326, 135)
+metadata/_edit_group_ = true
+
+[node name="PinJoint2D" type="PinJoint2D" parent="Component4"]
+node_a = NodePath("../../Anchor")
+node_b = NodePath("../RigidBody2D")
+
+[node name="RigidBody2D" type="RigidBody2D" parent="Component4"]
+collision_mask = 0
+input_pickable = true
+angular_damp = 5.0
+
+[node name="Sprite2D" type="Sprite2D" parent="Component4/RigidBody2D"]
+z_index = 2
+texture_filter = 1
+position = Vector2(-1, 32)
+scale = Vector2(2, 2)
+texture = ExtResource("9_a7n57")
+hframes = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Component4/RigidBody2D"]
+position = Vector2(0, 33.867)
+shape = SubResource("RectangleShape2D_hl4qm")
+
+[connection signal="pressed" from="Menu/SelectLevels" to="Menu/SelectLevels" method="_on_pressed"]
+[connection signal="pressed" from="Menu/Sandbox" to="Menu/Sandbox" method="_on_pressed"]

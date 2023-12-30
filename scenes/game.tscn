@@ -1,4 +1,4 @@
-[gd_scene load_steps=40 format=3 uid="uid://bgiov8vdeao7u"]
+[gd_scene load_steps=42 format=3 uid="uid://bgiov8vdeao7u"]
 
 [ext_resource type="PackedScene" uid="uid://b60ca387m477t" path="res://scenes/pointer.tscn" id="1_vpf3b"]
 [ext_resource type="Script" path="res://scripts/game_loader.gd" id="1_wymu5"]
@@ -25,7 +25,6 @@
 [ext_resource type="PackedScene" uid="uid://bwml0adtupjp0" path="res://scenes/pickable_components/or_component_pickable.tscn" id="15_2w61e"]
 [ext_resource type="Script" path="res://scripts/ui/toggle_simulation_button.gd" id="25_qyscn"]
 [ext_resource type="Texture2D" uid="uid://sjiry04yf2ey" path="res://sprites/ui/play_button_normal.tres" id="26_5wa0x"]
-[ext_resource type="Texture2D" uid="uid://c1yyn4mcp0ck0" path="res://sprites/ui/exit_button.png" id="27_203qk"]
 [ext_resource type="Texture2D" uid="uid://fabywtakd1j3" path="res://sprites/ui/play_button_hover.tres" id="27_wl7da"]
 [ext_resource type="Script" path="res://scripts/ui/exit_button.gd" id="28_edp51"]
 [ext_resource type="Texture2D" uid="uid://bp6nns63ae3ti" path="res://sprites/ui/stop_button_normal.tres" id="28_vfvg1"]
@@ -34,7 +33,10 @@
 [ext_resource type="Texture2D" uid="uid://cwimlv8to6dn4" path="res://sprites/ui/stop_button_hover.tres" id="29_3onu8"]
 [ext_resource type="FontFile" uid="uid://g3a0ildjxla8" path="res://fonts/PixelifySans-Bold.ttf" id="30_6gxwk"]
 [ext_resource type="Texture2D" uid="uid://dtdsq3g1undcd" path="res://sprites/ui/stop_button_pressed.tres" id="30_oj1ie"]
+[ext_resource type="Texture2D" uid="uid://c227vwqbe8dki" path="res://sprites/ui/exit_button_normal.tres" id="31_j6ma4"]
 [ext_resource type="FontFile" uid="uid://bykwdchltiw6v" path="res://fonts/PixelifySans-Regular.ttf" id="31_rgsqy"]
+[ext_resource type="Texture2D" uid="uid://qgxjs0g1aqt5" path="res://sprites/ui/exit_button_pressed.tres" id="32_ch0x6"]
+[ext_resource type="Texture2D" uid="uid://dbu8yhm3xa8l5" path="res://sprites/ui/exit_button_hover.tres" id="33_kn3vw"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_ulxts"]
 font = ExtResource("30_6gxwk")
@@ -169,7 +171,9 @@ offset_top = -59.0
 offset_right = 61.0
 offset_bottom = -9.0
 grow_vertical = 0
-texture_normal = ExtResource("27_203qk")
+texture_normal = ExtResource("31_j6ma4")
+texture_pressed = ExtResource("32_ch0x6")
+texture_hover = ExtResource("33_kn3vw")
 stretch_mode = 0
 script = ExtResource("28_edp51")
 
