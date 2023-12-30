@@ -20,6 +20,7 @@ func _input(event: InputEvent):
 		load_level((current_index + 1) % len(levels))
 
 func load_level(index: int):
+	completed_text.visible = false
 	ComponentsSignals.stop_simulation()
 	ComponentsSignals.detach_all_components()
 
@@ -46,3 +47,6 @@ func _on_back_to_menu_button_pressed():
 	ComponentsSignals.stop_simulation()
 	ComponentsSignals.detach_all_components()
 	LoadManager.load_scene("res://scenes/level_selector.tscn")
+
+func _on_next_level_button_pressed():
+	load_level((current_index + 1) % len(levels))

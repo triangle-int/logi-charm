@@ -1,4 +1,4 @@
-[gd_scene load_steps=34 format=3 uid="uid://bgiov8vdeao7u"]
+[gd_scene load_steps=37 format=3 uid="uid://bgiov8vdeao7u"]
 
 [ext_resource type="PackedScene" uid="uid://b60ca387m477t" path="res://scenes/pointer.tscn" id="1_vpf3b"]
 [ext_resource type="Script" path="res://scripts/game_loader.gd" id="1_wymu5"]
@@ -30,18 +30,28 @@
 [ext_resource type="Script" path="res://scripts/ui/exit_button.gd" id="28_edp51"]
 [ext_resource type="Texture2D" uid="uid://bql6xydoahotj" path="res://sprites/ui/tooltip_background.png" id="29_2mrb7"]
 [ext_resource type="FontFile" uid="uid://g3a0ildjxla8" path="res://fonts/PixelifySans-Bold.ttf" id="30_6gxwk"]
+[ext_resource type="FontFile" uid="uid://bykwdchltiw6v" path="res://fonts/PixelifySans-Regular.ttf" id="31_rgsqy"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_ulxts"]
 font = ExtResource("30_6gxwk")
 font_color = Color(0, 0, 0, 1)
 
 [sub_resource type="LabelSettings" id="LabelSettings_wu5w0"]
-font_size = 40
+font = ExtResource("31_rgsqy")
+font_size = 42
 
 [sub_resource type="GDScript" id="GDScript_vvrld"]
 script/source = "extends Button
 
 "
+
+[sub_resource type="LabelSettings" id="LabelSettings_hhg4g"]
+font = ExtResource("31_rgsqy")
+font_size = 24
+
+[sub_resource type="LabelSettings" id="LabelSettings_2e177"]
+font = ExtResource("31_rgsqy")
+font_size = 24
 
 [node name="Game" type="Node2D"]
 script = ExtResource("1_wymu5")
@@ -212,7 +222,6 @@ label_settings = SubResource("LabelSettings_ulxts")
 autowrap_mode = 1
 
 [node name="CompletedText" type="ColorRect" parent="UI"]
-visible = false
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -229,37 +238,81 @@ size_flags_vertical = 4
 color = Color(0.12549, 0.12549, 0.12549, 0.831373)
 
 [node name="Label" type="Label" parent="UI/CompletedText"]
+texture_filter = 1
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -162.0
-offset_top = -69.0
-offset_right = 164.0
-offset_bottom = -14.0
+offset_left = -192.0
+offset_top = -95.0
+offset_right = 194.0
+offset_bottom = -36.0
 grow_horizontal = 2
 grow_vertical = 2
 text = "Level completed!"
 label_settings = SubResource("LabelSettings_wu5w0")
+horizontal_alignment = 1
+vertical_alignment = 1
 
-[node name="BackToMenuButton" type="Button" parent="UI/CompletedText"]
+[node name="NextLevelButton" type="Button" parent="UI/CompletedText"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -128.0
-offset_top = 8.0
-offset_right = 130.0
-offset_bottom = 57.0
+offset_left = -100.0
+offset_top = -24.0
+offset_right = 100.0
+offset_bottom = 26.0
+grow_horizontal = 2
+grow_vertical = 2
+script = SubResource("GDScript_vvrld")
+
+[node name="Label" type="Label" parent="UI/CompletedText/NextLevelButton"]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Next Level"
+label_settings = SubResource("LabelSettings_hhg4g")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="BackToMenuButton2" type="Button" parent="UI/CompletedText"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -100.0
+offset_top = 34.0
+offset_right = 100.0
+offset_bottom = 84.0
+grow_horizontal = 2
+grow_vertical = 2
+script = SubResource("GDScript_vvrld")
+
+[node name="Label" type="Label" parent="UI/CompletedText/BackToMenuButton2"]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 text = "Back to menu"
-script = SubResource("GDScript_vvrld")
+label_settings = SubResource("LabelSettings_2e177")
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [connection signal="toggled" from="UI/ToggleButton" to="UI/ToggleButton" method="_on_toggled"]
 [connection signal="pressed" from="UI/ExitButton" to="UI/ExitButton" method="_on_pressed"]
-[connection signal="pressed" from="UI/CompletedText/BackToMenuButton" to="." method="_on_back_to_menu_button_pressed"]
+[connection signal="pressed" from="UI/CompletedText/NextLevelButton" to="." method="_on_next_level_button_pressed"]
+[connection signal="pressed" from="UI/CompletedText/BackToMenuButton2" to="." method="_on_back_to_menu_button_pressed"]
