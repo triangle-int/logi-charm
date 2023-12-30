@@ -8,6 +8,7 @@ var current_index
 
 @onready var completed = $UI/Completed
 @onready var failed = $UI/Failed
+@onready var tooltip_message = $UI/Tooltip/Message
 
 # For debugging
 func _input(event: InputEvent):
@@ -35,6 +36,7 @@ func load_level(index: int):
 	current_level = levels[index].instantiate() as Level
 	current_level.level_completed.connect(_on_level_completed)
 	current_level.level_failed.connect(_on_level_failed)
+	tooltip_message.text = current_level.tooltip
 	$Center.add_child(current_level)
 	current_level.start_level()
 	

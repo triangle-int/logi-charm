@@ -8,6 +8,7 @@
 [node name="Level" type="Node2D"]
 script = ExtResource("1_n7dxy")
 rings_config = ExtResource("2_mojm6")
+tooltip = "Even my pc has less memory than this chainlet"
 
 [node name="InitComponent" parent="." instance=ExtResource("2_rlpdt")]
 position = Vector2(170, 0)

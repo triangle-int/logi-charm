@@ -8,6 +8,7 @@
 [node name="Level" type="Node2D"]
 script = ExtResource("1_llnqm")
 rings_config = ExtResource("2_yl7rw")
+tooltip = "You'll need a lot of memory for this one"
 
 [node name="InitComponent" parent="." instance=ExtResource("3_cieqg")]
 position = Vector2(170, 0)
