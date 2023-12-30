@@ -16,8 +16,10 @@ lerp_speed = 10.0
 snap_threshold = 75.0
 
 [node name="ComponentTooltip" parent="." instance=ExtResource("3_et57v")]
+visible = false
 header = "Electro Charm"
 width = 1
+description = "Emits red signal."
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture_filter = 1

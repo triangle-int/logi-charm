@@ -1,10 +1,11 @@
-[gd_scene load_steps=7 format=3 uid="uid://b413entmk714a"]
+[gd_scene load_steps=8 format=3 uid="uid://b413entmk714a"]
 
 [ext_resource type="PackedScene" uid="uid://103m37is5r48" path="res://scenes/ui/level_select_button.tscn" id="1_8mxoc"]
 [ext_resource type="Texture2D" uid="uid://c8nvqsmkdwk86" path="res://sprites/background/table_background.png" id="1_g0dee"]
 [ext_resource type="Texture2D" uid="uid://d3xuk5p8mdhpn" path="res://sprites/background/table_toolbox.png" id="2_txug8"]
 [ext_resource type="FontFile" uid="uid://dbqojy1yc5n6y" path="res://fonts/PixelifySans-Medium.ttf" id="2_u0lvk"]
 [ext_resource type="Script" path="res://scripts/ui/back_to_menu.gd" id="3_xtfr3"]
+[ext_resource type="Theme" uid="uid://cng1746ui1cr5" path="res://resources/theme/main_theme.tres" id="4_w81ft"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_i1h5s"]
 font = ExtResource("2_u0lvk")
@@ -40,6 +41,7 @@ texture = ExtResource("2_txug8")
 metadata/_edit_lock_ = true
 
 [node name="GridContainer" type="GridContainer" parent="Menu"]
+texture_filter = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -99,6 +101,7 @@ layout_mode = 2
 level_index = 11
 
 [node name="Button" type="Button" parent="Menu"]
+texture_filter = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -110,6 +113,7 @@ offset_right = 200.0
 offset_bottom = 317.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("4_w81ft")
 script = ExtResource("3_xtfr3")
 
 [node name="Label" type="Label" parent="Menu/Button"]

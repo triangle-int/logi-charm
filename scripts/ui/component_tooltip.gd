@@ -4,9 +4,9 @@ extends Node2D
 @export var width: int
 @export_multiline var description: String
 
-@onready var header_label = $Background/Header
-@onready var width_label = $Background/Width
-@onready var description_label = $Background/Description
+@onready var header_label = $PanelContainer/VBoxContainer/Header
+@onready var width_label = $PanelContainer/VBoxContainer/Width
+@onready var description_label = $PanelContainer/VBoxContainer/Description
 
 func _ready():
 	header_label.text = header
