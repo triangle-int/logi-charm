@@ -1,8 +1,9 @@
-[gd_scene load_steps=7 format=3 uid="uid://bgiov8vdeao7u"]
+[gd_scene load_steps=8 format=3 uid="uid://bgiov8vdeao7u"]
 
 [ext_resource type="PackedScene" uid="uid://b60ca387m477t" path="res://scenes/pointer.tscn" id="1_vpf3b"]
 [ext_resource type="Script" path="res://scripts/game_loader.gd" id="1_wymu5"]
 [ext_resource type="Texture2D" uid="uid://cls3lb181j2bm" path="res://sprites/background/rings_shadow.png" id="4_im5cd"]
+[ext_resource type="Script" path="res://scripts/chain/straight_chain.gd" id="5_rxk4b"]
 [ext_resource type="Texture2D" uid="uid://c8nvqsmkdwk86" path="res://sprites/background/table_background.png" id="5_s121d"]
 [ext_resource type="PackedScene" uid="uid://27ly8i0tovum" path="res://scenes/chain.tscn" id="6_mbphy"]
 [ext_resource type="PackedScene" uid="uid://c25ufp6ujfbvv" path="res://scenes/chain_node.tscn" id="7_pxj6s"]
@@ -13,26 +14,31 @@ script = ExtResource("1_wymu5")
 [node name="Center" type="Node2D" parent="."]
 position = Vector2(576, 324)
 
+[node name="Chains" type="Node2D" parent="Center"]
+script = ExtResource("5_rxk4b")
+chain_node = ExtResource("7_pxj6s")
+node_length = 12.0
+
 [node name="Rings" type="Node2D" parent="Center"]
 
 [node name="Chain1" parent="Center/Rings" instance=ExtResource("6_mbphy")]
 z_index = -2
 position = Vector2(-1, 0)
+radius = 170.0
 chain_node = ExtResource("7_pxj6s")
 node_length = 12.0
-radius = 170.0
 
 [node name="Chain2" parent="Center/Rings" instance=ExtResource("6_mbphy")]
 z_index = -2
+radius = 210.0
 chain_node = ExtResource("7_pxj6s")
 node_length = 12.0
-radius = 210.0
 
 [node name="Chain3" parent="Center/Rings" instance=ExtResource("6_mbphy")]
 z_index = -2
+radius = 250.0
 chain_node = ExtResource("7_pxj6s")
 node_length = 12.0
-radius = 250.0
 
 [node name="Shadow" type="Sprite2D" parent="Center/Rings"]
 visible = false

@@ -6,6 +6,9 @@ extends Node
 @export var attached_to: int
 @export var width: int
 @export var memory_view: MemoryView
+@export var signal_angular_vel: float
+
+@onready var rigid_body_2d = $RigidBody2D
 
 var memory: Dictionary = {}
 
@@ -21,6 +24,7 @@ func _ready():
 
 func receive_signal(index: int, high: bool):
 	print("%s received %s from ring %d" %[name, '1' if high else '0', index])
+	rigid_body_2d.angular_velocity = signal_angular_vel * (randi_range(0, 1) * 2 - 1)
 	var local_index = index - attached_to
 	set_memory(local_index, high)
 	_on_receive(local_index, high)

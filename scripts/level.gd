@@ -5,10 +5,12 @@ extends Node
 
 signal game_over
 
-@export var rings_config: RingsConfig;
+@export var rings_config: RingsConfig
 
 var end_count = 0
 var activated_count = 0
+
+@onready var chains: StraightChainGenerator = $"../Chains"
 
 func _process(_delta):
 	if Engine.is_editor_hint():
@@ -33,12 +35,21 @@ func on_end_activated():
 		game_over.emit()
 
 func update_components_positions():
+	chains.clear()
+	
 	for child: Node2D in get_children():
+		var angle = child.angle
+		var unit_positon = Vector2(cos(angle), -sin(angle))
+		
 		var distances =\
 			range(child.attached_to, child.attached_to + child.width)\
 			.map(func(i): return rings_config.radiuses[i])
+	
+		chains.generate(
+			unit_positon * distances.front(),
+			unit_positon * distances.back()
+		)
 		
 		var distance = distances.reduce(func(a, b): return a + b, 0) / len(distances)
-		var angle = child.angle
-		child.position = Vector2(cos(angle), -sin(angle)) * distance
+		child.position = unit_positon * distance
 		child.rotation = angle
