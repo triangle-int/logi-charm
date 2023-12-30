@@ -8,6 +8,7 @@
 [node name="Level" type="Node2D"]
 script = ExtResource("1_ure6l")
 rings_config = ExtResource("2_efck3")
+tooltip = "That's a long loop!"
 
 [node name="InitComponent" parent="." instance=ExtResource("3_bw4gm")]
 position = Vector2(170, 0)

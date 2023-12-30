@@ -219,7 +219,7 @@ grow_horizontal = 2
 grow_vertical = 0
 text = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse eu ante gravida, efficitur velit sit amet"
 label_settings = SubResource("LabelSettings_ulxts")
-autowrap_mode = 1
+autowrap_mode = 2
 
 [node name="Completed" type="ColorRect" parent="UI"]
 anchors_preset = 8
