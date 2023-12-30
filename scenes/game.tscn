@@ -1,7 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://bgiov8vdeao7u"]
+[gd_scene load_steps=7 format=3 uid="uid://bgiov8vdeao7u"]
 
 [ext_resource type="PackedScene" uid="uid://b60ca387m477t" path="res://scenes/pointer.tscn" id="1_vpf3b"]
 [ext_resource type="Script" path="res://scripts/game_loader.gd" id="1_wymu5"]
+[ext_resource type="Texture2D" uid="uid://cls3lb181j2bm" path="res://sprites/background/rings_shadow.png" id="4_im5cd"]
 [ext_resource type="Texture2D" uid="uid://c8nvqsmkdwk86" path="res://sprites/background/table_background.png" id="5_s121d"]
 [ext_resource type="PackedScene" uid="uid://27ly8i0tovum" path="res://scenes/chain.tscn" id="6_mbphy"]
 [ext_resource type="PackedScene" uid="uid://c25ufp6ujfbvv" path="res://scenes/chain_node.tscn" id="7_pxj6s"]
@@ -32,6 +33,12 @@ z_index = -2
 chain_node = ExtResource("7_pxj6s")
 node_length = 12.0
 radius = 250.0
+
+[node name="Shadow" type="Sprite2D" parent="Center/Rings"]
+visible = false
+z_index = -5
+scale = Vector2(4.98437, 4.98437)
+texture = ExtResource("4_im5cd")
 
 [node name="Pointer" parent="Center" instance=ExtResource("1_vpf3b")]
 
