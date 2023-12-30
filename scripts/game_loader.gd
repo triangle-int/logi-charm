@@ -1,9 +1,13 @@
+class_name LevelLoader
 extends Node
 
 @export var levels: Array[PackedScene]
 
 var current_level: Level = null
 var current_index: int = -1
+
+func _ready():
+	load_level((current_index + 1) % len(levels))
 
 # For debugging
 func _input(event: InputEvent):

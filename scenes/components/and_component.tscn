@@ -1,31 +1,44 @@
-[gd_scene load_steps=6 format=3 uid="uid://blp38uqok1hw2"]
+[gd_scene load_steps=7 format=3 uid="uid://blp38uqok1hw2"]
 
 [ext_resource type="Script" path="res://scripts/components/and_component.gd" id="1_bxudu"]
 [ext_resource type="Texture2D" uid="uid://e4udc2n6ulhw" path="res://sprites/gates/and_gate.png" id="2_1v5j2"]
 [ext_resource type="Script" path="res://scripts/memory_view.gd" id="3_bljb8"]
 [ext_resource type="Texture2D" uid="uid://bicsi3j6h1x45" path="res://sprites/one_pixel.png" id="3_rj5ls"]
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_gd3ng"]
+radius = 2.0
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_55004"]
 size = Vector2(54, 50)
 
 [node name="AndComponent" type="Node2D" node_paths=PackedStringArray("memory_view")]
 script = ExtResource("1_bxudu")
-width = 1
+width = 2
 memory_view = NodePath("RigidBody2D/Sprite2D/MemoryView")
 signal_angular_vel = 25.0
 
 [node name="PinJoint2D" type="PinJoint2D" parent="."]
-node_a = NodePath("../StaticBody2D")
+node_a = NodePath("../Anchor")
 node_b = NodePath("../RigidBody2D")
 
-[node name="StaticBody2D" type="StaticBody2D" parent="."]
+[node name="AnchorRemote" type="RemoteTransform2D" parent="."]
+remote_path = NodePath("../Anchor")
+use_global_coordinates = false
+update_rotation = false
+update_scale = false
+
+[node name="Anchor" type="AnimatableBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Anchor"]
+shape = SubResource("CircleShape2D_gd3ng")
 
 [node name="RigidBody2D" type="RigidBody2D" parent="."]
-rotation = 0.785398
 collision_mask = 0
+input_pickable = true
 angular_damp = 5.0
 
 [node name="Sprite2D" type="Sprite2D" parent="RigidBody2D"]
+z_index = 2
 texture_filter = 1
 position = Vector2(-1, 32)
 scale = Vector2(2, 2)
@@ -35,8 +48,8 @@ frame = 1
 
 [node name="MemoryView" type="Node2D" parent="RigidBody2D/Sprite2D" node_paths=PackedStringArray("led_groups")]
 script = ExtResource("3_bljb8")
-high_color = Color(1, 0, 1, 1)
-low_color = Color(0, 1, 1, 1)
+high_color = Color(1, 0.345098, 0.278431, 1)
+low_color = Color(0.168627, 0.396078, 1, 1)
 led_groups = [NodePath("MemoryViewUp"), NodePath("MemoryViewLeft"), NodePath("MemoryViewDown"), NodePath("MemoryViewRight")]
 
 [node name="MemoryViewUp" type="Node2D" parent="RigidBody2D/Sprite2D/MemoryView"]
@@ -100,3 +113,5 @@ texture = ExtResource("3_rj5ls")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D"]
 position = Vector2(0, 35)
 shape = SubResource("RectangleShape2D_55004")
+
+[connection signal="input_event" from="RigidBody2D" to="." method="_on_input_event"]

@@ -1,18 +1,20 @@
 class_name BaseComponent
 
-extends Node
+extends Node2D
 
+@export var locked: bool
 @export_range(0, TAU) var angle: float
 @export var attached_to: int
 @export var width: int
 @export var memory_view: MemoryView
 @export var signal_angular_vel: float
 
-@onready var rigid_body_2d = $RigidBody2D
+@onready var rigid_body_2d: RigidBody2D = $RigidBody2D
+@onready var anchor_remote: RemoteTransform2D = $AnchorRemote
 
 var memory: Dictionary = {}
 
-func _ready():
+func _prepare_for_simulation():
 	if memory_view != null:
 		memory_view.set_angle(angle)
 	
@@ -20,6 +22,12 @@ func _ready():
 		func():
 			for ring in range(width):
 				set_memory(ring, false)
+			rigid_body_2d.freeze = false
+	)
+	
+	ComponentsSignals.simulation_stopped.connect(
+		func():
+			rigid_body_2d.freeze = true
 	)
 
 func receive_signal(index: int, high: bool):
@@ -43,3 +51,24 @@ func set_memory(index: int, high: bool):
 		return
 	
 	memory_view.on_memory_set(index, high)
+
+func set_anchor_position(new_position: Vector2):
+	anchor_remote.position = new_position
+
+func get_anchor_position() -> Vector2:
+	return anchor_remote.position
+
+func set_body_position(new_position: Vector2):
+	rigid_body_2d.position = new_position
+
+func set_body_rotation(new_angle: float):
+	rigid_body_2d.rotation = new_angle
+
+func _on_input_event(_viewport, event, _shape_idx):
+	if event is InputEventMouseButton and event.pressed and event.button_index == MOUSE_BUTTON_RIGHT:
+		if locked:
+			return
+		print("Removing component ", name)
+		ComponentsSignals.stop_simulation()
+		ComponentsSignals.detach_component(self)
+		queue_free()

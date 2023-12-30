@@ -22,7 +22,7 @@ LoadManager="*res://scripts/autoloads/load_manager.gd"
 
 [display]
 
-window/stretch/mode="canvas_items"
+window/stretch/mode="viewport"
 window/stretch/aspect="expand"
 
 [rendering]
