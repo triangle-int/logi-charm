@@ -52,7 +52,8 @@ func update_component_position(component: BaseComponent, smooth: bool = true):
 	if chains != null:
 		chains.generate(
 			unit_positon * distances.front(),
-			unit_positon * distances.back()
+			unit_positon * distances.back(),
+			component
 		)
 	
 	var distance = distances.reduce(func(a, b): return a + b, 0) / len(distances)

@@ -2,7 +2,7 @@ class_name StraightChainGenerator
 
 extends BaseChainGenerator
 
-func generate(start: Vector2, end: Vector2):
+func generate(start: Vector2, end: Vector2, parent: Node2D = null):
 	var offset = end - start
 	var distance = offset.length()
 	var nodes_count = floor(distance / node_length) as int
@@ -11,4 +11,4 @@ func generate(start: Vector2, end: Vector2):
 	
 	for index in range(nodes_count):
 		var position = lerp(start, end, (0.5 + index) / nodes_count)
-		spawn_chain(position, angle)
+		spawn_chain(position, angle, parent)

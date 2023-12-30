@@ -7,15 +7,16 @@ extends Node
 
 var count = 0
 
-func spawn_chain(position: Vector2, rotation: float):
+func spawn_chain(position: Vector2, rotation: float, parent: Node2D = null):
 	var node = chain_node.instantiate() as Sprite2D
+	parent = parent if parent else self
+	parent.add_child(node)
 	node.position = position
 	node.rotation = rotation
 	node.frame = count % 2
 	node.z_index = count % 2 - 1
 	
 	count += 1
-	add_child(node)
 
 func clear():
 	for child in get_children():
