@@ -100,6 +100,18 @@ level_index = 10
 layout_mode = 2
 level_index = 11
 
+[node name="LevelSelectButton12" parent="Menu/GridContainer" instance=ExtResource("1_8mxoc")]
+layout_mode = 2
+level_index = 12
+
+[node name="LevelSelectButton13" parent="Menu/GridContainer" instance=ExtResource("1_8mxoc")]
+layout_mode = 2
+level_index = 13
+
+[node name="LevelSelectButton14" parent="Menu/GridContainer" instance=ExtResource("1_8mxoc")]
+layout_mode = 2
+level_index = 14
+
 [node name="Button" type="Button" parent="Menu"]
 texture_filter = 1
 anchors_preset = 8
