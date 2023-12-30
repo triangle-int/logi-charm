@@ -1,0 +1,65 @@
+[gd_scene load_steps=9 format=3 uid="uid://4w23cd40u6ay"]
+
+[ext_resource type="Script" path="res://scripts/level.gd" id="1_n7dxy"]
+[ext_resource type="Resource" uid="uid://sg3uasvec28l" path="res://resources/rings/ring_2.tres" id="2_mojm6"]
+[ext_resource type="PackedScene" uid="uid://pumfprhltbaf" path="res://scenes/components/init_component.tscn" id="2_rlpdt"]
+[ext_resource type="PackedScene" uid="uid://dtmhm8xn55o03" path="res://scenes/components/end_component.tscn" id="3_btgh8"]
+[ext_resource type="PackedScene" uid="uid://p6kikp3bppfh" path="res://scenes/components/or_component.tscn" id="5_ohhun"]
+[ext_resource type="PackedScene" uid="uid://blp38uqok1hw2" path="res://scenes/components/and_component.tscn" id="6_p2wc2"]
+[ext_resource type="PackedScene" uid="uid://xjea3vckpfat" path="res://scenes/components/not_component.tscn" id="7_n5chl"]
+[ext_resource type="PackedScene" uid="uid://e33vqmafam83" path="res://scenes/components/swap_component.tscn" id="8_tkcxs"]
+
+[node name="Level" type="Node2D"]
+script = ExtResource("1_n7dxy")
+rings_config = ExtResource("2_mojm6")
+
+[node name="InitComponent" parent="." instance=ExtResource("2_rlpdt")]
+position = Vector2(170, 0)
+
+[node name="EndComponent" parent="." instance=ExtResource("3_btgh8")]
+position = Vector2(90.191, 167.229)
+rotation = 5.207
+activation_seq = Array[bool]([true, true, true, true, true, false])
+angle = 5.207
+width = 2
+
+[node name="OrComponent" parent="." instance=ExtResource("5_ohhun")]
+position = Vector2(-129.426, 139.1)
+rotation = 3.963
+angle = 3.963
+width = 2
+
+[node name="AndComponent" parent="." instance=ExtResource("6_p2wc2")]
+position = Vector2(36.0318, -186.552)
+rotation = 1.38
+angle = 1.38
+width = 2
+
+[node name="AndComponent2" parent="." instance=ExtResource("6_p2wc2")]
+position = Vector2(119.293, -147.883)
+rotation = 0.892
+angle = 0.892
+width = 2
+
+[node name="NotComponent" parent="." instance=ExtResource("7_n5chl")]
+position = Vector2(-81.3835, -149.254)
+rotation = 2.07
+angle = 2.07
+
+[node name="NotComponent2" parent="." instance=ExtResource("7_n5chl")]
+position = Vector2(-94.5822, -187.495)
+rotation = 2.038
+angle = 2.038
+attached_to = 1
+
+[node name="SwapComponent" parent="." instance=ExtResource("8_tkcxs")]
+position = Vector2(-189.923, 5.39667)
+rotation = 3.17
+angle = 3.17
+width = 2
+
+[node name="AndComponent3" parent="." instance=ExtResource("6_p2wc2")]
+position = Vector2(170.836, -83.1563)
+rotation = 0.453
+angle = 0.453
+width = 2

@@ -1,0 +1,25 @@
+[gd_scene load_steps=6 format=3 uid="uid://bjxywftaeucjo"]
+
+[ext_resource type="Script" path="res://scripts/level.gd" id="1_6wdj6"]
+[ext_resource type="Resource" uid="uid://doecm0xpoypst" path="res://resources/rings/ring_1.tres" id="2_gjrai"]
+[ext_resource type="PackedScene" uid="uid://pumfprhltbaf" path="res://scenes/components/init_component.tscn" id="3_jl6hd"]
+[ext_resource type="PackedScene" uid="uid://xjea3vckpfat" path="res://scenes/components/not_component.tscn" id="4_1mj74"]
+[ext_resource type="PackedScene" uid="uid://dtmhm8xn55o03" path="res://scenes/components/end_component.tscn" id="5_oujs1"]
+
+[node name="Level" type="Node2D"]
+script = ExtResource("1_6wdj6")
+rings_config = ExtResource("2_gjrai")
+
+[node name="InitComponent" parent="." instance=ExtResource("3_jl6hd")]
+position = Vector2(170, 0)
+
+[node name="NotComponent" parent="." instance=ExtResource("4_1mj74")]
+position = Vector2(-0.0346244, -170)
+rotation = 1.571
+angle = 1.571
+
+[node name="EndComponent" parent="." instance=ExtResource("5_oujs1")]
+position = Vector2(-170, 0.0692489)
+rotation = 3.142
+activation_seq = Array[bool]([true, false])
+angle = 3.142
