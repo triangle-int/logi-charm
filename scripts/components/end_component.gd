@@ -5,9 +5,12 @@ extends BaseComponent
 signal activated
 
 @export var activation_seq: Array[bool]
+@export var is_recording: bool
 
 var is_activated = false
+var is_detached = false
 var last_index = 0
+var history: Array[bool]
 
 @onready var level: Level = $".."
 @onready var sprite_2d = $RigidBody2D/Sprite2D
@@ -19,26 +22,40 @@ func _ready():
 
 func _prepare_for_simulation():
 	super()
+	if is_recording:
+		goal_bar.set_sequence(history)
+	else:
+		goal_bar.set_sequence(activation_seq)
 	ComponentsSignals.simulation_started.connect(
 		func():
 			sprite_2d.frame = 1
 			is_activated = false
+			is_detached = false
 			last_index = 0
-			goal_bar.set_sequence(activation_seq)
+			history = []
+			if is_recording:
+				goal_bar.set_sequence(history)
+			else:
+				goal_bar.set_sequence(activation_seq)
 	)
 
 func _on_receive(index: int, high: bool):
 	super(index, high)
 	
-	if is_activated:
+	if is_recording:
+		history.append(high)
+		if len(history) > 15:
+			history.pop_front()
+		goal_bar.set_sequence(history)
+		return
+	
+	if is_activated or is_detached:
 		return
 	
 	if activation_seq[last_index] == high:
 		goal_bar.remove_one()
 		last_index += 1
 	else:
-		goal_bar.set_sequence(activation_seq)
-		last_index = 0
 		_detach()
 	
 	if last_index >= len(activation_seq):
@@ -47,5 +64,6 @@ func _on_receive(index: int, high: bool):
 		sprite_2d.frame = 0
 
 func _detach():
-	# TODO: Create detaching logic
+	is_detached = true
+	sprite_2d.frame = 2
 	pass

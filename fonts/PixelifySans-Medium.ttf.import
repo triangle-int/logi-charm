@@ -2,13 +2,13 @@
 
 importer="font_data_dynamic"
 type="FontFile"
-uid="uid://m1ceop1fjyu7"
-path="res://.godot/imported/Oswald-Bold.ttf-9df48f50b13ae65ffcc1c63410ddb290.fontdata"
+uid="uid://dbqojy1yc5n6y"
+path="res://.godot/imported/PixelifySans-Medium.ttf-7cd0e4929d97729a80e4aa2cbddeb387.fontdata"
 
 [deps]
 
-source_file="res://fonts/Oswald-Bold.ttf"
-dest_files=["res://.godot/imported/Oswald-Bold.ttf-9df48f50b13ae65ffcc1c63410ddb290.fontdata"]
+source_file="res://fonts/PixelifySans-Medium.ttf"
+dest_files=["res://.godot/imported/PixelifySans-Medium.ttf-7cd0e4929d97729a80e4aa2cbddeb387.fontdata"]
 
 [params]
 

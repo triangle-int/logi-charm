@@ -1,8 +1,7 @@
-[gd_scene load_steps=19 format=3 uid="uid://bgiov8vdeao7u"]
+[gd_scene load_steps=32 format=3 uid="uid://bgiov8vdeao7u"]
 
 [ext_resource type="PackedScene" uid="uid://b60ca387m477t" path="res://scenes/pointer.tscn" id="1_vpf3b"]
 [ext_resource type="Script" path="res://scripts/game_loader.gd" id="1_wymu5"]
-
 [ext_resource type="PackedScene" uid="uid://cunwq4ykl2eh7" path="res://scenes/levels/enabled/level_2.tscn" id="3_7d0rd"]
 [ext_resource type="PackedScene" uid="uid://dg4tgewsq1sgl" path="res://scenes/levels/enabled/level_1.tscn" id="3_11sif"]
 [ext_resource type="Texture2D" uid="uid://cls3lb181j2bm" path="res://sprites/background/rings_shadow.png" id="4_im5cd"]
@@ -13,17 +12,28 @@
 [ext_resource type="PackedScene" uid="uid://27ly8i0tovum" path="res://scenes/chain.tscn" id="6_mbphy"]
 [ext_resource type="PackedScene" uid="uid://c67v7icd6c5bf" path="res://scenes/levels/enabled/level_4.tscn" id="6_t0neb"]
 [ext_resource type="PackedScene" uid="uid://cboiq5dvjy8t6" path="res://scenes/levels/enabled/level_11.tscn" id="7_drx53"]
+[ext_resource type="Texture2D" uid="uid://d3xuk5p8mdhpn" path="res://sprites/background/table_toolbox.png" id="7_jwhax"]
 [ext_resource type="PackedScene" uid="uid://c25ufp6ujfbvv" path="res://scenes/chain_node.tscn" id="7_pxj6s"]
 [ext_resource type="PackedScene" uid="uid://cwvy31hc3xty0" path="res://scenes/levels/enabled/level_9.tscn" id="8_bu865"]
 [ext_resource type="PackedScene" uid="uid://bh4b8f62lmwkd" path="res://scenes/levels/enabled/level_5.tscn" id="9_bb8qm"]
 [ext_resource type="PackedScene" uid="uid://13piujy2gn1x" path="res://scenes/levels/enabled/level_7.tscn" id="10_xv4uo"]
 [ext_resource type="PackedScene" uid="uid://njehh45k6cqp" path="res://scenes/levels/enabled/level_8.tscn" id="11_64d3u"]
 [ext_resource type="PackedScene" uid="uid://4w23cd40u6ay" path="res://scenes/levels/enabled/level_10.tscn" id="12_ajn08"]
-[ext_resource type="Texture2D" uid="uid://d3xuk5p8mdhpn" path="res://sprites/background/table_toolbox.png" id="7_jwhax"]
 [ext_resource type="PackedScene" uid="uid://c5psmlls6bj87" path="res://scenes/pickable_components/swap_component_pickable.tscn" id="12_i804a"]
 [ext_resource type="PackedScene" uid="uid://bdoqbc22revfl" path="res://scenes/pickable_components/not_component_pickable.tscn" id="14_1ffrp"]
 [ext_resource type="PackedScene" uid="uid://c174mm6nxtje0" path="res://scenes/pickable_components/and_component_pickable.tscn" id="14_qci3a"]
 [ext_resource type="PackedScene" uid="uid://bwml0adtupjp0" path="res://scenes/pickable_components/or_component_pickable.tscn" id="15_2w61e"]
+[ext_resource type="Texture2D" uid="uid://dei3h4ljadyx7" path="res://sprites/ui/play_button_normal.png" id="24_p3hli"]
+[ext_resource type="Texture2D" uid="uid://678xdru1vvgm" path="res://sprites/ui/stop_button.png" id="25_8q741"]
+[ext_resource type="Script" path="res://scripts/ui/toggle_simulation_button.gd" id="25_qyscn"]
+[ext_resource type="Texture2D" uid="uid://c1yyn4mcp0ck0" path="res://sprites/ui/exit_button.png" id="27_203qk"]
+[ext_resource type="Script" path="res://scripts/ui/exit_button.gd" id="28_edp51"]
+[ext_resource type="Texture2D" uid="uid://bql6xydoahotj" path="res://sprites/ui/tooltip_background.png" id="29_2mrb7"]
+[ext_resource type="FontFile" uid="uid://g3a0ildjxla8" path="res://fonts/PixelifySans-Bold.ttf" id="30_6gxwk"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_ulxts"]
+font = ExtResource("30_6gxwk")
+font_color = Color(0, 0, 0, 1)
 
 [node name="Game" type="Node2D"]
 script = ExtResource("1_wymu5")
@@ -107,3 +117,91 @@ metadata/_edit_lock_ = true
 
 [node name="Camera2D" type="Camera2D" parent="."]
 offset = Vector2(576, 324)
+
+[node name="UI" type="CanvasLayer" parent="."]
+
+[node name="ToggleButton" type="TextureButton" parent="UI"]
+texture_filter = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -25.0
+offset_top = -59.0
+offset_right = 25.0
+offset_bottom = -9.0
+grow_horizontal = 2
+grow_vertical = 0
+toggle_mode = true
+texture_normal = ExtResource("24_p3hli")
+texture_pressed = ExtResource("25_8q741")
+texture_hover = ExtResource("24_p3hli")
+texture_disabled = ExtResource("24_p3hli")
+stretch_mode = 0
+script = ExtResource("25_qyscn")
+
+[node name="ExitButton" type="TextureButton" parent="UI"]
+texture_filter = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 11.0
+offset_top = -59.0
+offset_right = 61.0
+offset_bottom = -9.0
+grow_vertical = 0
+texture_normal = ExtResource("27_203qk")
+stretch_mode = 0
+script = ExtResource("28_edp51")
+
+[node name="Tooltip" type="NinePatchRect" parent="UI"]
+texture_filter = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -279.0
+offset_top = -145.0
+grow_horizontal = 0
+grow_vertical = 0
+texture = ExtResource("29_2mrb7")
+region_rect = Rect2(0, 0, 128, 128)
+patch_margin_left = 16
+patch_margin_top = 32
+patch_margin_right = 16
+patch_margin_bottom = 16
+
+[node name="Title" type="Label" parent="UI/Tooltip"]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_left = 16.0
+offset_top = 6.0
+offset_right = -16.0
+offset_bottom = 29.0
+grow_horizontal = 2
+text = "Tooltip"
+label_settings = SubResource("LabelSettings_ulxts")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Message" type="Label" parent="UI/Tooltip"]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 8.0
+offset_top = -117.0
+offset_right = -8.0
+offset_bottom = -8.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse eu ante gravida, efficitur velit sit amet"
+label_settings = SubResource("LabelSettings_ulxts")
+autowrap_mode = 1
+
+[connection signal="toggled" from="UI/ToggleButton" to="UI/ToggleButton" method="_on_toggled"]
+[connection signal="pressed" from="UI/ExitButton" to="UI/ExitButton" method="_on_pressed"]

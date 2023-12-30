@@ -2,18 +2,18 @@
 
 importer="font_data_dynamic"
 type="FontFile"
-uid="uid://b54pnllt2umu5"
-path="res://.godot/imported/Oswald-Light.ttf-184f5fa281dec7c361c9e358c05b1b52.fontdata"
+uid="uid://g3a0ildjxla8"
+path="res://.godot/imported/PixelifySans-Bold.ttf-2e2e797048853cae1fc72cd478ebb9ac.fontdata"
 
 [deps]
 
-source_file="res://fonts/Oswald-Light.ttf"
-dest_files=["res://.godot/imported/Oswald-Light.ttf-184f5fa281dec7c361c9e358c05b1b52.fontdata"]
+source_file="res://fonts/PixelifySans-Bold.ttf"
+dest_files=["res://.godot/imported/PixelifySans-Bold.ttf-2e2e797048853cae1fc72cd478ebb9ac.fontdata"]
 
 [params]
 
 Rendering=null
-antialiasing=1
+antialiasing=0
 generate_mipmaps=false
 multichannel_signed_distance_field=false
 msdf_pixel_range=8
@@ -27,7 +27,12 @@ Fallbacks=null
 fallbacks=[]
 Compress=null
 compress=true
-preload=[]
+preload=[{
+"chars": [],
+"glyphs": [],
+"name": "New Configuration",
+"size": Vector2i(16, 0)
+}]
 language_support={}
 script_support={}
 opentype_features={}
