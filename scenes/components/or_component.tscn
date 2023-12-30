@@ -46,8 +46,8 @@ hframes = 4
 
 [node name="MemoryView" type="Node2D" parent="RigidBody2D/Sprite2D" node_paths=PackedStringArray("led_groups")]
 script = ExtResource("3_cixry")
-high_color = Color(1, 0, 1, 1)
-low_color = Color(0, 1, 1, 1)
+high_color = Color(1, 0.345098, 0.278431, 1)
+low_color = Color(0.168627, 0.396078, 1, 1)
 led_groups = [NodePath("MemoryViewUp"), NodePath("MemoryViewLeft"), NodePath("MemoryViewDown"), NodePath("MemoryViewRight")]
 
 [node name="MemoryViewUp" type="Node2D" parent="RigidBody2D/Sprite2D/MemoryView"]

@@ -1,7 +1,18 @@
-[gd_scene load_steps=5 format=3 uid="uid://dtmhm8xn55o03"]
+[gd_scene load_steps=10 format=3 uid="uid://dtmhm8xn55o03"]
 
 [ext_resource type="Script" path="res://scripts/components/end_component.gd" id="1_b4f36"]
+[ext_resource type="Texture2D" uid="uid://hwinajmva66f" path="res://sprites/pointer/high_signal.tres" id="2_0y5e2"]
+[ext_resource type="Script" path="res://scripts/ui/end_component_goal_bar.gd" id="2_1dem8"]
 [ext_resource type="Texture2D" uid="uid://dd0yfmfksxq2l" path="res://sprites/gates/end_gate.png" id="2_8kqvv"]
+[ext_resource type="Texture2D" uid="uid://dtqy3fr3sah3g" path="res://sprites/pointer/low_signal.tres" id="4_r1k23"]
+[ext_resource type="PackedScene" uid="uid://dd5i2v65rty7y" path="res://scenes/ui/signal.tscn" id="5_juxyi"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_48dvn"]
+content_margin_left = 2.0
+content_margin_top = 2.0
+content_margin_right = 2.0
+content_margin_bottom = 2.0
+bg_color = Color(0, 0, 0, 1)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_2uxve"]
 radius = 2.0
@@ -23,6 +34,30 @@ remote_path = NodePath("../Anchor")
 use_global_coordinates = false
 update_rotation = false
 update_scale = false
+
+[node name="PanelContainer" type="PanelContainer" parent="AnchorRemote"]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -2.0
+offset_top = -28.0
+offset_right = 2.0
+offset_bottom = -10.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_styles/panel = SubResource("StyleBoxFlat_48dvn")
+
+[node name="GoalBar" type="HBoxContainer" parent="AnchorRemote/PanelContainer"]
+layout_mode = 2
+theme_override_constants/separation = 3
+alignment = 1
+script = ExtResource("2_1dem8")
+high_signal = ExtResource("2_0y5e2")
+low_signal = ExtResource("4_r1k23")
+signal_scene = ExtResource("5_juxyi")
+metadata/_edit_group_ = true
 
 [node name="Anchor" type="AnimatableBody2D" parent="."]
 

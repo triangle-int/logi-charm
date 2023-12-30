@@ -12,6 +12,7 @@ var last_index = 0
 @onready var level: Level = $".."
 @onready var sprite_2d = $RigidBody2D/Sprite2D
 @onready var pin_joint_2d = $PinJoint2D
+@onready var goal_bar: GoalBar = $AnchorRemote/PanelContainer/GoalBar
 
 func _ready():
 	sprite_2d.frame = 1
@@ -23,6 +24,7 @@ func _prepare_for_simulation():
 			sprite_2d.frame = 1
 			is_activated = false
 			last_index = 0
+			goal_bar.set_sequence(activation_seq)
 	)
 
 func _on_receive(index: int, high: bool):
@@ -32,8 +34,10 @@ func _on_receive(index: int, high: bool):
 		return
 	
 	if activation_seq[last_index] == high:
+		goal_bar.remove_one()
 		last_index += 1
 	else:
+		goal_bar.set_sequence(activation_seq)
 		last_index = 0
 		_detach()
 	

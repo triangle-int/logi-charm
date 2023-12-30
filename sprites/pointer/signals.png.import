@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cv2dp00rysieg"
-path="res://.godot/imported/one_line_branch.png-e176940487cafbf889b79a166f39c90e.ctex"
+uid="uid://bab81c0xowmob"
+path="res://.godot/imported/signals.png-4013c28d1416a944f58ba2b14fd17236.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/one_line_branch.png"
-dest_files=["res://.godot/imported/one_line_branch.png-e176940487cafbf889b79a166f39c90e.ctex"]
+source_file="res://sprites/pointer/signals.png"
+dest_files=["res://.godot/imported/signals.png-4013c28d1416a944f58ba2b14fd17236.ctex"]
 
 [params]
 
