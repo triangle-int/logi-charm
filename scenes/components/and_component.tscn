@@ -86,12 +86,12 @@ visible = false
 position = Vector2(4.76837e-07, -8)
 
 [node name="InnerSprite" type="Sprite2D" parent="RigidBody2D/Sprite2D/MemoryView/MemoryViewDown"]
-position = Vector2(-8, 0)
+position = Vector2(8, 0)
 scale = Vector2(2, 2)
 texture = ExtResource("3_rj5ls")
 
 [node name="OuterSprite" type="Sprite2D" parent="RigidBody2D/Sprite2D/MemoryView/MemoryViewDown"]
-position = Vector2(8, 0)
+position = Vector2(-8, 0)
 scale = Vector2(2, 2)
 texture = ExtResource("3_rj5ls")
 
