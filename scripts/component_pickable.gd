@@ -1,6 +1,17 @@
+class_name ComponentPickable
 extends Node2D
 
+enum COMPONENT_TYPE {
+	AND_GATE,
+	OR_GATE,
+	SWAP_GATE,
+	NOT_GATE,
+	INIT_GATE,
+	END_GATE,
+}
+
 @export var component: PackedScene
+@export var component_type: COMPONENT_TYPE
 @export var lerp_speed: float
 @export var snap_threshold: float
 
@@ -9,22 +20,39 @@ extends Node2D
 @onready var component_tooltip = $ComponentTooltip
 @onready var area_2d = $Area2D
 
+var _is_handling_events: bool
 var _is_dragged: bool
 var _component_instance: BaseComponent
 var _target_position: Vector2
 
 func _ready():
+	_enable()
+	game.level_loaded.connect(
+		func():
+			if component_type in game.current_level.avaliable_component:
+				_enable()
+			else:
+				_disable()
+	)
+
 	component_tooltip.rotation = -rotation
 	component_tooltip.visible = false
 	
 	area_2d.mouse_entered.connect(_on_area_2d_mouse_entered)
 	area_2d.mouse_exited.connect(_on_area_2d_mouse_exited)
 
+
 func _input(event):
+	if not _is_handling_events:
+		return
+	
 	_handle_drag(event)
 	_handle_drop(event)
 
 func _on_input_event(_viewport, event, _shape_idx):
+	if not _is_handling_events:
+		return
+	
 	_handle_pickup(event)
 
 func _process(delta: float):
@@ -87,6 +115,15 @@ func _snap_to_rings():
 				var diff = radiuses[index] - radiuses[index - 1]
 				new_radiuses.append(radiuses[index - 1] + diff / 2)
 			radiuses = new_radiuses
+		3:
+			if len(radiuses) < 3:
+				radiuses = []
+			
+			var new_radiuses = []
+			for index in range(2, len(radiuses)):
+				var diff = radiuses[index] - radiuses[index - 2]
+				new_radiuses.append(radiuses[index - 2] + diff / 2)
+			radiuses = new_radiuses
 	
 	var component_position = _component_instance.get_anchor_position()
 	var distance = component_position.length()
@@ -99,7 +136,7 @@ func _snap_to_rings():
 			seleted_ring = index
 			selected_distance = new_distance
 	
-	if seleted_ring == -1:
+	if seleted_ring == -1 or not ComponentsSignals.can_attach_component(_component_instance):
 		_component_instance.queue_free()
 		return
 	
@@ -111,8 +148,17 @@ func _snap_to_rings():
 	ComponentsSignals.attach_component(_component_instance)
 	level.update_component_position(_component_instance)
 
+func _enable():
+	visible = true
+	_is_handling_events = true
+
+func _disable():
+	visible = false
+	_is_handling_events = false
+
 func _on_area_2d_mouse_entered():
 	component_tooltip.visible = true
 
 func _on_area_2d_mouse_exited():
 	component_tooltip.visible = false
+

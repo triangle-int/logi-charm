@@ -11,6 +11,7 @@ size = Vector2(14, 16)
 [node name="SwapComponentPickable" type="Node2D"]
 script = ExtResource("1_4087i")
 component = ExtResource("2_mk2h3")
+component_type = 2
 lerp_speed = 10.0
 snap_threshold = 75.0
 

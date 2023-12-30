@@ -1,0 +1,35 @@
+[gd_scene load_steps=6 format=3 uid="uid://dicrkhr1vho8k"]
+
+[ext_resource type="Script" path="res://scripts/component_pickable.gd" id="1_k43go"]
+[ext_resource type="PackedScene" uid="uid://d2o18d7kq0sop" path="res://scenes/components/end_variants/end_component_sandbox_1.tscn" id="2_bdl53"]
+[ext_resource type="Texture2D" uid="uid://dd0yfmfksxq2l" path="res://sprites/gates/end_gate.png" id="3_d8v7h"]
+[ext_resource type="PackedScene" uid="uid://cumt8knq826d0" path="res://scenes/ui/component_tooltip.tscn" id="3_f302e"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nalau"]
+size = Vector2(14, 16)
+
+[node name="EndComponentPickable1" type="Node2D"]
+script = ExtResource("1_k43go")
+component = ExtResource("2_bdl53")
+component_type = 5
+lerp_speed = 10.0
+snap_threshold = 75.0
+
+[node name="ComponentTooltip" parent="." instance=ExtResource("3_f302e")]
+header = "Light Blob"
+width = 1
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("3_d8v7h")
+hframes = 3
+vframes = 2
+frame = 3
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("RectangleShape2D_nalau")
+
+[connection signal="input_event" from="Area2D" to="." method="_on_input_event"]

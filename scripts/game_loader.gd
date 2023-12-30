@@ -1,6 +1,8 @@
 class_name LevelLoader
 extends Node
 
+signal level_loaded
+
 @export var levels: Array[PackedScene]
 
 var current_level: Level = null
@@ -14,6 +16,7 @@ func _ready():
 
 func _input(event: InputEvent):
 	if event.is_action_pressed("toggle_simulation"):
+		print("Pressed")
 		if ComponentsSignals.is_simulating:
 			ComponentsSignals.stop_simulation()
 		else:
@@ -41,6 +44,8 @@ func load_level(index: int):
 	$Center/Rings/Chain2.visible = current_level.rings_config.radiuses.size() > 1
 	$Center/Rings/Chain3.visible = current_level.rings_config.radiuses.size() > 2
 	$Center/Pointer.rings_config = current_level.rings_config
+	
+	level_loaded.emit()
 
 func _on_level_completed():
 	completed.visible = true

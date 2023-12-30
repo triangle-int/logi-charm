@@ -206,6 +206,8 @@ texture_filter = 1
 position = Vector2(-7, 30)
 scale = Vector2(2, 2)
 texture = ExtResource("6_oodhb")
+hframes = 2
+vframes = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Component/RigidBody2D"]
 position = Vector2(0, 33.867)
@@ -282,6 +284,7 @@ position = Vector2(-1, 32)
 scale = Vector2(2, 2)
 texture = ExtResource("9_a7n57")
 hframes = 3
+vframes = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Component4/RigidBody2D"]
 position = Vector2(0, 33.867)

@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://d2o18d7kq0sop"]
+
+[ext_resource type="PackedScene" uid="uid://dtmhm8xn55o03" path="res://scenes/components/end_component.tscn" id="1_cq0s7"]
+
+[node name="EndComponentSandbox1" instance=ExtResource("1_cq0s7")]
+is_recording = true
