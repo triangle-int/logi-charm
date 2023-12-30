@@ -12,10 +12,12 @@ tooltip = "Even my pc has less memory than this chainlet"
 
 [node name="InitComponent" parent="." instance=ExtResource("2_rlpdt")]
 position = Vector2(170, 0)
+locked = true
 
 [node name="EndComponent" parent="." instance=ExtResource("3_btgh8")]
 position = Vector2(90.191, 167.229)
 rotation = 5.207
 activation_seq = Array[bool]([true, true, true, true, true, false])
+locked = true
 angle = 5.207
 width = 2

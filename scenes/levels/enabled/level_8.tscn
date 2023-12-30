@@ -12,10 +12,12 @@ tooltip = "You'll need a lot of memory for this one"
 
 [node name="InitComponent" parent="." instance=ExtResource("3_cieqg")]
 position = Vector2(170, 0)
+locked = true
 
 [node name="EndComponent" parent="." instance=ExtResource("4_tr38v")]
 position = Vector2(-24.1385, 188.46)
 rotation = 4.585
 activation_seq = Array[bool]([true, true, true, false, true])
+locked = true
 angle = 4.585
 width = 2

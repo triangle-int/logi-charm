@@ -13,10 +13,12 @@ tooltip = "You'll need some complex logic to achieve this signal sequence"
 [node name="InitComponent" parent="." instance=ExtResource("3_gwy5d")]
 position = Vector2(170, 0)
 start_high = true
+locked = true
 
 [node name="EndComponent" parent="." instance=ExtResource("4_t761q")]
 position = Vector2(-0.0739063, 190)
 rotation = 4.712
 activation_seq = Array[bool]([false, true, true])
+locked = true
 angle = 4.712
 width = 2

@@ -17,6 +17,7 @@ var activated_count = 0
 func _process(_delta):
 	if Engine.is_editor_hint():
 		update_components_positions()
+		return
 	
 	ComponentsSignals.simulation_started.connect(
 		func(): activated_count = 0

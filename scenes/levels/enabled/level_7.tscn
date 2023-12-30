@@ -12,10 +12,12 @@ tooltip = "Even more complex logic this time"
 
 [node name="InitComponent" parent="." instance=ExtResource("3_lf6vc")]
 position = Vector2(170, 0)
+locked = true
 
 [node name="EndComponent" parent="." instance=ExtResource("7_7qrn5")]
 position = Vector2(90.3582, 167.139)
 rotation = 5.208
 activation_seq = Array[bool]([true, true, false, true])
+locked = true
 angle = 5.208
 width = 2
