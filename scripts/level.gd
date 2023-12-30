@@ -35,7 +35,8 @@ func on_end_activated():
 		game_over.emit()
 
 func update_components_positions():
-	chains.clear()
+	if chains != null:
+		chains.clear()
 	
 	for child: Node2D in get_children():
 		var angle = child.angle
@@ -45,10 +46,11 @@ func update_components_positions():
 			range(child.attached_to, child.attached_to + child.width)\
 			.map(func(i): return rings_config.radiuses[i])
 	
-		chains.generate(
-			unit_positon * distances.front(),
-			unit_positon * distances.back()
-		)
+		if chains != null:
+			chains.generate(
+				unit_positon * distances.front(),
+				unit_positon * distances.back()
+			)
 		
 		var distance = distances.reduce(func(a, b): return a + b, 0) / len(distances)
 		child.position = unit_positon * distance
