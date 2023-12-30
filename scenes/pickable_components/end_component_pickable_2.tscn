@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://cjfd6m2n1145f"]
+[gd_scene load_steps=6 format=3 uid="uid://cjfd6m2n1145f"]
 
 [ext_resource type="Script" path="res://scripts/component_pickable.gd" id="1_h5wfm"]
 [ext_resource type="PackedScene" uid="uid://dhfgdc0p174ud" path="res://scenes/components/end_variants/end_component_sandbox_2.tscn" id="2_ybq38"]
 [ext_resource type="Texture2D" uid="uid://dd0yfmfksxq2l" path="res://sprites/gates/end_gate.png" id="3_alfeo"]
+[ext_resource type="PackedScene" uid="uid://cumt8knq826d0" path="res://scenes/ui/component_tooltip.tscn" id="3_cfir6"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_nalau"]
 size = Vector2(14, 16)
@@ -13,6 +14,10 @@ component = ExtResource("2_ybq38")
 component_type = 5
 lerp_speed = 10.0
 snap_threshold = 75.0
+
+[node name="ComponentTooltip" parent="." instance=ExtResource("3_cfir6")]
+header = "Light Blob"
+width = 2
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture_filter = 1
