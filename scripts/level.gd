@@ -28,12 +28,13 @@ func start_level():
 		if child is EndComponent:
 			end_count += 1
 			child.activated.connect(on_end_activated)
+			child.detached.connect(func(): level_failed.emit())
 
 func on_end_activated():
 	activated_count += 1
 	
 	if activated_count >= end_count:
-		print("Level completed!!")
+		print("Level completed!")
 		level_completed.emit()
 
 func update_components_positions(smooth: bool = true):

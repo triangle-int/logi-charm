@@ -3,6 +3,7 @@ class_name EndComponent
 extends BaseComponent
 
 signal activated
+signal detached
 
 @export var activation_seq: Array[bool]
 @export var is_recording: bool
@@ -66,4 +67,4 @@ func _on_receive(index: int, high: bool):
 func _detach():
 	is_detached = true
 	sprite_2d.frame = 2
-	pass
+	detached.emit()
