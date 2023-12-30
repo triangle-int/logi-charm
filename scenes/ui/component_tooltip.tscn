@@ -1,0 +1,82 @@
+[gd_scene load_steps=6 format=3 uid="uid://cumt8knq826d0"]
+
+[ext_resource type="FontFile" uid="uid://dbqojy1yc5n6y" path="res://fonts/PixelifySans-Medium.ttf" id="1_6mhji"]
+[ext_resource type="Script" path="res://scripts/ui/component_tooltip.gd" id="1_ykwlx"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_xsaxc"]
+font = ExtResource("1_6mhji")
+font_size = 30
+
+[sub_resource type="LabelSettings" id="LabelSettings_7nae8"]
+font = ExtResource("1_6mhji")
+font_size = 20
+
+[sub_resource type="LabelSettings" id="LabelSettings_3grsf"]
+font = ExtResource("1_6mhji")
+font_size = 12
+
+[node name="ComponentTooltip" type="Node2D"]
+script = ExtResource("1_ykwlx")
+
+[node name="Background" type="ColorRect" parent="."]
+z_index = 2
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_top = -75.0
+offset_right = 200.0
+offset_bottom = 75.0
+grow_horizontal = 2
+grow_vertical = 0
+scale = Vector2(0.5, 0.5)
+mouse_filter = 2
+color = Color(0.0470588, 0.0470588, 0.0470588, 0.588235)
+
+[node name="Header" type="Label" parent="Background"]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -100.0
+offset_right = 100.0
+offset_bottom = 40.0
+grow_horizontal = 2
+text = "Swapper"
+label_settings = SubResource("LabelSettings_xsaxc")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Width" type="Label" parent="Background"]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -100.0
+offset_top = 40.0
+offset_right = 100.0
+offset_bottom = 65.0
+grow_horizontal = 2
+text = "Width: 14"
+label_settings = SubResource("LabelSettings_7nae8")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Description" type="Label" parent="Background"]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -90.0
+offset_top = 65.0
+offset_right = 90.0
+offset_bottom = 150.0
+grow_horizontal = 2
+text = "Swaps crap blah blah blah"
+label_settings = SubResource("LabelSettings_3grsf")
+vertical_alignment = 1
+autowrap_mode = 2

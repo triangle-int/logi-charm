@@ -74,3 +74,8 @@ func detach_all_components():
 
 func detach_component(component: BaseComponent):
 	components.erase(component)
+
+func can_attach_component(component: BaseComponent) -> bool:
+	if component is InitComponent:
+		return not components.any(func(comp): return comp is InitComponent)
+	return true

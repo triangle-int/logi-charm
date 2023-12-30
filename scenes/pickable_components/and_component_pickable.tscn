@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://c174mm6nxtje0"]
+[gd_scene load_steps=6 format=3 uid="uid://c174mm6nxtje0"]
 
 [ext_resource type="Script" path="res://scripts/component_pickable.gd" id="1_nvqr1"]
 [ext_resource type="PackedScene" uid="uid://blp38uqok1hw2" path="res://scenes/components/and_component.tscn" id="2_k7e65"]
 [ext_resource type="Texture2D" uid="uid://e4udc2n6ulhw" path="res://sprites/gates/and_gate.png" id="3_1l1f0"]
+[ext_resource type="PackedScene" uid="uid://cumt8knq826d0" path="res://scenes/ui/component_tooltip.tscn" id="3_dajv6"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_nalau"]
 size = Vector2(12, 16)
@@ -12,6 +13,11 @@ script = ExtResource("1_nvqr1")
 component = ExtResource("2_k7e65")
 lerp_speed = 10.0
 snap_threshold = 75.0
+
+[node name="ComponentTooltip" parent="." instance=ExtResource("3_dajv6")]
+header = "And Charm"
+width = 2
+description = "Remembers last signals for each chainlet. Returns red if both were red, blue otherwise."
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture_filter = 1

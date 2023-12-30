@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://bdoqbc22revfl"]
+[gd_scene load_steps=6 format=3 uid="uid://bdoqbc22revfl"]
 
 [ext_resource type="Script" path="res://scripts/component_pickable.gd" id="1_53oa5"]
 [ext_resource type="Texture2D" uid="uid://bquoii7l4rxt" path="res://sprites/gates/not_gate.png" id="1_jtm3u"]
 [ext_resource type="PackedScene" uid="uid://xjea3vckpfat" path="res://scenes/components/not_component.tscn" id="2_fj7eo"]
+[ext_resource type="PackedScene" uid="uid://cumt8knq826d0" path="res://scenes/ui/component_tooltip.tscn" id="3_k6jsq"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ptnhc"]
 size = Vector2(12, 16)
@@ -10,8 +11,14 @@ size = Vector2(12, 16)
 [node name="NotComponentPickable" type="Node2D"]
 script = ExtResource("1_53oa5")
 component = ExtResource("2_fj7eo")
+component_type = 3
 lerp_speed = 10.0
 snap_threshold = 75.0
+
+[node name="ComponentTooltip" parent="." instance=ExtResource("3_k6jsq")]
+header = "Inverter"
+width = 1
+description = "Changes signal type to the opposite"
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture_filter = 1

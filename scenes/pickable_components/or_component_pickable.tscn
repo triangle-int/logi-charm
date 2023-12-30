@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://bwml0adtupjp0"]
+[gd_scene load_steps=6 format=3 uid="uid://bwml0adtupjp0"]
 
 [ext_resource type="Script" path="res://scripts/component_pickable.gd" id="1_rv3px"]
 [ext_resource type="PackedScene" uid="uid://p6kikp3bppfh" path="res://scenes/components/or_component.tscn" id="2_2sufw"]
 [ext_resource type="Texture2D" uid="uid://b5o1desqe0lp2" path="res://sprites/gates/or_gate.png" id="3_io24y"]
+[ext_resource type="PackedScene" uid="uid://cumt8knq826d0" path="res://scenes/ui/component_tooltip.tscn" id="3_n38se"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_nalau"]
 size = Vector2(12, 16)
@@ -10,8 +11,14 @@ size = Vector2(12, 16)
 [node name="OrComponentPickable" type="Node2D"]
 script = ExtResource("1_rv3px")
 component = ExtResource("2_2sufw")
+component_type = 1
 lerp_speed = 10.0
 snap_threshold = 75.0
+
+[node name="ComponentTooltip" parent="." instance=ExtResource("3_n38se")]
+header = "Or Charm"
+width = 2
+description = "Remembers last signals for each chainlet. Returns red if either one was red, blue otherwise."
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture_filter = 1

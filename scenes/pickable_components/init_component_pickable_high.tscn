@@ -1,0 +1,35 @@
+[gd_scene load_steps=6 format=3 uid="uid://dtr4hn8dpc36s"]
+
+[ext_resource type="Script" path="res://scripts/component_pickable.gd" id="1_rpcns"]
+[ext_resource type="PackedScene" uid="uid://con0f6i3pr3l" path="res://scenes/components/init_variants/init_component_high.tscn" id="2_xxcvb"]
+[ext_resource type="Texture2D" uid="uid://it8m201ieb2f" path="res://sprites/gates/init_gate.png" id="3_44877"]
+[ext_resource type="PackedScene" uid="uid://cumt8knq826d0" path="res://scenes/ui/component_tooltip.tscn" id="3_et57v"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nalau"]
+size = Vector2(16, 16)
+
+[node name="InitComponentPickableHigh" type="Node2D"]
+script = ExtResource("1_rpcns")
+component = ExtResource("2_xxcvb")
+component_type = 4
+lerp_speed = 10.0
+snap_threshold = 75.0
+
+[node name="ComponentTooltip" parent="." instance=ExtResource("3_et57v")]
+header = "Electro Charm"
+width = 1
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("3_44877")
+hframes = 2
+vframes = 2
+frame = 2
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("RectangleShape2D_nalau")
+
+[connection signal="input_event" from="Area2D" to="." method="_on_input_event"]
