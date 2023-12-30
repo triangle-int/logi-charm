@@ -23,5 +23,3 @@ text = "00"
 label_settings = SubResource("LabelSettings_ywhhc")
 horizontal_alignment = 1
 vertical_alignment = 1
-
-[connection signal="pressed" from="." to="." method="_on_pressed"]
