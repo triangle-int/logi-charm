@@ -12,10 +12,12 @@ tooltip = "You have 3 chainlets. Use them wisely."
 
 [node name="InitComponent" parent="." instance=ExtResource("3_vg8sd")]
 position = Vector2(170, 0)
+locked = true
 
 [node name="EndComponent" parent="." instance=ExtResource("8_o0fdx")]
 position = Vector2(-209.915, 5.96474)
 rotation = 3.17
 activation_seq = Array[bool]([true, true, true, false, false, false])
+locked = true
 angle = 3.17
 width = 3

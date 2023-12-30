@@ -12,11 +12,13 @@ tooltip = "The bottom lamp is on the outer chainlet. You need to somehow move th
 
 [node name="InitComponent" parent="." instance=ExtResource("3_gikh0")]
 position = Vector2(170, 0)
+locked = true
 
 [node name="EndComponent1" parent="." instance=ExtResource("5_oo6xw")]
 position = Vector2(-190, 0.0773958)
 rotation = 3.142
 activation_seq = Array[bool]([false, false])
+is_recording = true
 angle = 3.142
 width = 2
 
@@ -24,5 +26,6 @@ width = 2
 position = Vector2(-0.0816859, 210)
 rotation = 4.712
 activation_seq = Array[bool]([false])
+is_recording = true
 angle = 4.712
 attached_to = 1
