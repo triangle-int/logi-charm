@@ -4,10 +4,9 @@ extends Node
 @export var levels: Array[PackedScene]
 
 var current_level: Level = null
-var current_index: int = -1
+var current_index
 
-func _ready():
-	load_level((current_index + 1) % len(levels))
+@onready var completed_text = $UI/CompletedText
 
 # For debugging
 func _input(event: InputEvent):
@@ -26,9 +25,11 @@ func load_level(index: int):
 
 	if current_level != null:
 		current_level.queue_free()
+		current_level.level_completed.disconnect(_on_level_completed)
 	
 	current_index = index
 	current_level = levels[index].instantiate() as Level
+	current_level.level_completed.connect(_on_level_completed)
 	$Center.add_child(current_level)
 	current_level.start_level()
 	
@@ -36,3 +37,12 @@ func load_level(index: int):
 	$Center/Rings/Chain2.visible = current_level.rings_config.radiuses.size() > 1
 	$Center/Rings/Chain3.visible = current_level.rings_config.radiuses.size() > 2
 	$Center/Pointer.rings_config = current_level.rings_config
+
+func _on_level_completed():
+	completed_text.visible = true
+	LevelProgressManager.save_level_beaten(current_index)
+
+func _on_back_to_menu_button_pressed():
+	ComponentsSignals.stop_simulation()
+	ComponentsSignals.detach_all_components()
+	LoadManager.load_scene("res://scenes/level_selector.tscn")

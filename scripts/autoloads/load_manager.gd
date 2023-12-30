@@ -1,7 +1,7 @@
 extends Node
 
 signal progress_changed(progress: float);
-signal load_done;
+signal load_done(node: Node);
 
 var _load_screen_path = "res://scenes/loading_screen.tscn";
 var _load_screen = load(_load_screen_path);
@@ -9,6 +9,7 @@ var _loaded_resource: PackedScene;
 var _scene_path: String;
 var _progress = [];
 
+var currently_loaded: Node = null;
 var use_sub_threads = true;
 
 
@@ -42,7 +43,15 @@ func _process(_delta):
 			progress_changed.emit(_progress[0]);
 		3:
 			_loaded_resource = ResourceLoader.load_threaded_get(_scene_path);
+			var node = _loaded_resource.instantiate()
+			
 			progress_changed.emit(1.0);
-			load_done.emit();
-			get_tree().change_scene_to_packed(_loaded_resource);
+			load_done.emit(node)
+			
+			get_parent().add_child(node)
+			
+			if currently_loaded != null:
+				currently_loaded.queue_free()
+			
+			currently_loaded = node
 			set_process(false);

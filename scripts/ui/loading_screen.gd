@@ -15,15 +15,15 @@ signal loading_screen_has_full_coverage
 func _ready():
 	light_bulb.texture = off_light_bulb
 
-func _process(delta):
+func _process(_delta):
 	var time_passed = timer.wait_time - timer.time_left
 	light_bulb.rotation = deg_to_rad(max_angle) * exp(-time_passed) \
 		* cos(time_passed * TAU * frequency) 
 
-func update_progress_bar(value: float):
+func update_progress_bar(_value: float):
 	pass
 
-func start_outro_animation():
+func start_outro_animation(_node: Node):
 	light_bulb.texture = on_light_bulb
 	animation_player.play("end_load")
 	await animation_player.animation_finished
