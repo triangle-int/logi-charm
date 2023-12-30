@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=3 uid="uid://bgiov8vdeao7u"]
+[gd_scene load_steps=36 format=3 uid="uid://bgiov8vdeao7u"]
 
 [ext_resource type="PackedScene" uid="uid://b60ca387m477t" path="res://scenes/pointer.tscn" id="1_vpf3b"]
 [ext_resource type="Script" path="res://scripts/game_loader.gd" id="1_wymu5"]
@@ -30,10 +30,23 @@
 [ext_resource type="Script" path="res://scripts/ui/exit_button.gd" id="28_edp51"]
 [ext_resource type="Texture2D" uid="uid://bql6xydoahotj" path="res://sprites/ui/tooltip_background.png" id="29_2mrb7"]
 [ext_resource type="FontFile" uid="uid://g3a0ildjxla8" path="res://fonts/PixelifySans-Bold.ttf" id="30_6gxwk"]
+[ext_resource type="FontFile" uid="uid://bykwdchltiw6v" path="res://fonts/PixelifySans-Regular.ttf" id="31_rgsqy"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_ulxts"]
 font = ExtResource("30_6gxwk")
 font_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_wu5w0"]
+font = ExtResource("31_rgsqy")
+font_size = 42
+
+[sub_resource type="LabelSettings" id="LabelSettings_hhg4g"]
+font = ExtResource("31_rgsqy")
+font_size = 24
+
+[sub_resource type="LabelSettings" id="LabelSettings_2e177"]
+font = ExtResource("31_rgsqy")
+font_size = 24
 
 [node name="Game" type="Node2D"]
 script = ExtResource("1_wymu5")
@@ -133,13 +146,10 @@ offset_right = 25.0
 offset_bottom = -9.0
 grow_horizontal = 2
 grow_vertical = 0
-toggle_mode = true
-texture_normal = ExtResource("24_p3hli")
-texture_pressed = ExtResource("25_8q741")
-texture_hover = ExtResource("24_p3hli")
-texture_disabled = ExtResource("24_p3hli")
 stretch_mode = 0
 script = ExtResource("25_qyscn")
+disabled_texture = ExtResource("24_p3hli")
+enabled_texture = ExtResource("25_8q741")
 
 [node name="ExitButton" type="TextureButton" parent="UI"]
 texture_filter = 1
@@ -203,5 +213,152 @@ text = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse eu 
 label_settings = SubResource("LabelSettings_ulxts")
 autowrap_mode = 1
 
+[node name="Completed" type="ColorRect" parent="UI"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -200.0
+offset_top = -100.0
+offset_right = 200.0
+offset_bottom = 100.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+color = Color(0.12549, 0.12549, 0.12549, 0.831373)
+
+[node name="Label" type="Label" parent="UI/Completed"]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -192.0
+offset_top = -95.0
+offset_right = 194.0
+offset_bottom = -35.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Level completed!"
+label_settings = SubResource("LabelSettings_wu5w0")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="NextLevelButton" type="Button" parent="UI/Completed"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -100.0
+offset_top = -24.0
+offset_right = 100.0
+offset_bottom = 26.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="UI/Completed/NextLevelButton"]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Next Level"
+label_settings = SubResource("LabelSettings_hhg4g")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="BackToMenuButton2" type="Button" parent="UI/Completed"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -100.0
+offset_top = 34.0
+offset_right = 100.0
+offset_bottom = 84.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="UI/Completed/BackToMenuButton2"]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Back to menu"
+label_settings = SubResource("LabelSettings_2e177")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Failed" type="ColorRect" parent="UI"]
+visible = false
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -200.0
+offset_top = -100.0
+offset_right = 200.0
+offset_bottom = 100.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 4
+color = Color(0.12549, 0.12549, 0.12549, 0.831373)
+
+[node name="Label" type="Label" parent="UI/Failed"]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -192.0
+offset_top = -95.0
+offset_right = 194.0
+offset_bottom = -35.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Level failed!"
+label_settings = SubResource("LabelSettings_wu5w0")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Continue" type="Button" parent="UI/Failed"]
+layout_mode = 0
+offset_left = 100.0
+offset_top = 134.0
+offset_right = 300.0
+offset_bottom = 184.0
+
+[node name="Label" type="Label" parent="UI/Failed/Continue"]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Continue"
+label_settings = SubResource("LabelSettings_hhg4g")
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [connection signal="toggled" from="UI/ToggleButton" to="UI/ToggleButton" method="_on_toggled"]
 [connection signal="pressed" from="UI/ExitButton" to="UI/ExitButton" method="_on_pressed"]
+[connection signal="pressed" from="UI/Completed/NextLevelButton" to="." method="_on_next_level_button_pressed"]
+[connection signal="pressed" from="UI/Completed/BackToMenuButton2" to="." method="_on_back_to_menu_button_pressed"]
+[connection signal="pressed" from="UI/Failed/Continue" to="." method="_on_continue_pressed"]
