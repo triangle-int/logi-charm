@@ -24,6 +24,7 @@ func update_progress_bar(_value: float):
 	pass
 
 func start_outro_animation():
+	AudioManager.lamp_activated()
 	light_bulb.texture = on_light_bulb
 	animation_player.play("end_load")
 	await animation_player.animation_finished

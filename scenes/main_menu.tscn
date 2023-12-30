@@ -294,4 +294,6 @@ vframes = 2
 position = Vector2(0, 33.867)
 shape = SubResource("RectangleShape2D_hl4qm")
 
+[connection signal="button_down" from="Menu/SelectLevels" to="Menu/SelectLevels" method="_on_button_down"]
 [connection signal="pressed" from="Menu/SelectLevels" to="Menu/SelectLevels" method="_on_pressed"]
+[connection signal="button_down" from="Menu/Sandbox" to="Menu/Sandbox" method="_on_button_down"]

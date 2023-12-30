@@ -22,6 +22,7 @@ ComponentsSignals="*res://scripts/signal_manager.gd"
 LoadManager="*res://scripts/autoloads/load_manager.gd"
 LevelProgressManager="*res://scripts/progress/progress_manager.gd"
 LevelManager="*res://scripts/autoloads/level_manager.gd"
+AudioManager="*res://scenes/audio_manager.tscn"
 
 [display]
 

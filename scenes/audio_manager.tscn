@@ -1,0 +1,48 @@
+[gd_scene load_steps=11 format=3 uid="uid://4auroetdiedi"]
+
+[ext_resource type="AudioStream" uid="uid://b4ur6bhai2le0" path="res://audio/music.ogg" id="1_f71yk"]
+[ext_resource type="Script" path="res://scripts/audio_manager.gd" id="1_ub4cn"]
+[ext_resource type="AudioStream" uid="uid://b6fpwgph0xe5n" path="res://audio/button_click.mp3" id="2_ggjbp"]
+[ext_resource type="AudioStream" uid="uid://uy43lffmyce6" path="res://audio/signal_1.mp3" id="4_lsogs"]
+[ext_resource type="AudioStream" uid="uid://be0d2tqsilqy8" path="res://audio/lamp.ogg" id="4_v5mxi"]
+[ext_resource type="AudioStream" uid="uid://c2p5jrt7tmdc3" path="res://audio/signal_2.mp3" id="5_tw1gk"]
+[ext_resource type="AudioStream" uid="uid://c5yhfbklimuj7" path="res://audio/signal_3.mp3" id="6_e8cyp"]
+[ext_resource type="AudioStream" uid="uid://cjt6y5otcg20v" path="res://audio/signal_4.mp3" id="7_1sesl"]
+[ext_resource type="AudioStream" uid="uid://caqbdj2uxude2" path="res://audio/lose.ogg" id="9_8b2cb"]
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_d1nf6"]
+streams_count = 4
+stream_0/stream = ExtResource("4_lsogs")
+stream_0/weight = 1.0
+stream_1/stream = ExtResource("5_tw1gk")
+stream_1/weight = 1.0
+stream_2/stream = ExtResource("6_e8cyp")
+stream_2/weight = 1.0
+stream_3/stream = ExtResource("7_1sesl")
+stream_3/weight = 1.0
+
+[node name="AudioManager" type="Node2D"]
+script = ExtResource("1_ub4cn")
+
+[node name="MusicPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("1_f71yk")
+autoplay = true
+
+[node name="ButtonPressPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_ggjbp")
+max_polyphony = 4
+
+[node name="ComponentSignalPlayer" type="AudioStreamPlayer" parent="."]
+stream = SubResource("AudioStreamRandomizer_d1nf6")
+volume_db = -8.0
+max_polyphony = 10
+
+[node name="LampPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_v5mxi")
+volume_db = 13.719
+max_polyphony = 4
+
+[node name="LosePlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("9_8b2cb")
+volume_db = -7.0
+max_polyphony = 4

@@ -47,6 +47,7 @@ func send_signal(index: int, high: bool, from: BaseComponent):
 	
 	var start_angle = from.angle
 	var end_angle = next.angle + (TAU if next.angle < from.angle else 0.0)
+	AudioManager.component_signal_emitted()
 	signal_out.emit(index, high, start_angle, end_angle)
 	
 	var timer = Timer.new()

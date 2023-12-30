@@ -127,3 +127,5 @@ text = "Back to Main Menu"
 label_settings = SubResource("LabelSettings_i1h5s")
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[connection signal="button_down" from="Menu/Button" to="Menu/Button" method="_on_button_down"]
