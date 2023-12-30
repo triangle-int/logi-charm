@@ -6,6 +6,9 @@ extends Node
 var current_level: Level = null
 var current_index: int = -1
 
+func _ready():
+	load_level((current_index + 1) % len(levels))
+
 # For debugging
 func _input(event: InputEvent):
 	if event.is_action_pressed("ui_accept"):

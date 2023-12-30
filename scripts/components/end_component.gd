@@ -7,7 +7,6 @@ signal activated
 @export var activation_seq: Array[bool]
 
 var is_activated = false
-var is_detached = false
 var last_index = 0
 
 @onready var level: Level = $".."
@@ -26,7 +25,7 @@ func _ready():
 func _on_receive(index: int, high: bool):
 	super(index, high)
 	
-	if is_activated or is_detached:
+	if is_activated:
 		return
 	
 	if activation_seq[last_index] == high:
@@ -41,5 +40,5 @@ func _on_receive(index: int, high: bool):
 		sprite_2d.frame = 0
 
 func _detach():
-	is_detached = true
 	# TODO: Create detaching logic
+	pass

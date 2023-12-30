@@ -9,26 +9,33 @@ var _is_dragged: bool
 var _component_instance: BaseComponent
 
 func _input(event):
-	_handle_pickup(event)
 	_handle_drag(event)
+	_handle_drop(event)
+
+func _on_input_event(_viewport, event, _shape_idx):
+	_handle_pickup(event)
 
 func _handle_pickup(event):
+	if not event is InputEventMouseButton:
+		return
+	
+	if event.button_index != MOUSE_BUTTON_LEFT or not event.pressed:
+		return
+	
+	_is_dragged = true
+	_component_instance = component.instantiate() as BaseComponent
+	game.current_level.add_child(_component_instance)
+	_component_instance.position = game.current_level.to_local(event.global_position)
+
+func _handle_drop(event):
 	if not event is InputEventMouseButton:
 		return
 	
 	if event.button_index != MOUSE_BUTTON_LEFT:
 		return
 	
-	if event.pressed and not sprite_2d.get_rect().has_point(to_local(event.position)):
-		return
-	
-	_is_dragged = event.pressed
-	
-	if _is_dragged:
-		_component_instance = component.instantiate() as BaseComponent
-		game.current_level.add_child(_component_instance)
-		_component_instance.global_position = event.position 
-	elif _component_instance != null:
+	_is_dragged = false
+	if _component_instance != null:
 		_snap_to_rings()
 		_component_instance = null
 
@@ -39,7 +46,7 @@ func _handle_drag(event):
 	if not _is_dragged:
 		return
 	
-	_component_instance.global_position = event.position
+	_component_instance.position = game.current_level.to_local(event.position)
 
 func _snap_to_rings():
 	ComponentsSignals.stop_simulation()
