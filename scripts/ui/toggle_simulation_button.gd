@@ -1,7 +1,11 @@
 extends TextureButton
 
-@export var disabled_texture: Texture2D
-@export var enabled_texture: Texture2D
+@export var disabled_texture_normal: Texture2D
+@export var disabled_texture_hover: Texture2D
+@export var disabled_texture_pressed: Texture2D
+@export var enabled_texture_normal: Texture2D
+@export var enabled_texture_hover: Texture2D
+@export var enabled_texture_pressed: Texture2D
 
 var enabled: bool
 
@@ -30,8 +34,6 @@ func _pressed():
 		ComponentsSignals.stop_simulation()
 
 func update_texture():
-	var texture = enabled_texture if enabled else disabled_texture
-	texture_normal = texture
-	texture_pressed = texture
-	texture_hover = texture
-	texture_disabled = texture
+	texture_normal = enabled_texture_normal if enabled else disabled_texture_normal
+	texture_pressed = enabled_texture_pressed if enabled else disabled_texture_pressed
+	texture_hover = enabled_texture_hover if enabled else disabled_texture_hover

@@ -1,4 +1,4 @@
-[gd_scene load_steps=36 format=3 uid="uid://bgiov8vdeao7u"]
+[gd_scene load_steps=40 format=3 uid="uid://bgiov8vdeao7u"]
 
 [ext_resource type="PackedScene" uid="uid://b60ca387m477t" path="res://scenes/pointer.tscn" id="1_vpf3b"]
 [ext_resource type="Script" path="res://scripts/game_loader.gd" id="1_wymu5"]
@@ -23,13 +23,17 @@
 [ext_resource type="PackedScene" uid="uid://bdoqbc22revfl" path="res://scenes/pickable_components/not_component_pickable.tscn" id="14_1ffrp"]
 [ext_resource type="PackedScene" uid="uid://c174mm6nxtje0" path="res://scenes/pickable_components/and_component_pickable.tscn" id="14_qci3a"]
 [ext_resource type="PackedScene" uid="uid://bwml0adtupjp0" path="res://scenes/pickable_components/or_component_pickable.tscn" id="15_2w61e"]
-[ext_resource type="Texture2D" uid="uid://dei3h4ljadyx7" path="res://sprites/ui/play_button_normal.png" id="24_p3hli"]
-[ext_resource type="Texture2D" uid="uid://678xdru1vvgm" path="res://sprites/ui/stop_button.png" id="25_8q741"]
 [ext_resource type="Script" path="res://scripts/ui/toggle_simulation_button.gd" id="25_qyscn"]
+[ext_resource type="Texture2D" uid="uid://sjiry04yf2ey" path="res://sprites/ui/play_button_normal.tres" id="26_5wa0x"]
 [ext_resource type="Texture2D" uid="uid://c1yyn4mcp0ck0" path="res://sprites/ui/exit_button.png" id="27_203qk"]
+[ext_resource type="Texture2D" uid="uid://fabywtakd1j3" path="res://sprites/ui/play_button_hover.tres" id="27_wl7da"]
 [ext_resource type="Script" path="res://scripts/ui/exit_button.gd" id="28_edp51"]
+[ext_resource type="Texture2D" uid="uid://bp6nns63ae3ti" path="res://sprites/ui/stop_button_normal.tres" id="28_vfvg1"]
+[ext_resource type="Texture2D" uid="uid://dab15jyvfs8i6" path="res://sprites/ui/play_button_pressed.tres" id="28_x4hyq"]
 [ext_resource type="Texture2D" uid="uid://bql6xydoahotj" path="res://sprites/ui/tooltip_background.png" id="29_2mrb7"]
+[ext_resource type="Texture2D" uid="uid://cwimlv8to6dn4" path="res://sprites/ui/stop_button_hover.tres" id="29_3onu8"]
 [ext_resource type="FontFile" uid="uid://g3a0ildjxla8" path="res://fonts/PixelifySans-Bold.ttf" id="30_6gxwk"]
+[ext_resource type="Texture2D" uid="uid://dtdsq3g1undcd" path="res://sprites/ui/stop_button_pressed.tres" id="30_oj1ie"]
 [ext_resource type="FontFile" uid="uid://bykwdchltiw6v" path="res://fonts/PixelifySans-Regular.ttf" id="31_rgsqy"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_ulxts"]
@@ -148,8 +152,12 @@ grow_horizontal = 2
 grow_vertical = 0
 stretch_mode = 0
 script = ExtResource("25_qyscn")
-disabled_texture = ExtResource("24_p3hli")
-enabled_texture = ExtResource("25_8q741")
+disabled_texture_normal = ExtResource("26_5wa0x")
+disabled_texture_hover = ExtResource("27_wl7da")
+disabled_texture_pressed = ExtResource("28_x4hyq")
+enabled_texture_normal = ExtResource("28_vfvg1")
+enabled_texture_hover = ExtResource("29_3onu8")
+enabled_texture_pressed = ExtResource("30_oj1ie")
 
 [node name="ExitButton" type="TextureButton" parent="UI"]
 texture_filter = 1
