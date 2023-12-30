@@ -34,6 +34,7 @@ shape = SubResource("CircleShape2D_hrv33")
 
 [node name="RigidBody2D" type="RigidBody2D" parent="."]
 collision_mask = 0
+input_pickable = true
 angular_damp = 5.0
 
 [node name="Sprite2D" type="Sprite2D" parent="RigidBody2D"]
@@ -110,3 +111,5 @@ texture = ExtResource("4_gloru")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D"]
 position = Vector2(0, 35)
 shape = SubResource("RectangleShape2D_a84af")
+
+[connection signal="input_event" from="RigidBody2D" to="." method="_on_input_event"]

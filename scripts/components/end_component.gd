@@ -15,9 +15,12 @@ var last_index = 0
 
 func _ready():
 	sprite_2d.frame = 1
-	
+
+func _prepare_for_simulation():
+	super()
 	ComponentsSignals.simulation_started.connect(
 		func():
+			sprite_2d.frame = 1
 			is_activated = false
 			last_index = 0
 	)

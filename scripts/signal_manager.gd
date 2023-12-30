@@ -4,6 +4,7 @@ extends Node
 
 signal signal_out(index: int, high: bool, angle_start: float, angle_end: float)
 signal simulation_started
+signal simulation_stopped
 
 const SIGNAL_SPEED = PI / 2
 
@@ -21,6 +22,7 @@ func stop_simulation():
 	
 	timers = []
 	is_simulating = false
+	simulation_stopped.emit()
 
 func send_signal(index: int, high: bool, from: BaseComponent):
 	if not is_simulating:
@@ -62,6 +64,7 @@ func send_signal(index: int, high: bool, from: BaseComponent):
 
 func attach_component(component: BaseComponent):
 	components.append(component)
+	component._prepare_for_simulation()
 
 func detach_all_components():
 	components = []

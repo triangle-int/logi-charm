@@ -2,6 +2,7 @@ class_name BaseComponent
 
 extends Node2D
 
+@export var locked: bool
 @export_range(0, TAU) var angle: float
 @export var attached_to: int
 @export var width: int
@@ -13,7 +14,7 @@ extends Node2D
 
 var memory: Dictionary = {}
 
-func _ready():
+func _prepare_for_simulation():
 	if memory_view != null:
 		memory_view.set_angle(angle)
 	
@@ -21,6 +22,12 @@ func _ready():
 		func():
 			for ring in range(width):
 				set_memory(ring, false)
+			rigid_body_2d.freeze = false
+	)
+	
+	ComponentsSignals.simulation_stopped.connect(
+		func():
+			rigid_body_2d.freeze = true
 	)
 
 func receive_signal(index: int, high: bool):
@@ -57,8 +64,10 @@ func set_body_position(new_position: Vector2):
 func set_body_rotation(new_angle: float):
 	rigid_body_2d.rotation = new_angle
 
-func _on_input_event(viewport, event, shape_idx):
+func _on_input_event(_viewport, event, _shape_idx):
 	if event is InputEventMouseButton and event.pressed and event.button_index == MOUSE_BUTTON_RIGHT:
+		if locked:
+			return
 		print("Removing component ", name)
 		ComponentsSignals.stop_simulation()
 		ComponentsSignals.detach_component(self)
