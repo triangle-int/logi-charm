@@ -1,7 +1,8 @@
-[gd_scene load_steps=49 format=3 uid="uid://bgiov8vdeao7u"]
+[gd_scene load_steps=50 format=3 uid="uid://bgiov8vdeao7u"]
 
 [ext_resource type="PackedScene" uid="uid://b60ca387m477t" path="res://scenes/pointer.tscn" id="1_vpf3b"]
 [ext_resource type="Script" path="res://scripts/game_loader.gd" id="1_wymu5"]
+[ext_resource type="PackedScene" uid="uid://dmhixatgo8xk8" path="res://scenes/levels/enabled/sandbox.tscn" id="2_2x3gs"]
 [ext_resource type="PackedScene" uid="uid://cunwq4ykl2eh7" path="res://scenes/levels/enabled/level_2.tscn" id="3_7d0rd"]
 [ext_resource type="PackedScene" uid="uid://dg4tgewsq1sgl" path="res://scenes/levels/enabled/level_1.tscn" id="3_11sif"]
 [ext_resource type="Texture2D" uid="uid://cls3lb181j2bm" path="res://sprites/background/rings_shadow.png" id="4_im5cd"]
@@ -63,7 +64,7 @@ font_size = 24
 
 [node name="Game" type="Node2D"]
 script = ExtResource("1_wymu5")
-levels = Array[PackedScene]([ExtResource("15_qvk08"), ExtResource("3_11sif"), ExtResource("3_7d0rd"), ExtResource("4_r2aiu"), ExtResource("5_7cl05"), ExtResource("6_t0neb"), ExtResource("7_drx53"), ExtResource("8_bu865"), ExtResource("9_bb8qm"), ExtResource("10_xv4uo"), ExtResource("11_64d3u"), ExtResource("12_ajn08"), ExtResource("14_nucsj"), ExtResource("15_qvk08")])
+levels = Array[PackedScene]([ExtResource("2_2x3gs"), ExtResource("3_11sif"), ExtResource("3_7d0rd"), ExtResource("4_r2aiu"), ExtResource("5_7cl05"), ExtResource("6_t0neb"), ExtResource("7_drx53"), ExtResource("8_bu865"), ExtResource("9_bb8qm"), ExtResource("10_xv4uo"), ExtResource("11_64d3u"), ExtResource("12_ajn08"), ExtResource("14_nucsj"), ExtResource("15_qvk08")])
 
 [node name="Center" type="Node2D" parent="."]
 position = Vector2(576, 324)
