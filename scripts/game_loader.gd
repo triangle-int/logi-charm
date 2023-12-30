@@ -17,6 +17,7 @@ func _ready():
 
 func _input(event: InputEvent):
 	if event.is_action_pressed("toggle_simulation"):
+		print("Pressed")
 		if ComponentsSignals.is_simulating:
 			ComponentsSignals.stop_simulation()
 		else:

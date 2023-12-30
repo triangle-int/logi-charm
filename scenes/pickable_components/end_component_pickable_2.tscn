@@ -1,0 +1,30 @@
+[gd_scene load_steps=5 format=3 uid="uid://cjfd6m2n1145f"]
+
+[ext_resource type="Script" path="res://scripts/component_pickable.gd" id="1_h5wfm"]
+[ext_resource type="PackedScene" uid="uid://dhfgdc0p174ud" path="res://scenes/components/end_variants/end_component_sandbox_2.tscn" id="2_ybq38"]
+[ext_resource type="Texture2D" uid="uid://dd0yfmfksxq2l" path="res://sprites/gates/end_gate.png" id="3_alfeo"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nalau"]
+size = Vector2(14, 16)
+
+[node name="EndComponentPickable2" type="Node2D"]
+script = ExtResource("1_h5wfm")
+component = ExtResource("2_ybq38")
+component_type = 5
+lerp_speed = 10.0
+snap_threshold = 75.0
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("3_alfeo")
+hframes = 3
+vframes = 2
+frame = 4
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("RectangleShape2D_nalau")
+
+[connection signal="input_event" from="Area2D" to="." method="_on_input_event"]

@@ -24,8 +24,8 @@ func _ready():
 			enabled = false
 			update_texture()
 	)
-	
-func _pressed():
+
+func _on_pressed():
 	enabled = not enabled
 	
 	if enabled:

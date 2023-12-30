@@ -106,6 +106,15 @@ func _snap_to_rings():
 				var diff = radiuses[index] - radiuses[index - 1]
 				new_radiuses.append(radiuses[index - 1] + diff / 2)
 			radiuses = new_radiuses
+		3:
+			if len(radiuses) < 3:
+				radiuses = []
+			
+			var new_radiuses = []
+			for index in range(2, len(radiuses)):
+				var diff = radiuses[index] - radiuses[index - 2]
+				new_radiuses.append(radiuses[index - 2] + diff / 2)
+			radiuses = new_radiuses
 	
 	var component_position = _component_instance.get_anchor_position()
 	var distance = component_position.length()
@@ -118,7 +127,7 @@ func _snap_to_rings():
 			seleted_ring = index
 			selected_distance = new_distance
 	
-	if seleted_ring == -1:
+	if seleted_ring == -1 or not ComponentsSignals.can_attach_component(_component_instance):
 		_component_instance.queue_free()
 		return
 	

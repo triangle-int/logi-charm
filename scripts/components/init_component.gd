@@ -1,3 +1,4 @@
+class_name InitComponent
 extends BaseComponent
 
 @export var start_index: int
