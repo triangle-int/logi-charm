@@ -1,0 +1,53 @@
+[gd_scene load_steps=9 format=3 uid="uid://bldjgiiu8meax"]
+
+[ext_resource type="Script" path="res://scripts/level.gd" id="1_vc13f"]
+[ext_resource type="Resource" uid="uid://sg3uasvec28l" path="res://resources/rings/ring_2.tres" id="2_5yvul"]
+[ext_resource type="PackedScene" uid="uid://pumfprhltbaf" path="res://scenes/components/init_component.tscn" id="3_jnt52"]
+[ext_resource type="PackedScene" uid="uid://dtmhm8xn55o03" path="res://scenes/components/end_component.tscn" id="4_6swa5"]
+[ext_resource type="PackedScene" uid="uid://p6kikp3bppfh" path="res://scenes/components/or_component.tscn" id="5_8llac"]
+[ext_resource type="PackedScene" uid="uid://blp38uqok1hw2" path="res://scenes/components/and_component.tscn" id="6_kp38k"]
+[ext_resource type="PackedScene" uid="uid://e33vqmafam83" path="res://scenes/components/swap_component.tscn" id="7_wuukj"]
+[ext_resource type="PackedScene" uid="uid://xjea3vckpfat" path="res://scenes/components/not_component.tscn" id="8_wyryb"]
+
+[node name="Level" type="Node2D"]
+script = ExtResource("1_vc13f")
+rings_config = ExtResource("2_5yvul")
+
+[node name="InitComponent" parent="." instance=ExtResource("3_jnt52")]
+position = Vector2(170, 0)
+
+[node name="EndComponent" parent="." instance=ExtResource("4_6swa5")]
+position = Vector2(-24.1385, 188.46)
+rotation = 4.585
+activation_seq = Array[bool]([true, true, true, false, true])
+angle = 4.585
+width = 2
+
+[node name="OrComponent" parent="." instance=ExtResource("5_8llac")]
+position = Vector2(-188.099, -26.8128)
+rotation = 3.0
+angle = 3.0
+width = 2
+
+[node name="AndComponent" parent="." instance=ExtResource("6_kp38k")]
+position = Vector2(167.911, -88.9156)
+rotation = 0.487
+angle = 0.487
+width = 2
+
+[node name="SwapComponent" parent="." instance=ExtResource("7_wuukj")]
+position = Vector2(-113.498, -152.375)
+rotation = 2.211
+angle = 2.211
+width = 2
+
+[node name="NotComponent" parent="." instance=ExtResource("8_wyryb")]
+position = Vector2(89.117, -144.769)
+rotation = 1.019
+angle = 1.019
+
+[node name="NotComponent2" parent="." instance=ExtResource("8_wyryb")]
+position = Vector2(99.719, -184.814)
+rotation = 1.076
+angle = 1.076
+attached_to = 1

@@ -1,32 +1,25 @@
-[gd_scene load_steps=6 format=3 uid="uid://cclit4kwl4q0v"]
+[gd_scene load_steps=5 format=3 uid="uid://cclit4kwl4q0v"]
 
-[ext_resource type="Script" path="res://scripts/level.gd" id="1_0sjrs"]
-[ext_resource type="PackedScene" uid="uid://pumfprhltbaf" path="res://scenes/components/init_component.tscn" id="2_e5p53"]
-[ext_resource type="Resource" uid="uid://sg3uasvec28l" path="res://resources/rings/ring_2.tres" id="2_gn8sf"]
-[ext_resource type="PackedScene" uid="uid://e33vqmafam83" path="res://scenes/components/swap_component.tscn" id="3_im6mh"]
-[ext_resource type="PackedScene" uid="uid://dtmhm8xn55o03" path="res://scenes/components/end_component.tscn" id="3_w2ujn"]
+[ext_resource type="Script" path="res://scripts/level.gd" id="1_d3y8t"]
+[ext_resource type="Resource" uid="uid://sg3uasvec28l" path="res://resources/rings/ring_2.tres" id="2_i3enj"]
+[ext_resource type="PackedScene" uid="uid://pumfprhltbaf" path="res://scenes/components/init_component.tscn" id="3_gikh0"]
+[ext_resource type="PackedScene" uid="uid://dtmhm8xn55o03" path="res://scenes/components/end_component.tscn" id="5_oo6xw"]
 
 [node name="Level" type="Node2D"]
-script = ExtResource("1_0sjrs")
-rings_config = ExtResource("2_gn8sf")
+script = ExtResource("1_d3y8t")
+rings_config = ExtResource("2_i3enj")
 
-[node name="InitComponent" parent="." instance=ExtResource("2_e5p53")]
+[node name="InitComponent" parent="." instance=ExtResource("3_gikh0")]
 position = Vector2(170, 0)
 
-[node name="SwapComponent" parent="." instance=ExtResource("3_im6mh")]
-position = Vector2(-0.0386979, -190)
-rotation = 1.571
-angle = 1.571
-width = 2
-
-[node name="EndComponent1" parent="." instance=ExtResource("3_w2ujn")]
+[node name="EndComponent1" parent="." instance=ExtResource("5_oo6xw")]
 position = Vector2(-190, 0.0773958)
 rotation = 3.142
 activation_seq = Array[bool]([false, false])
 angle = 3.142
 width = 2
 
-[node name="EndComponent2" parent="." instance=ExtResource("3_w2ujn")]
+[node name="EndComponent2" parent="." instance=ExtResource("5_oo6xw")]
 position = Vector2(-0.0816859, 210)
 rotation = 4.712
 activation_seq = Array[bool]([false])
