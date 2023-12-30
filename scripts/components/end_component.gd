@@ -18,7 +18,7 @@ var history: Array[bool]
 @onready var goal_bar: GoalBar = $AnchorRemote/PanelContainer/GoalBar
 
 func _ready():
-	sprite_2d.frame = 1
+	sprite_2d.frame_coords.x = 1
 
 func _prepare_for_simulation():
 	super()
@@ -28,7 +28,7 @@ func _prepare_for_simulation():
 		goal_bar.set_sequence(activation_seq)
 	ComponentsSignals.simulation_started.connect(
 		func():
-			sprite_2d.frame = 1
+			sprite_2d.frame_coords.x = 1
 			is_activated = false
 			is_detached = false
 			last_index = 0
@@ -61,9 +61,9 @@ func _on_receive(index: int, high: bool):
 	if last_index >= len(activation_seq):
 		is_activated = true
 		activated.emit()
-		sprite_2d.frame = 0
+		sprite_2d.frame_coords.x = 0
 
 func _detach():
 	is_detached = true
-	sprite_2d.frame = 2
+	sprite_2d.frame_coords.x = 2
 	detached.emit()

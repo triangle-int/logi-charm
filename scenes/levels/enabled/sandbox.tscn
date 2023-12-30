@@ -7,6 +7,8 @@
 [node name="Sandbox" type="Node2D"]
 script = ExtResource("1_lmj46")
 rings_config = ExtResource("2_g76e2")
+avaliable_component = Array[int]([3])
 tooltip = "Feel free to build anything you want"
 
 [node name="InitComponent" parent="." instance=ExtResource("3_h87df")]
+position = Vector2(170, 0)

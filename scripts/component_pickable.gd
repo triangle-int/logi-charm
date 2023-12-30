@@ -1,21 +1,49 @@
+class_name ComponentPickable
 extends Node2D
 
+enum COMPONENT_TYPE {
+	AND_GATE,
+	OR_GATE,
+	SWAP_GATE,
+	NOT_GATE,
+	INIT_GATE,
+	END_GATE,
+}
+
 @export var component: PackedScene
+@export var component_type: COMPONENT_TYPE
 @export var lerp_speed: float
 @export var snap_threshold: float
 
 @onready var sprite_2d = $Sprite2D
 @onready var game: LevelLoader = $"/root/Game"
 
+var _is_handling_events: bool
 var _is_dragged: bool
 var _component_instance: BaseComponent
 var _target_position: Vector2
 
+func _ready():
+	_enable()
+	game.level_loaded.connect(
+		func():
+			if component_type in game.current_level.avaliable_component:
+				_enable()
+			else:
+				_disable()
+	)
+
 func _input(event):
+	if not _is_handling_events:
+		return
+	
 	_handle_drag(event)
 	_handle_drop(event)
 
 func _on_input_event(_viewport, event, _shape_idx):
+	if not _is_handling_events:
+		return
+	
 	_handle_pickup(event)
 
 func _process(delta: float):
@@ -101,3 +129,11 @@ func _snap_to_rings():
 		_component_instance.angle += 2 * PI
 	ComponentsSignals.attach_component(_component_instance)
 	level.update_component_position(_component_instance)
+
+func _enable():
+	visible = true
+	_is_handling_events = true
+
+func _disable():
+	visible = false
+	_is_handling_events = false

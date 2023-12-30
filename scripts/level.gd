@@ -7,6 +7,12 @@ signal level_completed
 signal level_failed
 
 @export var rings_config: RingsConfig
+@export var avaliable_component: Array[ComponentPickable.COMPONENT_TYPE] = [
+	ComponentPickable.COMPONENT_TYPE.AND_GATE,
+	ComponentPickable.COMPONENT_TYPE.OR_GATE,
+	ComponentPickable.COMPONENT_TYPE.SWAP_GATE,
+	ComponentPickable.COMPONENT_TYPE.NOT_GATE,
+]
 @export_multiline var tooltip: String
 
 var end_count = 0
